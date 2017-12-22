@@ -1,0 +1,9 @@
+<div class="mainMenu">
+    <app-first-menu></app-first-menu>
+</div>
+
+<div *ngIf="loggedUserProfil" class="userWelcome page-header">
+    <h1 id="welcomeHeader">Byenvini {{ loggedUserProfil.username }}</h1>
+</div>
+
+<router-outlet></router-outlet>

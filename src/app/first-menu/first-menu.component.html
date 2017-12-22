@@ -1,0 +1,198 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">PawolMizik.com</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Rap</a></li>
+        <li><a href="#">Konpa</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li *ngIf="loggedUserId == null"><a data-toggle="modal" href="#SignUpModal"><span class="glyphicon glyphicon-user"></span> Anrejistre</a></li>
+        <li *ngIf="loggedUserId == null"><a data-toggle="modal" href="#LogInModal"><span class="glyphicon glyphicon-log-in"></span> Konekte</a></li>
+        <li *ngIf="loggedUserId != null" (click)="logout()"><a href="">Logout</a></li>
+      </ul>
+      <form class="navbar-form navbar-left" action="/action_page.php">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search" name="search">
+          <div class="input-group-btn">
+            <button class="btn btn-default" type="submit">
+              <i class="glyphicon glyphicon-search"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>
+
+  <!-- Signup Modal -->
+  <div id="SignUpModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Kreye Kont ou sou Pawolmizik!</h4>
+        </div>
+        <div class="modal-body">
+          <form (submit)='register()' #form="ngForm">
+            <div class="form-group">
+              <input type="text"
+                    name="username"
+                    [(ngModel)]="user.username"
+                    required
+                    (change)="usernameAvailability()"
+                    minlength="3"
+                    class="form-control signupEntries" 
+                    placeholder="Non itilizatè w">
+              <!-- Alert flashing for username availability -->
+              <div *ngIf='usernameExist == false' class="alert alert-success">
+                <strong>Byenvini!</strong> Non sa bon ou met kenbe l
+              </div>
+              <div *ngIf='usernameExist' class="alert alert-danger">
+                  <strong>Woyyyyyy!</strong> Nom itilizatè sa egziste deja
+              </div>
+            </div>
+
+            <div class="form-group">
+              <input type="email"
+                    name="email"
+                    [(ngModel)]="user.email"
+                    required
+                    class="form-control signupEntries" 
+                    placeholder="Email adrès ou">
+            </div>
+            <div class="form-group">
+              <input type="password"
+                    name="password"
+                    required
+                    minlength="8"
+                    (click)="printPwdReq()"
+                    (input)="checkPwdReq(password)"
+                    (change)="checkPwdReq(password)"
+                    #password="ngModel"
+                    [(ngModel)]="user.password"
+                    class="form-control signupEntries"
+                    placeholder="Mokle ou">
+              <div *ngIf='pwdReq' class="alert alert-danger">
+                <p>Mo kle ou sipoze genyen:</p>
+                 <ul>
+                   <li [class]="pwdLenghtReq">8 karaktè pi piti</li>
+                   <li [class]="pwdLowercaseReq">1 lèt miniskil</li>
+                   <li [class]="pwdUppercaseReq">1 lèt majiskil</li>
+                   <li [class]="pwdNumberReq">1 chif</li>
+                 </ul>
+              </div>
+              <div *ngIf='pwdReqMet' class="alert alert-success">
+                  <strong>Waaawwww!</strong> Mokle sa depase bon
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="password"
+                    name="password_confirmation"
+                    required
+                    minlength="8"
+                    #pwdConf="ngModel"
+                    (input)="checkPwdConf(password, pwdConf)"
+                    [(ngModel)]="user.password_confirmation"
+                    class="form-control signupEntries"
+                    placeholder="Konfime Mokle ou">
+              <div *ngIf='pwdConfMet' class="alert alert-success">
+                <p>Mokle ou yo menm</p>
+              </div>
+            </div>
+            <button type="submit" [disabled]="form.invalid" class="btn btn-primary btn-block signupEntries">Anrejistre</button>
+          </form>
+          <p><a data-toggle="modal" href="#LogInModal" data-dismiss="modal">Klike la pou konekte si w deja gen yon kont sou pawolmizik</a></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Anile</button>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+  
+  
+  <!-- Modal -->
+  <div id="LogInModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Konekte</h4>
+        </div>
+        <div class="modal-body">
+          <form (submit)='login()'>
+            <div class="form-group">
+              <input type="email"
+                    name="email"
+                    [(ngModel)]="user.email"
+                    required
+                    class="form-control signupEntries" 
+                    placeholder="Email adrès ou">
+            </div>
+            <div class="form-group">
+              <input type="password"
+                    name="password"
+                    [(ngModel)]="user.password"
+                    class="form-control signupEntries"
+                    placeholder="Mokle ou">
+            </div>
+            <div class="checkbox">
+              <label><input type="checkbox"> Kite'm konekte</label>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block signupEntries">Konekte</button>
+          </form>
+          <p><a data-toggle="modal" href="#SignUpModal" data-dismiss="modal">Klike la pou kreye yon kont siw pako genyen</a></p>
+          <p>Ou bliye mokle ou?<a data-toggle="modal" href="#PasswordResetModal" data-dismiss="modal"> Klike la pou retwouve li</a></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Anile</button>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+  
+  <!-- Modal -->
+  <div id="PasswordResetModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Retwouve Mokle ou</h4>
+        </div>
+        <div class="modal-body">
+          <p>Rantre email adrès ou pou w ka resevwa yon lyen pou chanje mokle ou.</p>
+          <form action="/action_page.php">
+            <div class="form-group">
+              <input type="email"
+                    name="email"
+                    required
+                    class="form-control signupEntries" 
+                    id="email"
+                    placeholder="Email adrès ou">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block signupEntries">Chanje Mokle</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Anile</button>
+        </div>
+      </div>
+  
+    </div>
+  </div>

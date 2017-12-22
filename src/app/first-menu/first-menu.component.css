@@ -1,0 +1,7 @@
+.signupEntries {
+    height: 50px;
+}
+
+.pwdLenghtReq, .pwdLowercaseReq, .pwdUppercaseReq, .pwdNumberReq {
+    color: green;
+}

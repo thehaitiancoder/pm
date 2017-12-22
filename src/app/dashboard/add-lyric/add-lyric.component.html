@@ -1,0 +1,151 @@
+<div class="container">
+<form (submit)='addLyric()' #form="ngForm">
+  <!-- Title -->
+  <div class="form-group">
+    <label for="title">Tit mizik la*:</label>
+    <input type="text"
+          name="title"
+          id="title"
+          [(ngModel)]="lyric.title"
+          required
+          class="form-control input-lg" 
+          placeholder="Kijan mizik la rele?">
+  </div>
+  <!-- Singer -->
+  <div class="form-group">
+    <label for="singer">Chantè mizik la*:</label>
+    <input type="text"
+          name="singer"
+          id="singer"
+          [(ngModel)]="lyric.singer"
+          required
+          class="form-control input-lg" 
+          placeholder="Kiyès ki chante mizik sa?">
+  </div>
+  <!-- Lyrics -->
+  <div class="form-group">
+    <label for="lyrics">Pawol mizik la*:</label>
+    <textarea name="lyrics"
+          required
+          id="lyrics"
+          rows="10"
+          [(ngModel)]="lyric.lyrics"
+          class="form-control"
+          placeholder="Mete pawol mizik yo la"></textarea>
+  </div>
+  <!-- If featurers -->
+  <div class="form-group">
+    <label for="featuring">Eske gen lot atis ki chante sou mizik sa (Featuring)?</label>
+    <div class="radion">
+      <label class="radio-inline"><input type="radio" name="songWithFeaturing">Non</label>
+      <label class="radio-inline"><input type="radio" name="songWithFeaturing">Wi</label>
+    </div>
+  </div>
+  <!-- Featurers name -->
+  <div *ngIf="featurer1" class="form-group">
+    <label for="featurer1">Lot atis ki sou mizik la:</label>
+    <input type="text"
+          name="featurer1"
+          id="featurer1"
+          [(ngModel)]="lyric.featurer1"
+          class="form-control input-lg"
+          placeholder="Non Atis ki featuring sou mizik sa?">
+  </div>
+  <div *ngIf="featurer2" class="form-group">
+    <label for="featurer2">Lot atis ki sou mizik la:</label>
+    <input type="text"
+          name="featurer2"
+          id="featurer2"
+          [(ngModel)]="lyric.featurer2"
+          class="form-control input-lg"
+          placeholder="Non Atis ki featuring sou mizik sa?">
+  </div>
+  <div *ngIf="featurer3" class="form-group">
+    <label for="featurer3">Lot atis ki sou mizik la:</label>
+    <input type="text"
+          name="featurer3"
+          id="featurer3"
+          [(ngModel)]="lyric.featurer3"
+          class="form-control input-lg"
+          placeholder="Non Atis ki featuring sou mizik sa?">
+  </div>
+  <div *ngIf="featurer4" class="form-group">
+    <label for="featurer4">Lot atis ki sou mizik la:</label>
+    <input type="text"
+          name="featurer4"
+          id="featurer4"
+          [(ngModel)]="lyric.featurer4"
+          class="form-control input-lg"
+          placeholder="Non Atis ki featuring sou mizik sa?">
+  </div>
+  <div *ngIf="featurer5" class="form-group">
+    <label for="featurer5">Lot atis ki sou mizik la:</label>
+    <input type="text"
+          name="featurer5"
+          id="featurer5"
+          [(ngModel)]="lyric.featurer5"
+          class="form-control input-lg"
+          placeholder="Non Atis ki featuring sou mizik sa?">
+  </div>
+  <div *ngIf="featurer6" class="form-group">
+      <label for="featurer6">Lot atis ki sou mizik la:</label>
+    <input type="text"
+          name="featurer6"
+          id="featurer6"
+          [(ngModel)]="lyric.featurer6"
+          class="form-control input-lg"
+          placeholder="Non Atis ki featuring sou mizik sa?">
+  </div>
+  <div class="form-group">
+    <label for="realeasedDate">Kilè mizik sa soti?:</label>
+    <input type="date"
+          name="realeasedDate"
+          id="realeasedDate"
+          [(ngModel)]="lyric.realeasedDate"
+          class="form-control input-lg">
+  </div>
+  <!-- Album -->
+  <div class="form-group">
+    <label for="album">Albòm mizik sa:</label>
+    <input type="text"
+          name="album"
+          id="album"
+          [(ngModel)]="lyric.album"
+          class="form-control input-lg"
+          placeholder="Sou ki albòm mizik sa ye?">
+  </div>
+  <!-- Category -->
+  <div class="form-group">
+    <label for="category">Kategori mizik la:</label>
+    <select name="category" class="form-control input-lg" [(ngModel)]="lyric.category" id="category">
+      <option value="Rap">Rap</option>
+      <option value="Konpa">Konpa</option>
+      <option value="Reggea">Reggea</option>
+      <option value="Levanjil">Levanjil</option>
+      <option value="Rasin">Rasin</option>
+      <option value="Kanaval">Kanaval</option>
+    </select>
+  </div>
+  <!-- Audio Link -->
+  <div class="form-group">
+    <label for="soundcloud">Lyen pou koute mizik sa sou SOUNDCLOUD:</label>
+    <input type="url"
+          name="soundcloud"
+          id="soundcloud"
+          [(ngModel)]="lyric.soundcloud"
+          class="form-control input-lg"
+          placeholder="Egzanp: https://soundcloud.com/rapprovens/zomor-life-goes-on">
+  </div>
+  <!-- Video Link -->
+  <div class="form-group">
+    <label for="youtube">Lyen videyo mizik sa sou YOUTUBE</label>
+    <input type="url"
+          name="youtube"
+          id="youtube"
+          [(ngModel)]="lyric.youtube"
+          class="form-control input-lg"
+          placeholder="Egzanp: https://www.youtube.com/watch?v=YwDTlPaPffY">
+  </div>
+  <button type="submit" [disabled]="form.invalid" class="btn btn-primary btn-block signupEntries">Ajoute Pawol Mizik sa</button>
+</form>
+</div>

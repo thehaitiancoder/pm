@@ -1,0 +1,14 @@
+.thecontainer {
+    background-color: white;
+}
+
+.mainMenu {
+    clear: both;
+    margin-bottom: 100px;
+}
+
+.topBanner {
+    margin-left: auto;
+    margin-right: auto;
+    width: 780px;
+}
