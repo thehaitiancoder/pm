@@ -1,0 +1,52 @@
+.addLyricCall {
+    width: 50%;
+    margin: 0% 0% 2% 0%;
+}
+
+.one {
+    width: 46%;
+    height: 200px;
+    margin: 0% 7% 4% 0%;
+    padding: 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    vertical-align: top;
+    border-radius: 20px;
+}
+    .one > h1 {
+        text-align: center;
+    }
+
+    .one > h4 {
+        text-align: center;
+    }
+
+    .one > p {
+        text-align: center;
+    }
+
+.two {
+    width: 46%;
+    height: 200px;
+    margin: 0% 0% 4% 0%;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+}
+
+.three {
+    width: 46%;
+    height: 200px;
+    margin: 0% 7% 0% 0%;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+}
+
+.four {
+    width: 46%;
+    height: 200px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+}

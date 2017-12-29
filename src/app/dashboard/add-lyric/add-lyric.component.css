@@ -1,4 +1,25 @@
-.container {
-    width: 50%;
-    margin: 0px 0px 200px 50px;
+form {
+    width: 45%;
+    margin: 0px 6% 200px 0px;
+    display: inline-block;
+}
+
+.addingLyricsValidation {
+    width: 45%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.howToAddLyricVideo {
+    width: 47%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.red {
+    border-color: rgba(255, 0, 0, 0.473);
+}
+
+li {
+    list-style-type: none;
 }

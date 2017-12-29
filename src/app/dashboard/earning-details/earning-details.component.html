@@ -1,0 +1,24 @@
+<div class="container">
+    <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Pawol</th>
+            <th>Dat</th>
+            <th>Rekonpans</th>
+            <th>Stati</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let lyric of loggedUserLyrics; let i= index">
+            <td>{{i+1}}</td>
+            <td>{{ lyric.title }} - {{ lyric.singer}} <span *ngIf="lyric.featurer.one != null">feat. {{lyric.featurer.one}}</span><span *ngIf="lyric.featurer.two != null">, {{lyric.featurer.two}}</span></td>
+            <td>{{lyric.createdAt | date: 'dd/MM/yyyy'}}</td>
+            <td *ngIf="lyric.soundcloud != null || lyric.youtube != null">Jiska 7 Goud</td>
+            <td *ngIf="lyric.soundcloud == null && lyric.youtube == null">5 Goud</td>
+            <td *ngIf="lyric.verified == false">Verifikasyon...</td>
+            <td *ngIf="lyric.verified">Verifye!</td>
+          </tr>
+        </tbody>
+      </table>
+</div>

@@ -51,6 +51,14 @@ const UserSchema        = new Schema({
         // Roles ranged from 0 to 100 with steps of 10 while 0 is for all users and 100 is for admin
         type: Number,
         default: 0
+    },
+    balance_lyric_final: {
+        type: Number,
+        default: 0
+    },
+    balance_lyric_pending: {
+        type: Number,
+        default: 0
     }
 
     

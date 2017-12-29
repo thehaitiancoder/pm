@@ -1,3 +1,23 @@
-<div class="addLyricCall">
-  <a [routerLink]="['/dashboard', 'lyric']"><button class="btn btn-default">Ajoute pawòl yon mizik</button></a>
+<div class="container">
+  <div class="addLyricCall">
+    <a [routerLink]="['/dashboard', 'lyric']"><button class="btn btn-default">Ajoute pawòl yon mizik</button></a>
+  </div>
+  
+  <section class="one">
+    <h1>Balans ou gen 0 goud</h1>
+    <h4 *ngIf="loggedUser != null">Ou gen {{ loggedUser.balance_lyric_pending }} Goud nan verifikasyon</h4>
+    <p><a [routerLink]="['/dashboard', 'earning-details']">Detay Kont ou</a></p>
+  </section>
+
+  <section class="two">
+    
+  </section>
+
+  <section class="three">
+
+  </section>
+
+  <section class="four">
+    
+  </section>
 </div>

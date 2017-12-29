@@ -6,6 +6,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AddLyricComponent } from './dashboard/add-lyric/add-lyric.component';
 import { FirstMenuComponent } from './first-menu/first-menu.component';
 import { DashhomeComponent } from './dashboard/dashhome/dashhome.component';
+import { EarningDetailsComponent } from './dashboard/earning-details/earning-details.component';
+import { LyricDisplayComponent } from './lyric-display/lyric-display.component';
 
 const routes: Routes = [
   {
@@ -33,8 +35,22 @@ const routes: Routes = [
       {
         path: 'lyric',
         component: AddLyricComponent
+      },
+      {
+        path: 'earning-details',
+        component: EarningDetailsComponent
       }
     ]
+  },
+
+  {
+    path: ':url',
+    component: LyricDisplayComponent
+  },
+
+  {
+    path: '**',
+    component: HomeComponent
   }
 ];
 

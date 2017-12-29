@@ -5,15 +5,11 @@ export class Lyric {
     title: String= null;
     singer: String = null;
     lyrics: String = null;
-    featurer1: String = null;
-    featurer2: String = null;
-    featurer3: String = null;
-    featurer4: String = null;
-    featurer5: String = null;
-    featurer6: String = null;
+    featurer= {one: null, two: null, three: null, four: null, Five: null, six: null, seven: null, eight: null, nine: null, ten: null};
     released_date: Date = null;
-    album: String = '';
-    category?: String = '';
+    album: String = null;
+    category?: String = 'Mond';
     soundcloud: Url = null;
     youtube: Url = null;
+    url : String = null;
 }

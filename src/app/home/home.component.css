@@ -12,3 +12,36 @@
     margin-right: auto;
     width: 780px;
 }
+
+#searchInput {
+    width: 450px;
+    height: 60px;
+}
+
+#searchButton {
+    width: 45px;
+    height: 60px;
+}
+
+.searchResult {
+    clear: both;
+}
+
+.searchInput {
+    width: 50%;
+    margin: 0px auto 0px auto;
+}
+
+    .searchInput > h1 {
+        text-align: center;
+        font-size: 4em;
+        color: #ccc;
+    }
+
+    #pawol {
+        color: blue;
+    }
+
+    #mizik {
+        color: red;
+    }

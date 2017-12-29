@@ -21,6 +21,11 @@ module.exports = function(app){
     app.get('/auth/userprofile/:id', authController.getLoggedUserProfile);
 
     app.post('/lyrics/new', lyricController.addNewLyric);
+    app.post('/lyrics/checktitle', lyricController.checkTitleExist);
+    app.get('/lyrics/user/:id', lyricController.getLoggedUserLyrics)
+    app.get('/search/:term', lyricController.generalLyricSearch);
+    app.post('/showlyrics/', lyricController.displayOneLyric);
+
 
 
     // app.post("/upload", multer({storage: storage}).array("uploads", 1), function(req, res) {

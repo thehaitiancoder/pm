@@ -50,7 +50,6 @@ module.exports = {
     },
 
     getLoggedUserProfile(req, res){
-        console.log(req.params.id)
         User.findById(req.params.id)
         .then(user => res.json(user))
         .catch(console.log)

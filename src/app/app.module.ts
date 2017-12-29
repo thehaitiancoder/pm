@@ -15,6 +15,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AddLyricComponent } from './dashboard/add-lyric/add-lyric.component';
 import { DashhomeComponent } from './dashboard/dashhome/dashhome.component';
 import { LyricService } from './services/lyric.service';
+import { EarningDetailsComponent } from './dashboard/earning-details/earning-details.component';
+import { LyricDisplayComponent } from './lyric-display/lyric-display.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { LyricService } from './services/lyric.service';
     FirstMenuComponent,
     DashboardComponent,
     AddLyricComponent,
-    DashhomeComponent
+    DashhomeComponent,
+    EarningDetailsComponent,
+    LyricDisplayComponent
   ],
   imports: [
     BrowserModule,

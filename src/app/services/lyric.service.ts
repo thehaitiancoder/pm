@@ -6,7 +6,7 @@ import { Lyric } from '../models/lyric';
 
 @Injectable()
 export class LyricService {
-  base= '/lyrics/new'
+  base= '/lyrics/new';
 
   constructor(
     private _http: Http
@@ -17,4 +17,29 @@ export class LyricService {
     .map(response => response.json())
     .toPromise();
   }
+
+  lyricTitleCheck(lyricTitle){
+    return this._http.post('/lyrics/checktitle', lyricTitle)
+    .map(response => response.json())
+    .toPromise();
+  }
+
+  getLoggedUserLyric(userId) {
+    return this._http.get('/lyrics/user/' + userId)
+    .map(response => response.json())
+    .toPromise();
+  }
+
+  generalLyricSearch(termToSearchFor){
+    return this._http.get('/search/' + termToSearchFor)
+    .map(response => response.json())
+    .toPromise();
+  }
+
+  displayOneLyric(url){
+    return this._http.post('/showlyrics/', url)
+    .map(response => response.json())
+    .toPromise();
+  }
+
 }
