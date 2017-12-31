@@ -26,6 +26,10 @@ module.exports = function(app){
     app.get('/search/:term', lyricController.generalLyricSearch);
     app.post('/showlyrics/', lyricController.displayOneLyric);
 
+    app.post('/lyric/comments', lyricController.addComment);
+    app.get('/lyric/comments/:lyricId', lyricController.getAllCommentsForActiveLyric);
+    app.put('/lyric/comments/votes', lyricController.voteCommentUpOrDown);
+
 
 
     // app.post("/upload", multer({storage: storage}).array("uploads", 1), function(req, res) {

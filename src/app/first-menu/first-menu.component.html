@@ -19,7 +19,7 @@
         <li *ngIf="loggedUserId == null"><a data-toggle="modal" href="#LogInModal"><span class="glyphicon glyphicon-log-in"></span> Konekte</a></li>
         <li *ngIf="loggedUserId != null" (click)="logout()"><a href="">Logout</a></li>
       </ul>
-      <form class="navbar-form navbar-left" action="/action_page.php">
+      <form *ngIf="displaySearchInMenu" class="navbar-form navbar-left" action="/action_page.php">
         <div class="input-group">
           <input type="text" class="form-control" placeholder="Search" name="search">
           <div class="input-group-btn">

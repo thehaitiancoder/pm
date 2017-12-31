@@ -199,7 +199,8 @@
               id="youtube"
               [(ngModel)]="lyric.youtube"
               class="form-control input-lg"
-              placeholder="Egzanp: https://www.youtube.com/watch?v=YwDTlPaPffY">
+              placeholder="Egzanp: https://www.youtube.com/embed/Z-KN6qsPt6M">
+        <p><strong>Nòt enpòtan: Asire ou gen lyen video youtube la gen menm fòma ak egzanp ki nan espas pou mete lyen an. Espesyalman lyen an sipoze genyen mo "embed" la ladan l.</strong></p>
       </div>
       <button type="submit" [disabled]="form.invalid" class="btn btn-primary btn-block signupEntries">Ajoute Pawol Mizik sa</button>
     </form>
@@ -207,7 +208,7 @@
     <div *ngIf="existingLyricTitles.length > 0" class="addingLyricsValidation">
         <h2>Mizik sou sit la ki gen non tankou sa:</h2>
         <ul>
-          <li *ngFor="let existingLyric of existingLyricTitles"><span *ngIf="existingLyric.score > 1">{{existingLyric.title}} - {{existingLyric.singer}}</span></li>
+          <li *ngFor="let existingLyric of existingLyricTitles"><span *ngIf="existingLyric.score > 1"><a [routerLink]="['/', existingLyric.url]">{{existingLyric.title}} - {{existingLyric.singer}}</a></span></li>
         </ul>
     </div>
 

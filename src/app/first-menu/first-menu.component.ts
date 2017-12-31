@@ -22,6 +22,7 @@ export class FirstMenuComponent implements OnInit {
   pwdUppercaseReq = null;
   pwdNumberReq = null;
   pwdLenghtReq = null;
+  displaySearchInMenu = true;
 
   user = new User();
 
@@ -40,6 +41,9 @@ export class FirstMenuComponent implements OnInit {
       this.loggedUserProfil = loggedUserProfile
     })
     }
+
+    // Hides the search input in the menu on the homepage
+    if (this._router.url == '/'){ this.displaySearchInMenu = false}
   }
 
   register(){

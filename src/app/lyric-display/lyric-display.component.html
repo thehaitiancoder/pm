@@ -6,6 +6,88 @@
 
 </div>
 
-<div class="lyric">
+<div *ngIf="theLyric != null" class="container">
+  <div class="page-header">
+      <h1>Pawòl {{ theLyric.title }} - {{ theLyric.singer }}
+          <span *ngIf="theLyric.featurer.one != null">feat. {{ theLyric.featurer.one}}</span>
+          <span *ngIf="theLyric.featurer.two != null">, {{ theLyric.featurer.two}}</span>
+          <span *ngIf="theLyric.featurer.three != null">, {{ theLyric.featurer.three }}</span>
+          <span *ngIf="theLyric.featurer.four != null">, {{ theLyric.featurer.four }}</span>
+          <span *ngIf="theLyric.featurer.five != null">, {{ theLyric.featurer.five }}</span>
+          <span *ngIf="theLyric.featurer.six != null">, {{ theLyric.featurer.six }}</span>
+          <span *ngIf="theLyric.featurer.seven != null">, {{ theLyric.featurer.seven }}</span>
+          <span *ngIf="theLyric.featurer.eight != null">, {{ theLyric.featurer.eight }}</span>
+          <span *ngIf="theLyric.featurer.nine != null">, {{ theLyric.featurer.nine }}</span>
+          <span *ngIf="theLyric.featurer.ten != null">, {{ theLyric.featurer.ten }}</span>
+        </h1>
+  </div>
+
+  <div class="playWatchAndMore">
+    <button *ngIf="theLyric.soundcloud != null && showSoundcloudPlayer == false"
+            type="button" class="btn btn-default playSoundcloud" (click)="playSoundcloud(theLyric.soundcloud)">
+      <span class="glyphicon glyphicon-play"></span> Koute
+    </button>
+    <a data-toggle="modal" href="#showYoutubeVideo"><button *ngIf="theLyric.youtube != null"
+            type="button" class="btn btn-default playYoutube">
+      <span class="glyphicon glyphicon-film"></span> Gade
+    </button></a>
+
+    <div class="soudcloudPlayer" *ngIf="showSoundcloudPlayer">
+        <iframe width="100%" height="166" scrolling="no" frameborder="no" [src]="soundCloudSrc"></iframe>
+    </div>
+  </div>
+    <div class="row">
+        <div class="col-md-8">
+          <pre>{{ theLyric.lyrics}}</pre>
+          
+          <form (submit)="addComment()">
+            <div class="form-group">
+              <label for="comment">Fè yon komantè:</label>
+              <textarea class="form-control" name="content" [(ngModel)]="comment.content" rows="2" id="comment"></textarea>
+            </div>
+            <button type="submit" class="btn btn-default">Komante!</button>
+          </form>
+
+          <div *ngIf="theComments != null" class="theComments">
+            <div *ngFor="let comment of theComments" class="singleComment">
+              <div class="commentHeader">
+                <p>{{ comment.user.username }}</p>
+                <span>{{ comment.createdAt | date: 'dd/MM/yyyy' }}</span>
+              </div>
+              <div class="commentBody"><pre id="commentBody">{{ comment.content}}</pre></div>
+              <div class="commentFooter">
+                <button (click)="voteCommentUpOrDown(comment._id, 1)"
+                        [ngClass]="upvotedCommentColor"
+                        class="btn btn-default">
+                        <span class="glyphicon glyphicon-thumbs-up"></span>
+                        <span>{{ comment.upvote }}</span>
+                </button>
+                <button (click)="voteCommentUpOrDown(comment._id, -1)"
+                        class="btn btn-default">
+                        <span class="glyphicon glyphicon-thumbs-down"></span>
+                        <span>{{ comment.downvote }}</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">.col-xs-3 .col-md-5</div>
+      </div>
+</div>
+
+
+<div id="showYoutubeVideo" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Videyo</h4>
+        </div>
+        <div class="modal-body">
+            <iframe width="100%" height="480" [src]="youtubeSrc" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
   
+    </div>
 </div>

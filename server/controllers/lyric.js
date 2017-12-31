@@ -1,5 +1,7 @@
 const Lyric = require('mongoose').model('Lyric');
 const User = require('mongoose').model('User');
+const Comments = require('mongoose').model('Comment');
+const comments = new Comments;
 
 module.exports = {
     addNewLyric(req, res){
@@ -42,8 +44,47 @@ module.exports = {
         console.log(req.body)
         Lyric.findOne({url: req.body.url})
         .then(lyricToDisplay => {
+            // Increase the view for this lyric
+            Lyric.findByIdAndUpdate(lyricToDisplay._id, {
+                $inc: {
+                    views: 1
+                }
+            })
+            .catch(console.log)
             res.json(lyricToDisplay)
         })
         .catch(console.log)
+    },
+
+    addComment(req, res) {
+        Comments.create(req.body)
+        .then(comment => {
+            res.json(comment)
+        })
+        .catch(console.log)
+    },
+
+    getAllCommentsForActiveLyric(req, res) {
+        Comments.find({lyric: req.params.lyricId}).populate('user').sort({upvote: 'desc'})
+        .then(theComments => { res.json(theComments) })
+        .catch(console.log)
+    },
+
+    voteCommentUpOrDown(req, res) {
+        if (req.body.upvote == 1) {
+            Comments.findByIdAndUpdate(req.body._id, {
+                $inc: {upvote: 1}
+            })
+            .then(updatedComment => { res.json(updatedComment)})
+            .catch(console.log)
+        }
+        if (req.body.downvote == -1) {
+            Comments.findByIdAndUpdate(req.body._id, {
+                $inc: {downvote: -1}
+            })
+            .then(updatedComment => { res.json(updatedComment)})
+            .catch(console.log)
+        }
+        
     }
 }

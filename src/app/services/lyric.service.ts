@@ -42,4 +42,23 @@ export class LyricService {
     .toPromise();
   }
 
+  // Future update: Create a comment service instead of having the comments in here
+  addComment(thecomment) {
+    return this._http.post('/lyric/comments', thecomment)
+    .map(response => response.json())
+    .toPromise();
+  }
+
+  getAllTheCommentsForActiveLyric(lyricId){
+    return this._http.get('/lyric/comments/' + lyricId)
+    .map(response => response.json())
+    .toPromise();
+  }
+
+  voteCommentUpOrDown(comment) {
+    return this._http.put('/lyric/comments/votes', comment)
+    .map(response => response.json())
+    .toPromise();
+  }
+
 }

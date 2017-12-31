@@ -12,4 +12,5 @@ export class Lyric {
     soundcloud: Url = null;
     youtube: Url = null;
     url : String = null;
+    views: Number = 0;
 }

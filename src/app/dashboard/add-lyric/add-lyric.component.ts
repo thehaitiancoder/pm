@@ -43,7 +43,7 @@ export class AddLyricComponent implements OnInit {
   }
 
   addLyric(){
-    this.lyric.url = decodeURIComponent(this.lyric.singer.toLowerCase().replace(/ +/g, "-") + "-" + this.lyric.title.toLowerCase().replace(/ +/g, "-"))
+    this.lyric.url = this.lyric.singer.toLowerCase().replace(/ +/g, "-") + "-" + this.lyric.title.toLowerCase().replace(/ +/g, "-");
 
     this._lyricService.addNewLyric(this.lyric)
     .then(addedlyric => {

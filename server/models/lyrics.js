@@ -48,6 +48,10 @@ const LyricSchema = new Schema({
     },
     url: {
         type: String
+    },
+    views: {
+        type: Number,
+        default: 0
     }
 }, {timestamps: true})
 
