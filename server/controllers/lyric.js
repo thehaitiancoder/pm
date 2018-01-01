@@ -26,7 +26,7 @@ module.exports = {
         .catch(console.log)
     },
 
-    getLoggedUserLyrics(req, res) {
+    getLoggedUserLyrics(req, res) { // Track submitted lyrics to pay users for submission
         Lyric.find({author: req.params.id})
         .then(loggedUserLyrics => {
             console.log(loggedUserLyrics)
@@ -65,7 +65,7 @@ module.exports = {
     },
 
     getAllCommentsForActiveLyric(req, res) {
-        Comments.find({lyric: req.params.lyricId}).populate('user').sort({upvote: 'desc'})
+        Comments.find({lyric: req.params.lyricId}).populate('user').sort({upvote: 'desc'}).sort({downvote: 'desc'})
         .then(theComments => { res.json(theComments) })
         .catch(console.log)
     },
@@ -86,5 +86,11 @@ module.exports = {
             .catch(console.log)
         }
         
+    },
+
+    getTop100Lyric(req, res) {
+        Lyric.find().sort({views: 'desc'}).limit(100)
+        .then(top100Lyrics => {res.json(top100Lyrics)})
+        .catch(console.log)
     }
 }

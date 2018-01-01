@@ -44,7 +44,7 @@ const routes: Routes = [
   },
 
   {
-    path: ':url',
+    path: 'lyrics/:url',
     component: LyricDisplayComponent
   },
 

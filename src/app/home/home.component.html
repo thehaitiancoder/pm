@@ -2,14 +2,16 @@
   <app-first-menu></app-first-menu>
 </div>
 
-<div class="topBanner">
+<!-- <div class="topBanner">
   <img src="./assets/ad_mockup.PNG" alt="">
-</div>
+</div> -->
 
 <div class="container">
+
+  <h1><span id="pawol">Pawol</span><span id="mizik">Mizik</span>.com</h1>
+
   <div class="searchInput">
-    <h1><span id="pawol">Pawol</span><span id="mizik">Mizik</span>.com</h1>
-    <form id="theSearch" class="navbar-form navbar-left" action="/action_page.php">
+    <form id="theSearch" autocomplete="off" class="navbar-form navbar-left" action="/action_page.php">
       <div class="input-group">
         <input type="text"
               id="searchInput"
@@ -26,10 +28,16 @@
         </div>
       </div>
     </form>
-    <div *ngIf="searchResult != null" class="searchResult">
-      <ul>
-        <li *ngFor="let result of searchResult"><a [routerLink]="['/', result.url]">{{result.title}} pawol- {{result.singer}}</a></li>
-      </ul>
-    </div>
   </div>
+
+  <div *ngIf="searchResult != null" class="searchResult">
+      <ul>
+        <li *ngFor="let result of searchResult"><a [routerLink]="['/lyrics/', result.url]">{{result.title}} pawol- {{result.singer}}</a></li>
+      </ul>
+  </div>
+
+  <app-top-lyrics></app-top-lyrics>
+
 </div>
+
+<app-footer></app-footer>

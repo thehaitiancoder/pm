@@ -1,0 +1,33 @@
+main {
+    clear: both;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h2 {
+    margin: 100px 0px 0px 0px;
+    border-bottom: 1px solid #ccc;
+}
+
+.lyric {
+    border-bottom: 1px solid #ccc;
+    height: 40px;
+    padding-top: 10px;
+}
+
+.left {
+    width: 5%;
+    display: inline-block;
+}
+
+.middle {
+    width: 80%;
+    display: inline-block;
+}
+
+.right {
+    width: 5%;
+    display: inline-block;
+    text-align: center;
+}

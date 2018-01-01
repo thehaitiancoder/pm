@@ -22,6 +22,7 @@ export class LyricDisplayComponent implements OnInit {
   youtubeSrc: SafeResourceUrl;
   upvotedCommentColor = '';
   upvotedCommentNewSum = 0;
+  upvotedComment = null;
 
   constructor(
     private _route: ActivatedRoute,
@@ -80,6 +81,7 @@ export class LyricDisplayComponent implements OnInit {
     if (upOrDownvote == -1) { this.comment.downvote = -1}
     this._lyricService.voteCommentUpOrDown(this.comment)
     .then(upvotedComment => {
+      this.upvotedComment = upvotedComment;
       this.upvotedCommentColor = 'upvotedCommentConfColor';
     })
   }

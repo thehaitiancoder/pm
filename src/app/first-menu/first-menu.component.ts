@@ -68,7 +68,7 @@ export class FirstMenuComponent implements OnInit {
       /* Thanks the user
                 for using 
                     the website */
-      this._router.navigate([''])
+      this._router.navigateByUrl(this._router.url)
     })
   }
 

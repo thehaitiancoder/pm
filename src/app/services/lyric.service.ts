@@ -61,4 +61,10 @@ export class LyricService {
     .toPromise();
   }
 
+  getTop100Lyric() {
+    return this._http.get('/lyrics/top-100')
+    .map(response => response.json())
+    .toPromise();
+  }
+
 }

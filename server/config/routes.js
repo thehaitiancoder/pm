@@ -25,6 +25,7 @@ module.exports = function(app){
     app.get('/lyrics/user/:id', lyricController.getLoggedUserLyrics)
     app.get('/search/:term', lyricController.generalLyricSearch);
     app.post('/showlyrics/', lyricController.displayOneLyric);
+    app.get('/lyrics/top-100', lyricController.getTop100Lyric);
 
     app.post('/lyric/comments', lyricController.addComment);
     app.get('/lyric/comments/:lyricId', lyricController.getAllCommentsForActiveLyric);

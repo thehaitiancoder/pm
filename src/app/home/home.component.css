@@ -13,6 +13,10 @@
     width: 780px;
 }
 
+/* #theSearch {
+    margin-bottom: 100px;
+} */
+
 #searchInput {
     width: 450px;
     height: 60px;
@@ -29,10 +33,15 @@
 
 .searchInput {
     width: 50%;
-    margin: 0px auto 0px auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-    .searchInput > h1 {
+    /* form {
+        margin: 0px auto 0px auto;
+    } */
+
+    .container > h1 {
         text-align: center;
         font-size: 4em;
         color: #ccc;

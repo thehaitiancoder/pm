@@ -1,0 +1,16 @@
+<main>
+  <h2>TOP Mizik</h2>
+  <div class="lyric" *ngFor="let lyric of theLyrics; let i = index">
+    <a [routerLink]="['/lyrics/', lyric.url]">
+    <div class="left">
+      <p>{{ i+1 }}</p>
+    </div>
+    <div class="middle">
+      <p>{{ lyric.title }} - {{ lyric.singer }}</p>
+    </div>
+    <div class="right">
+      <p><span class="glyphicon glyphicon-eye-open"></span> {{ lyric.views }}</p>
+    </div>
+  </a>
+  </div>
+</main>
