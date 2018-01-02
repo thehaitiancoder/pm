@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { LyricService } from '../services/lyric.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { SafeResourceUrl } from '@angular/platform-browser/src/security/dom_sanitization_service';
+import { Meta, Title } from '@angular/platform-browser';
 import { Comment } from '../models/comment';
 import { CookieService } from 'ngx-cookie';
 
@@ -28,7 +29,10 @@ export class LyricDisplayComponent implements OnInit {
     private _route: ActivatedRoute,
     private _lyricService: LyricService,
     private _sanitizer: DomSanitizer,
-    private _cookieService: CookieService
+    private _cookieService: CookieService,
+    private _meta: Meta,
+    private _title: Title,
+    private _router: Router
   ) { }
 
   ngOnInit() {
@@ -40,7 +44,16 @@ export class LyricDisplayComponent implements OnInit {
       // Get the lyrics for the active url
       this._lyricService.displayOneLyric(this.url)
       .then(lyricToDisplay => {
-        this.theLyric = lyricToDisplay
+        this.theLyric = lyricToDisplay;
+        this._title.setTitle(`Pawòl ${this.theLyric.title} - ${this.theLyric.singer} | PawolMizik.com`)
+
+        this._meta.addTags([
+          {property:"og:url",           content:"http://localhost:8000/lyrics/sweet-micky-padon"},
+          {property:"og:type",          content:"website"},
+          {property:"og:title",         content:"Your Website Title"},
+          {property:"og:description",   content:"Your description"},
+          {property:"og:image",         content:"https://www.your-domain.com/path/image.jpg"}
+        ])
 
         if (lyricToDisplay.youtube != null) {
           this.youtubeSrc = this._sanitizer.bypassSecurityTrustResourceUrl(`${lyricToDisplay.youtube}`)
@@ -55,6 +68,8 @@ export class LyricDisplayComponent implements OnInit {
           console.log(theComments)
         })
       })
+
+      console.log(this._router.url)
 
     })
 

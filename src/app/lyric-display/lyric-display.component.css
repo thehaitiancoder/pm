@@ -4,9 +4,10 @@
 
 pre {
     background-color: white;
-    font-size: 1.3em;
     border: none;
     margin: 20px 0px 50px 0px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 19px;
 }
 
 .soudcloudPlayer {
@@ -62,4 +63,20 @@ pre {
 
 .upvotedCommentConfColor { 
     color: green;
+}
+
+.clipart > img {
+    width: 80px;
+}
+
+.clipart {
+    display: inline-block;
+    height: 60px;
+    vertical-align: top;
+    margin: 20px;
+}
+
+.bigTitle {
+    display: inline-block;
+    height: 80px;
 }

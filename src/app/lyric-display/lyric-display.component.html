@@ -8,18 +8,24 @@
 
 <div *ngIf="theLyric != null" class="container">
   <div class="page-header">
-      <h1>Pawòl {{ theLyric.title }} - {{ theLyric.singer }}
-          <span *ngIf="theLyric.featurer.one != null">feat. {{ theLyric.featurer.one}}</span>
-          <span *ngIf="theLyric.featurer.two != null">, {{ theLyric.featurer.two}}</span>
-          <span *ngIf="theLyric.featurer.three != null">, {{ theLyric.featurer.three }}</span>
-          <span *ngIf="theLyric.featurer.four != null">, {{ theLyric.featurer.four }}</span>
-          <span *ngIf="theLyric.featurer.five != null">, {{ theLyric.featurer.five }}</span>
-          <span *ngIf="theLyric.featurer.six != null">, {{ theLyric.featurer.six }}</span>
-          <span *ngIf="theLyric.featurer.seven != null">, {{ theLyric.featurer.seven }}</span>
-          <span *ngIf="theLyric.featurer.eight != null">, {{ theLyric.featurer.eight }}</span>
-          <span *ngIf="theLyric.featurer.nine != null">, {{ theLyric.featurer.nine }}</span>
-          <span *ngIf="theLyric.featurer.ten != null">, {{ theLyric.featurer.ten }}</span>
-        </h1>
+    <div class="clipart">
+      <img src="./assets/clipart/mypain.jpg" alt="clipart" class="img-circle">
+    </div>
+    <div class="bigTitle">
+        <h1>Pawòl {{ theLyric.title }}</h1>
+        <h4>{{ theLyric.singer }}
+            <span *ngIf="theLyric.featurer.one != null">feat. {{ theLyric.featurer.one}}</span>
+            <span *ngIf="theLyric.featurer.two != null">, {{ theLyric.featurer.two}}</span>
+            <span *ngIf="theLyric.featurer.three != null">, {{ theLyric.featurer.three }}</span>
+            <span *ngIf="theLyric.featurer.four != null">, {{ theLyric.featurer.four }}</span>
+            <span *ngIf="theLyric.featurer.five != null">, {{ theLyric.featurer.five }}</span>
+            <span *ngIf="theLyric.featurer.six != null">, {{ theLyric.featurer.six }}</span>
+            <span *ngIf="theLyric.featurer.seven != null">, {{ theLyric.featurer.seven }}</span>
+            <span *ngIf="theLyric.featurer.eight != null">, {{ theLyric.featurer.eight }}</span>
+            <span *ngIf="theLyric.featurer.nine != null">, {{ theLyric.featurer.nine }}</span>
+            <span *ngIf="theLyric.featurer.ten != null">, {{ theLyric.featurer.ten }}</span>
+        </h4>
+    </div>
   </div>
 
   <div class="playWatchAndMore">
@@ -31,6 +37,7 @@
             type="button" class="btn btn-default playYoutube">
       <span class="glyphicon glyphicon-film"></span> Gade
     </button></a>
+    <div class="fb-share-button" data-href="http://localhost:8000/lyrics/sweet-micky-padon" data-layout="button_count" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://13.56.251.56:8000/lyrics/king-posse-abandone">Share</a></div>
 
     <div class="soudcloudPlayer" *ngIf="showSoundcloudPlayer">
         <iframe width="100%" height="166" scrolling="no" frameborder="no" [src]="soundCloudSrc"></iframe>
@@ -93,3 +100,13 @@
 </div>
 
 <app-footer></app-footer>
+
+<!-- Facebook SDK -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
