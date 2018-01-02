@@ -3,6 +3,11 @@
     .desktop {
         display: none;
     }
+
+    .navbar-toggle .icon-bar {
+        background-color: #060606;
+    }
+
 }
 
 .signupEntries {
@@ -11,6 +16,36 @@
 
 .pwdLenghtReq, .pwdLowercaseReq, .pwdUppercaseReq, .pwdNumberReq {
     color: green;
+}
+
+.logoPart1 {
+    color: blue;
+}
+
+.logoPart2 {
+    color: red;
+}
+
+.navbar-brand {
+    color: #ccc;
+    font-size: 2em;
+}
+
+.navbar-brand:hover {
+    color: #ccc;
+}
+
+.navbar-inverse {
+    background-color: white;
+    border-color: #080808;
+}
+
+.navbar-nav > li > a {
+    color: #000;
+}
+
+.navbar-nav > li > a:hover {
+    background-color: rgb(241, 241, 241);
 }
 
 @media only screen and (min-width: 768px) {
