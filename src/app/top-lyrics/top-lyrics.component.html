@@ -6,11 +6,20 @@
       <p>{{ i+1 }}</p>
     </div>
     <div class="middle">
-      <p>{{ lyric.title }} - {{ lyric.singer }}</p>
+      <p>{{ lyric.title }} - {{ lyric.singer }} <span *ngIf="lyric.featurer.one != null">feat. {{ lyric.featurer.one }}</span></p>
     </div>
     <div class="right">
       <p><span class="glyphicon glyphicon-eye-open"></span> {{ lyric.views }}</p>
     </div>
   </a>
   </div>
+  <button class="btn btn-default btn-lg btn-block moreLyrics" *ngIf="qty == 20" (click)="getMoreLyrics(qty)"><span class="glyphicon glyphicon-circle-arrow-down"></span>  Plis pawòl</button>
+  <button class="btn btn-default btn-lg btn-block moreLyrics" *ngIf="qty == 30" (click)="getMoreLyrics(qty)"><span class="glyphicon glyphicon-circle-arrow-down"></span>  Plis pawòl</button>
+  <button class="btn btn-default btn-lg btn-block moreLyrics" *ngIf="qty == 40" (click)="getMoreLyrics(qty)"><span class="glyphicon glyphicon-circle-arrow-down"></span>  Plis pawòl</button>
+  <button class="btn btn-default btn-lg btn-block moreLyrics" *ngIf="qty == 50" (click)="getMoreLyrics(qty)"><span class="glyphicon glyphicon-circle-arrow-down"></span>  Plis pawòl</button>
+  <button class="btn btn-default btn-lg btn-block moreLyrics" *ngIf="qty == 60" (click)="getMoreLyrics(qty)"><span class="glyphicon glyphicon-circle-arrow-down"></span>  Plis pawòl</button>
+  <button class="btn btn-default btn-lg btn-block moreLyrics" *ngIf="qty == 70" (click)="getMoreLyrics(qty)"><span class="glyphicon glyphicon-circle-arrow-down"></span>  Plis pawòl</button>
+  <button class="btn btn-default btn-lg btn-block moreLyrics" *ngIf="qty == 80" (click)="getMoreLyrics(qty)"><span class="glyphicon glyphicon-circle-arrow-down"></span>  Plis pawòl</button>
+  <button class="btn btn-default btn-lg btn-block moreLyrics" *ngIf="qty == 90" (click)="getMoreLyrics(qty)"><span class="glyphicon glyphicon-circle-arrow-down"></span>  Plis pawòl</button>
+  <button class="btn btn-default btn-lg btn-block moreLyrics" *ngIf="qty == 100" (click)="getMoreLyrics(qty)"><span class="glyphicon glyphicon-circle-arrow-down"></span>  Plis pawòl</button>
 </main>

@@ -1,7 +1,21 @@
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .desktop {
+        display: none;
+    }
+}
+
 .signupEntries {
     height: 50px;
 }
 
 .pwdLenghtReq, .pwdLowercaseReq, .pwdUppercaseReq, .pwdNumberReq {
     color: green;
+}
+
+@media only screen and (min-width: 768px) {
+    /* For desktop: */
+    .mobile {
+        display: none;
+    }
 }

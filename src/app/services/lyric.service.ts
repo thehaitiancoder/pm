@@ -61,8 +61,8 @@ export class LyricService {
     .toPromise();
   }
 
-  getTop100Lyric() {
-    return this._http.get('/lyrics/top-100')
+  getTop100Lyric(qty) {
+    return this._http.get('/lyrics/top/' + qty)
     .map(response => response.json())
     .toPromise();
   }

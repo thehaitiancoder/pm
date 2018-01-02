@@ -37,7 +37,6 @@
             type="button" class="btn btn-default playYoutube">
       <span class="glyphicon glyphicon-film"></span> Gade
     </button></a>
-    <div class="fb-share-button" data-href="http://localhost:8000/lyrics/sweet-micky-padon" data-layout="button_count" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://13.56.251.56:8000/lyrics/king-posse-abandone">Share</a></div>
 
     <div class="soudcloudPlayer" *ngIf="showSoundcloudPlayer">
         <iframe width="100%" height="166" scrolling="no" frameborder="no" [src]="soundCloudSrc"></iframe>
@@ -100,13 +99,3 @@
 </div>
 
 <app-footer></app-footer>
-
-<!-- Facebook SDK -->
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>

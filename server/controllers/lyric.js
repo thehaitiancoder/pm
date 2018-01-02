@@ -89,7 +89,7 @@ module.exports = {
     },
 
     getTop100Lyric(req, res) {
-        Lyric.find().sort({views: 'desc'}).limit(100)
+        Lyric.find().sort({views: 'desc'}).limit(parseInt(req.params.qty))
         .then(top100Lyrics => {res.json(top100Lyrics)})
         .catch(console.log)
     }

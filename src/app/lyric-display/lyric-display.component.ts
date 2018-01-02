@@ -48,11 +48,7 @@ export class LyricDisplayComponent implements OnInit {
         this._title.setTitle(`Pawòl ${this.theLyric.title} - ${this.theLyric.singer} | PawolMizik.com`)
 
         this._meta.addTags([
-          {property:"og:url",           content:"http://localhost:8000/lyrics/sweet-micky-padon"},
-          {property:"og:type",          content:"website"},
-          {property:"og:title",         content:"Your Website Title"},
-          {property:"og:description",   content:"Your description"},
-          {property:"og:image",         content:"https://www.your-domain.com/path/image.jpg"}
+          {name: "", content: ""}
         ])
 
         if (lyricToDisplay.youtube != null) {
