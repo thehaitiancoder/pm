@@ -48,6 +48,45 @@
     background-color: rgb(241, 241, 241);
 }
 
+.modal-header {
+    background-color: red;
+    color: white;
+}
+
+.modal-title {
+    text-align: center;
+}
+
+.modal-content {
+    border-radius: 0px;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.form-control {
+    border-radius: 0px;
+}
+
+.close {
+    color: #fff;
+    opacity: initial;
+}
+
+.btn-primary {
+    color: red;
+    background-color: whitesmoke;
+    border-color: #ccc;
+    font-size: 1.5em;
+    margin-bottom: 2%;
+}
+
+.alert {
+    margin-top: -1px;
+    border-radius: 0px;
+}
+
 @media only screen and (min-width: 768px) {
     /* For desktop: */
     .mobile {
