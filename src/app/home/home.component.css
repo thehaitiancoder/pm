@@ -18,7 +18,6 @@
 } */
 
 #searchInput {
-    width: 450px;
     height: 60px;
 }
 
@@ -30,6 +29,11 @@
     width: 50%;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 10%;
+}
+
+.input-group {
+    width: 100%;
 }
 
     /* form {
@@ -61,5 +65,9 @@
 
     .mobile {
         display: none;
+    }
+
+    .searchInput {
+        width: 80%;
     }
 }

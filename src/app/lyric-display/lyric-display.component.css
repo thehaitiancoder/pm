@@ -80,3 +80,17 @@ pre {
     display: inline-block;
     height: 80px;
 }
+
+@media only screen and (min-width: 768px) {
+    /* For desktop: */
+    .container {
+        padding-left: 30px;
+        padding-right: 30px;
+        background-color: whitesmoke;
+        max-width: 970px;
+    }
+
+    pre {
+        padding: 25px;
+    }
+}

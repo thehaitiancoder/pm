@@ -13,7 +13,7 @@
     }
     
     .lyric {
-        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
         padding: 20px 10px 10px 20px;
     }
     
@@ -42,10 +42,20 @@
         display: inline-block;
         color: #000;
     }
-    
-    .moreLyrics {
-        margin: 20px 0px 0px 0px;
+
+    main {
+        padding: 2%;
+        border-radius: 10px;
     }
+}
+
+main {
+    background-color: whitesmoke;
+}
+
+.moreLyrics {
+    border-radius: 0px;
+    border-top: none;
 }
 
 @media only screen and (max-width: 768px) {
@@ -63,7 +73,7 @@
     }
     
     .lyric {
-        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
         padding: 10px 10px 10px 20px;
     }
     
@@ -92,8 +102,8 @@
         display: inline-block;
         color: #000;
     }
-    
-    .moreLyrics {
-        margin: 20px 0px 0px 0px;
+
+    main > h2 {
+        padding-left: 15px;
     }
 }

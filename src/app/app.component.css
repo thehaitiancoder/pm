@@ -1,0 +1,8 @@
+.show {
+    background-image:url(/assets/logos/main_background.jpg);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+      background-color: #999;
+}
