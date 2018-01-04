@@ -9,6 +9,8 @@ import { LyricService } from '../services/lyric.service';
 export class HomeComponent implements OnInit {
   searchInput = '';
   searchResult = null;
+  showLoader = true;
+  noResult = false;
 
   constructor(
     private _lyricService: LyricService
@@ -19,13 +21,32 @@ export class HomeComponent implements OnInit {
   }
 
   searchForLyrics(){
-    if (this.searchInput.length > 2){
+    this.showLoader = true;
+    this.noResult = false;
+
+    if (this.searchInput.length > 0){
       this._lyricService.generalLyricSearch(this.searchInput)
       .then(lyricSearched => {
         this.searchResult = lyricSearched
+        if (lyricSearched.length > 0) { this.showLoader = false}
+        if (lyricSearched.length == 0) {
+          setTimeout(() => {
+            this.showLoader = false;
+            this.noResult = true;
+          }, 15000);
+        }
         console.log(lyricSearched)
       })
     }
+  }
+
+  closeResult(){
+    this.searchResult = null;
+    this.searchInput = '';
+  }
+
+  hideLoader(){
+    if(this.searchInput.length == 0){ this.searchResult = null}
   }
 
 }

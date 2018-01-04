@@ -16,6 +16,8 @@
         <input type="text"
               id="searchInput"
               (input)="searchForLyrics()"
+              (focusout)="closeResult()"
+              (keyup)="hideLoader()"
               [(ngModel)]="searchInput"
               autofocus
               class="form-control"
@@ -26,9 +28,18 @@
   </div>
 
   <div *ngIf="searchResult != null" class="searchResult">
-      <ul>
+      <!-- <ul>
         <li *ngFor="let result of searchResult"><a [routerLink]="['/lyrics/', result.url]">{{result.title}} pawol- {{result.singer}}</a></li>
-      </ul>
+      </ul> -->
+      <div class="oneResult" *ngFor="let result of searchResult">
+        <!-- <a [routerLink]="['/lyrics/', result.url]">{{result.title}} - {{result.singer}}</a> -->
+        <a [routerLink]="['/lyrics/', result.url]">
+        <div class="oneResultTitle"><p>{{ result.title }}</p></div>
+        <div class="oneResultSingers"><p>{{result.singer}} <span *ngIf="result.featurer.one != null">feat. {{ result.featurer.one}}</span></p></div>
+        </a>
+      </div>
+    <img *ngIf="showLoader" class="loader" src="./assets/logos/loader.gif" alt="">
+    <p *ngIf="noResult  && searchResult == null" class="noResult" class="alert alert-danger">Dezole! Pa gen rezilta pou rechèch ou a. Tanpri eseye ak lòt mo.</p>
   </div>
 
   <app-top-lyrics></app-top-lyrics>
