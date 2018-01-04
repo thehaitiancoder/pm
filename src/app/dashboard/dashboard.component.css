@@ -2,6 +2,6 @@
     margin: 0px 0px 100px 0px;
 }
 
-/* .userWelcome {
-    margin-left: 5%;
-} */
+#welcomeHeader {
+    text-align: center;
+}

@@ -41,8 +41,10 @@ export class HomeComponent implements OnInit {
   }
 
   closeResult(){
-    this.searchResult = null;
-    this.searchInput = '';
+    setTimeout(() => {
+      this.searchResult = null;
+      this.searchInput = '';
+    }, 1000);
   }
 
   hideLoader(){

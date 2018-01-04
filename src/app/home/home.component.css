@@ -35,9 +35,14 @@
     width: 50%;
     border: 1px solid #ccc;
     border-top: none;
-    max-height: 450px;
+    max-height: 480px;
     padding: 1%;
     overflow: auto;
+}
+
+.resultSummary > p {
+    padding-left: 2%;
+    color: #ccc;
 }
 
 .loader {
@@ -111,5 +116,19 @@
 
     .searchInput {
         width: 80%;
+    }
+
+    #searchInput {
+        font-size: 1.4em;
+    }
+
+    .searchResult {
+        margin: -10% auto 5% auto;
+        width: 100%;
+        border: 1px solid #ccc;
+        border-top: none;
+        max-height: 650px;
+        padding: 1%;
+        overflow: auto;
     }
 }

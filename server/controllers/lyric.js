@@ -27,7 +27,7 @@ module.exports = {
     },
 
     getLoggedUserLyrics(req, res) { // Track submitted lyrics to pay users for submission
-        Lyric.find({author: req.params.id})
+        Lyric.find({author: req.params.id}).sort({createdAt: 'desc'})
         .then(loggedUserLyrics => {
             console.log(loggedUserLyrics)
             res.json(loggedUserLyrics)})

@@ -48,6 +48,27 @@
     background-color: rgb(241, 241, 241);
 }
 
+a.dropdown-toggle:focus {
+    background-color: whitesmoke;
+}
+
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover {
+    background-color: whitesmoke;
+}
+
+.dropdown-menu > li {
+    height: 40px;
+}
+
+.dropdown-menu>li>a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover {
+    height: 40px;
+}
+
 .modal-header {
     background-color: red;
     color: white;

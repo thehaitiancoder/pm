@@ -28,9 +28,8 @@
   </div>
 
   <div *ngIf="searchResult != null" class="searchResult">
-      <!-- <ul>
-        <li *ngFor="let result of searchResult"><a [routerLink]="['/lyrics/', result.url]">{{result.title}} pawol- {{result.singer}}</a></li>
-      </ul> -->
+    <div class="resultSummary"><p>Nou jwenn {{ searchResult.length }} rezilta pou rechèch sa:</p></div>  
+
       <div class="oneResult" *ngFor="let result of searchResult">
         <!-- <a [routerLink]="['/lyrics/', result.url]">{{result.title}} - {{result.singer}}</a> -->
         <a [routerLink]="['/lyrics/', result.url]">
