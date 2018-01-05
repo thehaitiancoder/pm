@@ -12,7 +12,7 @@
       <img src="./assets/clipart/mypain.jpg" alt="clipart" class="img-circle">
     </div>
     <div class="bigTitle">
-        <h1>Pawòl {{ theLyric.title }}</h1>
+        <h1>{{ theLyric.title }}</h1>
         <h4>{{ theLyric.singer }}
             <span *ngIf="theLyric.featurer.one != null">feat. {{ theLyric.featurer.one}}</span>
             <span *ngIf="theLyric.featurer.two != null">, {{ theLyric.featurer.two}}</span>

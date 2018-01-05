@@ -1,4 +1,4 @@
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
     /* For mobile phones: */
     .desktop {
         display: none;
@@ -6,6 +6,43 @@
 
     .navbar-toggle .icon-bar {
         background-color: #060606;
+    }
+
+    .navbar-inverse .navbar-toggle {
+        border: none;
+    }
+
+    .navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
+        background-color: whitesmoke;
+    }
+
+    .launchSearch {
+        width: 42px;
+        height: 32px;
+        float: left;
+        margin: 8px 0px 8px 15px;
+        background-color: white;
+        border: none;
+    }
+
+    .launchSearch > img {
+        width: 100%;
+    }
+
+    .mobileSearchForm {
+        border: none;
+        padding: 8px 15px;
+        margin: 0px;
+        height: 50px;
+        background-color: whitesmoke;
+    }
+
+    .mobileSearchForm > .input-group {
+        width: 100%;
+    }
+
+    #searchInput {
+        padding-left: 1%;
     }
 
 }
@@ -108,9 +145,87 @@ a.dropdown-toggle:focus {
     border-radius: 0px;
 }
 
+/* Search styles */
+
+#searchInput:focus {
+    border-color: #ccc;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+.searchResult {
+    margin: 50px auto 5% auto;
+    border: 1px solid #ccc;
+    border-top: none;
+    max-height: 560px;
+    padding: 1%;
+    overflow: auto;
+    background-color: whitesmoke;
+}
+
+.resultSummary > p {
+    padding-left: 2%;
+    color: #ccc;
+}
+
+.loader {
+    width: 50%;
+}
+
+.oneResult {
+    margin: 0px 0px 1% 0px;
+    padding: 1% 2%;
+}
+
+.oneResult:hover {
+    background-color: white;
+}
+
+.oneResult > a {
+    color: black;
+}
+
+.oneResult > a:hover {
+    text-decoration: none;
+    color: black;
+}
+
+.oneResultTitle > p {
+    font-size: 2em;
+    margin: 0px;
+}
+
+.searchInput {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10%;
+}
+
 @media only screen and (min-width: 768px) {
     /* For desktop: */
     .mobile {
         display: none;
+    }
+
+    #searchInput {
+        padding-left: 4%;
+    }
+
+    /* #theSearch {
+        width: 330px;
+    }
+
+    #theSearch > .input-group {
+        width: 276px;
+    } */
+
+    .longerForm {
+        width: 50%;
+    }
+
+    .longerInputGroup {
+        width: 100%;
     }
 }

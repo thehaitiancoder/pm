@@ -5,6 +5,7 @@ import { CookieService } from 'ngx-cookie';
 import { AuthService } from '../services/auth.service';
 
 import { User } from '../models/user';
+import { LyricService } from '../services/lyric.service';
 
 @Component({
   selector: 'app-first-menu',
@@ -23,13 +24,23 @@ export class FirstMenuComponent implements OnInit {
   pwdNumberReq = null;
   pwdLenghtReq = null;
   displaySearchInMenu = true;
+  searchInput = '';
+  searchResult = null;
+  showLoader = true;
+  noResult = false;
+  showSearchForm = false;
+  hideLaunchSearch = true;
+  searchActiveDesktop = true;
+  makeSearchInputLonger = '';
+  makeInputGroupLonger = '';
 
   user = new User();
 
   constructor(
     private _authService: AuthService,
     private _router: Router,
-    private _cookieService: CookieService
+    private _cookieService: CookieService,
+    private _lyricService: LyricService
   ) { }
 
   ngOnInit() {
@@ -111,6 +122,52 @@ export class FirstMenuComponent implements OnInit {
     if (this.user.password == this.user.password_confirmation) {
       this.pwdConfMet = true;
     }
+  }
+
+  // handling searches
+  searchForLyrics(){
+    this.showLoader = true;
+    this.noResult = false;
+    this.searchActiveDesktop = false;
+    this.makeSearchInputLonger = 'longerForm';
+    this.makeInputGroupLonger = 'longerInputGroup';
+
+    if (this.searchInput.length > 0){
+      this._lyricService.generalLyricSearch(this.searchInput)
+      .then(lyricSearched => {
+        this.searchResult = lyricSearched
+        if (lyricSearched.length > 0) { this.showLoader = false}
+        if (lyricSearched.length == 0) {
+          setTimeout(() => {
+            this.showLoader = false;
+            this.noResult = true;
+          }, 10000);
+        }
+        console.log(lyricSearched)
+      })
+    }
+  }
+
+  closeResult(){ // also hides search form on mobile
+    setTimeout(() => {
+      this.searchResult = null;
+      this.searchInput = '';
+      this.showSearchForm = false;
+      this.hideLaunchSearch = true;
+    }, 500);
+  }
+
+  hideLoader(){ // and search form on mobile
+    if(this.searchInput.length == 0){ 
+      this.searchResult = null;
+      this.showSearchForm = false;
+      this.hideLaunchSearch = true;
+    };
+  }
+
+  showSearchFormCall() {
+    this.showSearchForm = true;
+    this.hideLaunchSearch = false;
   }
 
 }

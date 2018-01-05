@@ -9,7 +9,7 @@
       <a *ngIf="displaySearchInMenu" class="navbar-brand" href="#"><span class="logoPart1">Pawol</span><span class="logoPart2">Mizik</span>.com</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
+      <ul *ngIf="searchActiveDesktop" class="nav navbar-nav">
         <li><a href="#">Rap</a></li>
         <li><a href="#">Konpa</a></li>
         <li><a href="#">Kanaval</a></li>
@@ -21,16 +21,33 @@
         <li *ngIf="loggedUserId != null" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Espas ou <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#"><span class="glyphicon glyphicon-user"></span> Pwofil</a></li>
-            <li><a [routerLink]="['dashboard']"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
+            <li><a [routerLink]="['/dashboard']"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
             <li (click)="logout()"><a href=""><span class="glyphicon glyphicon-log-out"></span> Dekonekte</a></li>
           </ul>
         </li>
       </ul>
-      <form *ngIf="displaySearchInMenu" class="navbar-form navbar-left" action="/action_page.php">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Search" name="search">
-        </div>
-      </form>
+    
+      <form [ngClass]="makeSearchInputLonger" *ngIf="displaySearchInMenu" class="navbar-form navbar-left" id="theSearch" autocomplete="off">
+          <div [ngClass]="makeInputGroupLonger" class="input-group">
+            <input type="text"
+                  id="searchInput"
+                  (click)="searchForLyrics()"
+                  (input)="searchForLyrics()"
+                  (focusout)="closeResult()"
+                  (keyup)="hideLoader()"
+                  [(ngModel)]="searchInput"
+                  autofocus
+                  class="form-control"
+                  placeholder="Pawòl ki mizik ou bezwen?"
+                  name="search">
+
+                  <div class="input-group-btn">
+                      <button class="btn btn-default" type="submit">
+                        <i class="glyphicon glyphicon-search"></i>
+                      </button>
+                  </div>
+          </div>
+        </form>
     </div>
   </div>
 </nav>
@@ -38,12 +55,33 @@
   <nav class="navbar navbar-inverse navbar-fixed-top mobile">
     <div class="container-fluid">
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar2">
+        <button *ngIf="displaySearchInMenu && hideLaunchSearch" class="launchSearch" (click)="showSearchFormCall()"><img src="./assets/logos/launch_search_mobile.png" alt="search"></button>
+          <form *ngIf="displaySearchInMenu && showSearchForm" class="navbar-form navbar-left mobileSearchForm" id="theSearch" autocomplete="off">
+              <div class="input-group">
+                <input type="text"
+                      id="searchInput"
+                      (input)="searchForLyrics()"
+                      (focusout)="closeResult()"
+                      (keyup)="hideLoader()"
+                      [(ngModel)]="searchInput"
+                      autofocus
+                      class="form-control"
+                      placeholder="Pawòl ki mizik ou bezwen?"
+                      name="search">
+  
+                      <div *ngIf="InputActive" class="input-group-btn">
+                          <button class="btn btn-default" type="submit">
+                            <i class="glyphicon glyphicon-search"></i>
+                          </button>
+                        </div>
+              </div>
+            </form>
+        <button *ngIf="hideLaunchSearch" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar2">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>                        
         </button>
-        <a class="navbar-brand" href="#"><span class="logoPart1">Pawol</span><span class="logoPart2">Mizik</span>.com</a>
+        <a *ngIf="hideLaunchSearch" class="navbar-brand" href="#"><span class="logoPart1">Pawol</span><span class="logoPart2">Mizik</span>.com</a>
       </div>
       <div class="collapse navbar-collapse" id="myNavbar2">
         <ul class="nav navbar-nav">
@@ -56,16 +94,11 @@
           <li *ngIf="loggedUserId != null" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Espas ou <span class="caret"></span></a>
             <ul class="dropdown-menu">
                 <li><a href="#"><span class="glyphicon glyphicon-user"></span> Pwofil</a></li>
-                <li><a [routerLink]="['dashboard']"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
+                <li><a [routerLink]="['/dashboard']"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
                 <li (click)="logout()"><a href=""><span class="glyphicon glyphicon-log-out"></span> Dekonekte</a></li>
             </ul>
           </li>
         </ul>
-        <form *ngIf="displaySearchInMenu" class="navbar-form navbar-left" action="/action_page.php">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search" name="search">
-          </div>
-        </form>
       </div>
     </div>
   </nav>
@@ -233,3 +266,17 @@
   
     </div>
   </div>
+
+  <div *ngIf="searchResult != null" class="searchResult">
+      <div class="resultSummary"><p>Nou jwenn {{ searchResult.length }} rezilta pou rechèch sa:</p></div>  
+  
+        <div class="oneResult" *ngFor="let result of searchResult">
+          <!-- <a [routerLink]="['/lyrics/', result.url]">{{result.title}} - {{result.singer}}</a> -->
+          <a [routerLink]="['/lyrics/', result.url]">
+          <div class="oneResultTitle"><p>{{ result.title }}</p></div>
+          <div class="oneResultSingers"><p>{{result.singer}} <span *ngIf="result.featurer.one != null">feat. {{ result.featurer.one}}</span></p></div>
+          </a>
+        </div>
+      <img *ngIf="showLoader" class="loader" src="./assets/logos/loader.gif" alt="">
+      <p *ngIf="noResult  && searchResult == null" class="noResult" class="alert alert-danger">Dezole! Pa gen rezilta pou rechèch ou a. Tanpri eseye ak lòt mo.</p>
+    </div>

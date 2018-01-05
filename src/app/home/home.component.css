@@ -23,6 +23,10 @@
     font-size: 2em;
 }
 
+.theSearchBtn {
+    height: 60px;
+}
+
 #searchInput:focus {
     border-color: #ccc;
     -webkit-box-shadow: none !important;
