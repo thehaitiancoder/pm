@@ -213,19 +213,19 @@ a.dropdown-toggle:focus {
         padding-left: 4%;
     }
 
-    /* #theSearch {
-        width: 330px;
-    }
-
-    #theSearch > .input-group {
-        width: 276px;
-    } */
-
     .longerForm {
-        width: 50%;
+        width: 660px;
     }
 
     .longerInputGroup {
-        width: 100%;
+        width: 630px;
+    }
+
+    .initialForm {
+        width: 330px;
+    }
+
+    .initialInputGroup {
+        width: 276px;
     }
 }

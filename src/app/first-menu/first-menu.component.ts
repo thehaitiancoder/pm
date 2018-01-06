@@ -31,8 +31,8 @@ export class FirstMenuComponent implements OnInit {
   showSearchForm = false;
   hideLaunchSearch = true;
   searchActiveDesktop = true;
-  makeSearchInputLonger = '';
-  makeInputGroupLonger = '';
+  makeSearchInputLonger = 'initialForm';
+  makeInputGroupLonger = 'initialInputGroup';
 
   user = new User();
 
@@ -154,6 +154,9 @@ export class FirstMenuComponent implements OnInit {
       this.searchInput = '';
       this.showSearchForm = false;
       this.hideLaunchSearch = true;
+      this.makeSearchInputLonger = 'initialForm';
+      this.makeInputGroupLonger = 'initialInputGroup';
+      this.searchActiveDesktop = true;
     }, 500);
   }
 
@@ -162,6 +165,9 @@ export class FirstMenuComponent implements OnInit {
       this.searchResult = null;
       this.showSearchForm = false;
       this.hideLaunchSearch = true;
+      this.makeSearchInputLonger = 'initialForm';
+      this.makeInputGroupLonger = 'initialInputGroup';
+      this.searchActiveDesktop = true;
     };
   }
 

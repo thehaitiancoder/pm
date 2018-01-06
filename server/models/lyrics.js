@@ -2,32 +2,39 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const LyricSchema = new Schema({
-    author: {
+    author: { // The user that submitted this lyric
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'User',
+        required: true
     },
     title: {
         type: String,
         required: true
     },
-    lyrics: {
-        type: String,
+    lyrics: { // the actual lyrics
+        type: String
+    },
+    singer: { // the main singer of the song
+        type: Schema.Types.ObjectId,
+        ref: 'Singer',
         required: true
     },
-    singer: {
-        type: String,
-        required: true
-    },
+    // to be removed
     featurer: {one: String, two: String, three: String, four: String, Five: String, six: String, seven: String, eight: String, nine: String, ten: String},
-    year: {
-        type: Number
+    featuring: { // the artists collaborating on this song
+        type: Schema.Types.ObjectId,
+        ref: 'Featurer'
+    },
+    released_date: {
+        type: Date
     },
     album: {
-        type: String
+        type: Schema.Types.ObjectId,
+        ref: 'Album'
     },
     category: {
         type: String,
-        enum: ['Rap', 'Konpa', 'Reggea', 'Levanjil', 'Rasin', 'Kanaval', 'Mond']
+        enum: ['Rap', 'Konpa', 'Reggae', 'Levanjil', 'Rasin', 'Kanaval', 'Mond']
     },
     soundcloud: {
         type: String
@@ -45,6 +52,10 @@ const LyricSchema = new Schema({
     verifier: {
         type: Schema.Types.ObjectId,
         ref: 'User'
+    },
+    certified: { // meaning that the lyric is 100% correct
+        type: Boolean,
+        default: false
     },
     url: {
         type: String
