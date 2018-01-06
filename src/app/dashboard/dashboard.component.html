@@ -3,7 +3,7 @@
 </div>
 
 <div *ngIf="loggedUserProfil" class="container userWelcome page-header">
-    <h1 id="welcomeHeader">{{ loggedUserProfil.username }}</h1>
+    <a [routerLink]="['/dashboard']"><h1 id="welcomeHeader">Dashboard</h1></a>
 </div>
 
 <router-outlet></router-outlet>

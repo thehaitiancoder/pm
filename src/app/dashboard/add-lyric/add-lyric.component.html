@@ -1,6 +1,6 @@
 <div class="container">
   <div *ngIf="!lyricAddedConfirmation">
-    <form (submit)='addLyric()' #form="ngForm">
+    <form (submit)='addLyric()' #form="ngForm" autocomplete="off">
       <p>Itilize fomilè sa pou ajoute pawol mizik.
         <a href="#" data-toggle="popover" title="Popover Header" data-content="Some content inside the popover">Klike pou detay</a>
       </p>
@@ -25,10 +25,17 @@
               id="singer"
               [(ngModel)]="lyric.singer"
               (change)="lyricAvailability()"
+              (input)="checkForSingerName()"
               [ngClass]="errorColorSinger"
               required
               class="form-control input-lg" 
               placeholder="Kiyès ki chante mizik sa?">
+
+              <div *ngIf="singerToAdd != null" class="singerAvailable">
+                  <ul>
+                    <li (click)="setSingerName(singerExist._id, singerExist.name)" *ngFor="let singerExist of singerToAdd">{{ singerExist.name }}</li>
+                  </ul>
+                </div>
       </div>
       <!-- Lyrics -->
       <div class="form-group">

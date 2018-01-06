@@ -31,6 +31,8 @@ module.exports = function(app){
     app.get('/lyric/comments/:lyricId', lyricController.getAllCommentsForActiveLyric);
     app.put('/lyric/comments/votes', lyricController.voteCommentUpOrDown);
 
+    app.get('/my/api/singer/:name', lyricController.checkForSingerName);
+
 
 
     // app.post("/upload", multer({storage: storage}).array("uploads", 1), function(req, res) {

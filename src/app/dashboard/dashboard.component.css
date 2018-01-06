@@ -5,3 +5,8 @@
 #welcomeHeader {
     text-align: center;
 }
+
+.userWelcome > a {
+    color: black;
+    text-decoration: none;
+}

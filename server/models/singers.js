@@ -12,4 +12,5 @@ const SingerSchema = new Schema({
     }
 }, { timestamps: true})
 
+SingerSchema.index({name: 'text'});
 module.exports = mongoose.model('Singer', SingerSchema);

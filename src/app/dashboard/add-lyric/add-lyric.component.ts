@@ -15,6 +15,7 @@ export class AddLyricComponent implements OnInit {
   loggedUserId = null;
   lyricAddedConfirmation: Boolean = false;
   lyric = new Lyric;
+  singerToAdd = null;
   user = new User;
   existingLyricTitles: Array<Object> = [];
   errorColorTitle = 'red';
@@ -100,6 +101,19 @@ export class AddLyricComponent implements OnInit {
     form.value.clear;
     this.lyricAddedConfirmation = false
 
+  }
+
+  checkForSingerName(){
+    var singerToLookFor = this.lyric.singer
+    this._lyricService.checkForSingerName(singerToLookFor)
+    .then(singer => {
+      this.singerToAdd = singer
+      console.log(singer)
+    })
+  }
+
+  setSingerName(singerId, singerName){
+    this.lyric.singer = singerName;
   }
 
 }

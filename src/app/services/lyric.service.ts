@@ -67,4 +67,10 @@ export class LyricService {
     .toPromise();
   }
 
+  checkForSingerName(singerToLookFor){ // to be moved to a singer service
+    return this._http.get('/my/api/singer/' + singerToLookFor)
+    .map( response => response.json())
+    .toPromise();
+  }
+
 }

@@ -1,6 +1,7 @@
 const Lyric = require('mongoose').model('Lyric');
 const User = require('mongoose').model('User');
 const Comments = require('mongoose').model('Comment');
+const Singer = require('mongoose').model('Singer');
 const comments = new Comments;
 
 module.exports = {
@@ -91,6 +92,12 @@ module.exports = {
     getTop100Lyric(req, res) {
         Lyric.find().sort({views: 'desc'}).limit(parseInt(req.params.qty))
         .then(top100Lyrics => {res.json(top100Lyrics)})
+        .catch(console.log)
+    },
+
+    checkForSingerName(req, res) { // to moved to its own controller
+        Singer.find({$text: {$search: req.params.name}}, {score: {$meta: 'textScore'}}).sort({ score: { $meta: "textScore" } })
+        .then(singerExist => {res.json(singerExist)})
         .catch(console.log)
     }
 }

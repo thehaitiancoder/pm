@@ -19,4 +19,5 @@ const AlbumSchema = new Schema({
     }
 }, { timestamps: true})
 
+AlbumSchema.index({name: 'text'});
 module.exports = mongoose.model('Album', AlbumSchema);

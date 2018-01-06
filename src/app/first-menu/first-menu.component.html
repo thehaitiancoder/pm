@@ -20,7 +20,7 @@
         <li *ngIf="loggedUserId == null"><a data-toggle="modal" href="#LogInModal"><span class="glyphicon glyphicon-log-in"></span> Konekte</a></li>
         <li *ngIf="loggedUserId != null" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Espas ou <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Pwofil</a></li>
+            <li *ngIf="loggedUserProfil != null"><a href="#"><span class="glyphicon glyphicon-user"></span> {{ loggedUserProfil.username }}</a></li>
             <li><a [routerLink]="['/dashboard']"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
             <li (click)="logout()"><a href=""><span class="glyphicon glyphicon-log-out"></span> Dekonekte</a></li>
           </ul>
@@ -93,7 +93,7 @@
           <li *ngIf="loggedUserId == null"><a data-toggle="modal" href="#LogInModal"><span class="glyphicon glyphicon-log-in"></span> Konekte</a></li>
           <li *ngIf="loggedUserId != null" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Espas ou <span class="caret"></span></a>
             <ul class="dropdown-menu">
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Pwofil</a></li>
+                <li *ngIf="loggedUserProfil != null"><a href="#"><span class="glyphicon glyphicon-user"></span> {{ loggedUserProfil.username }}</a></li>
                 <li><a [routerLink]="['/dashboard']"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
                 <li (click)="logout()"><a href=""><span class="glyphicon glyphicon-log-out"></span> Dekonekte</a></li>
             </ul>
