@@ -1,4 +1,5 @@
 const Lyric = require('mongoose').model('Lyric');
+const Featurer = require('mongoose').model('Featurer');
 const User = require('mongoose').model('User');
 const Comments = require('mongoose').model('Comment');
 const Singer = require('mongoose').model('Singer');
@@ -21,6 +22,12 @@ module.exports = {
         .catch(console.log)
     },
 
+    createFeaturing(req, res) {
+        Featurer.create(req.body)
+        .then( featurerList => { res.json(featurerList)})
+        .catch(console.log)
+    },
+
     checkTitleExist(req, res) {
         Lyric.find({$text: {$search: req.body.title}}, {score: {$meta: 'textScore'}}).sort({ score: { $meta: "textScore" } })
         .then(titleExist => {res.json(titleExist)})
@@ -36,14 +43,14 @@ module.exports = {
     },
 
     generalLyricSearch(req, res) {
-        Lyric.find({$text: {$search: req.params.term}}, {score: {$meta: 'textScore'}}).sort({ score: { $meta: "textScore" } })
+        Lyric.find({$text: {$search: req.params.term}}, {score: {$meta: 'textScore'}}).sort({ score: { $meta: "textScore" } }).populate('singer')
         .then(lyricsSearched => {res.json(lyricsSearched)})
         .catch(console.log)
     },
 
     displayOneLyric(req, res) {
         console.log(req.body)
-        Lyric.findOne({url: req.body.url})
+        Lyric.findOne({url: req.body.url}).populate('singer')
         .then(lyricToDisplay => {
             // Increase the view for this lyric
             Lyric.findByIdAndUpdate(lyricToDisplay._id, {
@@ -90,14 +97,20 @@ module.exports = {
     },
 
     getTop100Lyric(req, res) {
-        Lyric.find().sort({views: 'desc'}).limit(parseInt(req.params.qty))
+        Lyric.find().sort({views: 'desc'}).limit(parseInt(req.params.qty)).populate('singer')
         .then(top100Lyrics => {res.json(top100Lyrics)})
         .catch(console.log)
     },
 
     checkForSingerName(req, res) { // to moved to its own controller
-        Singer.find({$text: {$search: req.params.name}}, {score: {$meta: 'textScore'}}).sort({ score: { $meta: "textScore" } })
+        Singer.find({name: new RegExp(req.params.name, 'i')})
         .then(singerExist => {res.json(singerExist)})
+        .catch(console.log)
+    },
+
+    createNewSinger(req, res) { // to moved to its own controller
+        Singer.create(req.body)
+        .then( singer => res.json(singer))
         .catch(console.log)
     }
 }

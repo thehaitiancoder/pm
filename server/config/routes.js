@@ -21,6 +21,7 @@ module.exports = function(app){
     app.get('/auth/userprofile/:id', authController.getLoggedUserProfile);
 
     app.post('/lyrics/new', lyricController.addNewLyric);
+    app.post('/lyrics/featuring', lyricController.createFeaturing)
     app.post('/lyrics/checktitle', lyricController.checkTitleExist);
     app.get('/lyrics/user/:id', lyricController.getLoggedUserLyrics)
     app.get('/search/:term', lyricController.generalLyricSearch);
@@ -32,6 +33,7 @@ module.exports = function(app){
     app.put('/lyric/comments/votes', lyricController.voteCommentUpOrDown);
 
     app.get('/my/api/singer/:name', lyricController.checkForSingerName);
+    app.post('/my/api/singer/', lyricController.createNewSinger);
 
 
 

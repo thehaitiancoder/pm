@@ -13,17 +13,17 @@
     </div>
     <div class="bigTitle">
         <h1>{{ theLyric.title }}</h1>
-        <h4>{{ theLyric.singer }}
-            <span *ngIf="theLyric.featurer.one != null">feat. {{ theLyric.featurer.one}}</span>
-            <span *ngIf="theLyric.featurer.two != null">, {{ theLyric.featurer.two}}</span>
-            <span *ngIf="theLyric.featurer.three != null">, {{ theLyric.featurer.three }}</span>
-            <span *ngIf="theLyric.featurer.four != null">, {{ theLyric.featurer.four }}</span>
-            <span *ngIf="theLyric.featurer.five != null">, {{ theLyric.featurer.five }}</span>
-            <span *ngIf="theLyric.featurer.six != null">, {{ theLyric.featurer.six }}</span>
-            <span *ngIf="theLyric.featurer.seven != null">, {{ theLyric.featurer.seven }}</span>
-            <span *ngIf="theLyric.featurer.eight != null">, {{ theLyric.featurer.eight }}</span>
-            <span *ngIf="theLyric.featurer.nine != null">, {{ theLyric.featurer.nine }}</span>
-            <span *ngIf="theLyric.featurer.ten != null">, {{ theLyric.featurer.ten }}</span>
+        <h4>{{ theLyric.singer.name }}
+            <span *ngIf="theLyric.featuring != null">feat. {{ theLyric.featurer.one}}</span>
+            <span *ngIf="theLyric.featuring != null">, {{ theLyric.featurer.two}}</span>
+            <span *ngIf="theLyric.featuring != null">, {{ theLyric.featurer.three }}</span>
+            <span *ngIf="theLyric.featuring != null">, {{ theLyric.featurer.four }}</span>
+            <span *ngIf="theLyric.featuring != null">, {{ theLyric.featurer.five }}</span>
+            <span *ngIf="theLyric.featuring != null">, {{ theLyric.featurer.six }}</span>
+            <span *ngIf="theLyric.featuring != null">, {{ theLyric.featurer.seven }}</span>
+            <span *ngIf="theLyric.featuring != null">, {{ theLyric.featurer.eight }}</span>
+            <span *ngIf="theLyric.featuring != null">, {{ theLyric.featurer.nine }}</span>
+            <span *ngIf="theLyric.featuring != null">, {{ theLyric.featurer.ten }}</span>
         </h4>
     </div>
   </div>

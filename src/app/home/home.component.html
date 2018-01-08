@@ -16,7 +16,7 @@
         <input type="text"
               id="searchInput"
               (input)="searchForLyrics()"
-              (focusout)="closeResult()"
+              
               (keyup)="hideLoader()"
               [(ngModel)]="searchInput"
               autofocus
@@ -40,7 +40,7 @@
         <!-- <a [routerLink]="['/lyrics/', result.url]">{{result.title}} - {{result.singer}}</a> -->
         <a [routerLink]="['/lyrics/', result.url]">
         <div class="oneResultTitle"><p>{{ result.title }}</p></div>
-        <div class="oneResultSingers"><p>{{result.singer}} <span *ngIf="result.featurer.one != null">feat. {{ result.featurer.one}}</span></p></div>
+        <div class="oneResultSingers"><p>{{ result.singer.name }} <span *ngIf="result.featuring != null">feat. {{ result.featuring.one}}</span></p></div>
         </a>
       </div>
     <img *ngIf="showLoader" class="loader" src="./assets/logos/loader.gif" alt="">

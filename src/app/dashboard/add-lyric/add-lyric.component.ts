@@ -3,6 +3,8 @@ import { AuthService } from '../../services/auth.service';
 import { LyricService } from '../../services/lyric.service';
 import { Lyric } from '../../models/lyric';
 import { User } from '../../models/user';
+import { Featurer } from '../../models/featuring';
+import { Singer } from '../../models/singer';
 import { CookieService } from 'ngx-cookie';
 
 
@@ -15,7 +17,16 @@ export class AddLyricComponent implements OnInit {
   loggedUserId = null;
   lyricAddedConfirmation: Boolean = false;
   lyric = new Lyric;
+  singer = new Singer;
+  featurer = new Featurer;
   singerToAdd = null;
+  featurerOneToAdd = null;
+
+  noSingerToAdd = false;
+  nofeaturerOneToAdd = false;
+
+  singerCreateSuccessfully = false;
+  featurerOneCreateSuccessfully = false;
   user = new User;
   existingLyricTitles: Array<Object> = [];
   errorColorTitle = 'red';
@@ -48,7 +59,13 @@ export class AddLyricComponent implements OnInit {
 
     this._lyricService.addNewLyric(this.lyric)
     .then(addedlyric => {
-      this.lyricAddedConfirmation = true
+      // Create the featuring here
+      this.featurer.lyric = addedlyric._id;
+      this.featurer.singer = addedlyric.singer;
+      this._lyricService.createFeaturing(this.featurer)
+      .then(feauringList => {
+        this.lyricAddedConfirmation = true
+      })
     })
   }
 
@@ -104,16 +121,78 @@ export class AddLyricComponent implements OnInit {
   }
 
   checkForSingerName(){
-    var singerToLookFor = this.lyric.singer
-    this._lyricService.checkForSingerName(singerToLookFor)
-    .then(singer => {
-      this.singerToAdd = singer
-      console.log(singer)
-    })
+    var singerToLookFor = this.lyric.singerOnPage
+
+    if (this.lyric.singerOnPage.length == 0) { //handle the keyup event
+      this.noSingerToAdd = false;
+      this.singerToAdd = null;
+    }
+
+    if (this.lyric.singerOnPage.length > 0) {
+      this._lyricService.checkForSingerName(singerToLookFor)
+      .then(singer => {
+        if (singer.length > 0) {
+          this.singerToAdd = singer;
+          this.noSingerToAdd = false;
+        }
+
+        if (singer.length == 0) {
+          this.noSingerToAdd = true;
+        }
+      })
+      .catch(console.log)
+    }
   }
 
   setSingerName(singerId, singerName){
-    this.lyric.singer = singerName;
+    this.lyric.singerOnPage = singerName;
+    this.lyric.singer = singerId;
+    this.singerToAdd = null;
+  }
+
+  createNewSinger() {
+    this.singer.name = this.lyric.singerOnPage;
+
+    this._lyricService.createNewSinger(this.singer)
+    .then(singer => {
+      this.lyric.singerOnPage = singer.name;
+      this.lyric.singer = singer._id;
+      this.singerToAdd = null;
+      this.noSingerToAdd = false;
+      this.singerCreateSuccessfully = true;
+
+      setTimeout(() => {
+        this.singerCreateSuccessfully = false;
+      }, 3000);
+    })
+  }
+
+  cancelNewSingerCreation(){
+    this.noSingerToAdd = false;
+  }
+
+  checkForFeaturersName(featurerName) {
+
+    if (featurerName.length == 0) { //handle the keyup event
+      this.nofeaturerOneToAdd = false;
+      this.featurerOneToAdd = null;
+    }
+
+    if (featurerName.length > 0) {
+      this._lyricService.checkForSingerName(featurerName)
+      .then(featurerOne => {
+        console.log(featurerOne)
+        if (featurerOne.length > 0) {
+          this.featurerOneToAdd = featurerOne;
+          this.nofeaturerOneToAdd = false;
+        }
+
+        if (featurerOne.length == 0) {
+          this.nofeaturerOneToAdd = true;
+        }
+      })
+      .catch(console.log)
+    }
   }
 
 }

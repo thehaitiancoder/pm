@@ -23,19 +23,28 @@
         <input type="text"
               name="singer"
               id="singer"
-              [(ngModel)]="lyric.singer"
-              (change)="lyricAvailability()"
+              [(ngModel)]="lyric.singerOnPage"
               (input)="checkForSingerName()"
+              (keyup)="checkForSingerName()"
               [ngClass]="errorColorSinger"
               required
               class="form-control input-lg" 
               placeholder="Kiyès ki chante mizik sa?">
 
-              <div *ngIf="singerToAdd != null" class="singerAvailable">
-                  <ul>
-                    <li (click)="setSingerName(singerExist._id, singerExist.name)" *ngFor="let singerExist of singerToAdd">{{ singerExist.name }}</li>
-                  </ul>
+              <div *ngIf="singerToAdd != null" class="alert singerAvailable">
+                <p>Chwazi &#8595;</p>
+                <button (click)="setSingerName(singerExist._id, singerExist.name)"
+                        *ngFor="let singerExist of singerToAdd"
+                        class="btn btn-success singerToAdd">{{ singerExist.name }}</button>
                 </div>
+        <div *ngIf="noSingerToAdd" class="alert noSingerToAdd">
+          <p>Non Atis sa pako sou sit la. Eske ou vle ajoute l?</p>
+          <button type="button" (click)="createNewSinger()" class="btn btn-success">Wi</button>
+          <button type="button" (click)="cancelNewSingerCreation()" class="btn btn-danger">Non</button>
+        </div>
+        <div *ngIf="singerCreateSuccessfully" class="alert alert-success">
+          <p>Nou ajoute atis sa nan lis atis nou!</p>
+        </div>
       </div>
       <!-- Lyrics -->
       <div class="form-group">
@@ -64,9 +73,25 @@
         <input type="text"
               name="featurer1"
               id="featurer1"
-              [(ngModel)]="lyric.featurer.one"
+              [(ngModel)]="featurer.one"
+              (input)="checkForFeaturersName(featurer.one)"
               class="form-control input-lg"
               placeholder="Non Atis ki featuring sou mizik sa?">
+
+              <div *ngIf="featurerOneToAdd != null" class="alert singerAvailable">
+                  <p>Chwazi &#8595;</p>
+                  <button (click)="setSingerName(singerExist._id, singerExist.name)"
+                          *ngFor="let featurerOneExist of featurerOneToAdd"
+                          class="btn btn-success singerToAdd">{{ featurerOneExist.name }}</button>
+                  </div>
+          <div *ngIf="nofeaturerOneToAdd" class="alert noSingerToAdd">
+            <p>Non Atis sa pako sou sit la. Eske ou vle ajoute l?</p>
+            <button type="button" (click)="createNewSinger(featurer.one)" class="btn btn-success">Wi</button>
+            <button type="button" (click)="cancelNewSingerCreation(f1)" class="btn btn-danger">Non</button>
+          </div>
+          <div *ngIf="featurerOneCreateSuccessfully" class="alert alert-success">
+            <p>Nou ajoute atis sa nan lis atis nou!</p>
+          </div>
         <div *ngIf="!featurer2"><a (click)="featurerAvailable('2')">+Ajoute yon lot atis anko</a></div>
       </div>
       <div *ngIf="featurer2" class="form-group">
@@ -74,7 +99,8 @@
         <input type="text"
               name="featurer2"
               id="featurer2"
-              [(ngModel)]="lyric.featurer.two"
+              [(ngModel)]="featurer.two"
+              (input)="checkForFeaturersName(featurer.two)"
               class="form-control input-lg"
               placeholder="Non Atis ki featuring sou mizik sa?">
         <div *ngIf="!featurer3"><a (click)="featurerAvailable('3')">+Ajoute yon lot atis anko</a></div>
@@ -84,7 +110,7 @@
         <input type="text"
               name="featurer3"
               id="featurer3"
-              [(ngModel)]="lyric.featurer.three"
+              [(ngModel)]="featurer.three"
               class="form-control input-lg"
               placeholder="Non Atis ki featuring sou mizik sa?">
         <div *ngIf="!featurer4"><a (click)="featurerAvailable('4')">+Ajoute yon lot atis anko</a></div>
@@ -94,7 +120,7 @@
         <input type="text"
               name="featurer4"
               id="featurer4"
-              [(ngModel)]="lyric.featurer.four"
+              [(ngModel)]="featurer.four"
               class="form-control input-lg"
               placeholder="Non Atis ki featuring sou mizik sa?">
         <div *ngIf="!featurer5"><a (click)="featurerAvailable('5')">+Ajoute yon lot atis anko</a></div>
@@ -104,7 +130,7 @@
         <input type="text"
               name="featurer5"
               id="featurer5"
-              [(ngModel)]="lyric.featurer.five"
+              [(ngModel)]="featurer.five"
               class="form-control input-lg"
               placeholder="Non Atis ki featuring sou mizik sa?">
         <div *ngIf="!featurer6"><a (click)="featurerAvailable('6')">+Ajoute yon lot atis anko</a></div>
@@ -114,7 +140,7 @@
         <input type="text"
               name="featurer6"
               id="featurer6"
-              [(ngModel)]="lyric.featurer.six"
+              [(ngModel)]="featurer.six"
               class="form-control input-lg"
               placeholder="Non Atis ki featuring sou mizik sa?">
         <div *ngIf="!featurer7"><a (click)="featurerAvailable('7')">+Ajoute yon lot atis anko</a></div>
@@ -124,7 +150,7 @@
         <input type="text"
               name="featurer7"
               id="featurer7"
-              [(ngModel)]="lyric.featurer.seven"
+              [(ngModel)]="featurer.seven"
               class="form-control input-lg"
               placeholder="Non Atis ki featuring sou mizik sa?">
         <div *ngIf="!featurer8"><a (click)="featurerAvailable('8')">+Ajoute yon lot atis anko</a></div>
@@ -134,7 +160,7 @@
         <input type="text"
               name="featurer8"
               id="featurer8"
-              [(ngModel)]="lyric.featurer.eight"
+              [(ngModel)]="featurer.eight"
               class="form-control input-lg"
               placeholder="Non Atis ki featuring sou mizik sa?">
         <div *ngIf="!featurer9"><a (click)="featurerAvailable('9')">+Ajoute yon lot atis anko</a></div>
@@ -144,7 +170,7 @@
         <input type="text"
               name="featurer9"
               id="featurer9"
-              [(ngModel)]="lyric.featurer.nine"
+              [(ngModel)]="featurer.nine"
               class="form-control input-lg"
               placeholder="Non Atis ki featuring sou mizik sa?">
         <div *ngIf="!featurer10"><a (click)="featurerAvailable('10')">+Ajoute yon lot atis anko</a></div>
@@ -154,7 +180,7 @@
         <input type="text"
               name="featurer10"
               id="featurer10"
-              [(ngModel)]="lyric.featurer.ten"
+              [(ngModel)]="featurer.ten"
               class="form-control input-lg"
               placeholder="Non Atis ki featuring sou mizik sa?">
       </div>
@@ -215,7 +241,7 @@
     <div *ngIf="existingLyricTitles.length > 0" class="addingLyricsValidation">
         <h2>Mizik sou sit la ki gen non tankou sa:</h2>
         <ul>
-          <li *ngFor="let existingLyric of existingLyricTitles"><span *ngIf="existingLyric.score > 1"><a [routerLink]="['/', existingLyric.url]">{{existingLyric.title}} - {{existingLyric.singer}}</a></span></li>
+          <li *ngFor="let existingLyric of existingLyricTitles"><span *ngIf="existingLyric.score > 0.5"><a [routerLink]="['/', existingLyric.url]">{{existingLyric.title}} - {{existingLyric.singer}}</a></span></li>
         </ul>
     </div>
 

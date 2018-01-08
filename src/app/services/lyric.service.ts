@@ -3,6 +3,7 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import { Lyric } from '../models/lyric';
+import { Featurer } from '../models/featuring';
 
 @Injectable()
 export class LyricService {
@@ -15,6 +16,12 @@ export class LyricService {
   addNewLyric(lyric: Lyric){
     return this._http.post(this.base, lyric)
     .map(response => response.json())
+    .toPromise();
+  }
+
+  createFeaturing(featurer: Featurer) {
+    return this._http.post('/lyrics/featuring', featurer)
+    .map( response => response.json())
     .toPromise();
   }
 
@@ -69,6 +76,12 @@ export class LyricService {
 
   checkForSingerName(singerToLookFor){ // to be moved to a singer service
     return this._http.get('/my/api/singer/' + singerToLookFor)
+    .map( response => response.json())
+    .toPromise();
+  }
+
+  createNewSinger(singerToCreate) {
+    return this._http.post('/my/api/singer/', singerToCreate)
     .map( response => response.json())
     .toPromise();
   }

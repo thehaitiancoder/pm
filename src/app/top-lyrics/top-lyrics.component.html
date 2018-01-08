@@ -6,7 +6,7 @@
       <p>{{ i+1 }}</p>
     </div>
     <div class="middle">
-      <p>{{ lyric.title }} - {{ lyric.singer }} <span *ngIf="lyric.featurer.one != null">feat. {{ lyric.featurer.one }}</span></p>
+      <p>{{ lyric.title }} - {{ lyric.singer.name }} <span *ngIf="lyric.featuring != null">feat. {{ lyric.featurer.one }}</span></p>
     </div>
     <div class="right">
       <p><span class="glyphicon glyphicon-eye-open"></span> {{ lyric.views }}</p>
