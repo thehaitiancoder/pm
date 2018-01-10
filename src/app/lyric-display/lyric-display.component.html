@@ -14,16 +14,15 @@
     <div class="bigTitle">
         <h1>{{ theLyric.title }}</h1>
         <h4>{{ theLyric.singer.name }}
-            <span *ngIf="theLyric.featuring != null">feat. {{ theLyric.featurer.one}}</span>
-            <span *ngIf="theLyric.featuring != null">, {{ theLyric.featurer.two}}</span>
-            <span *ngIf="theLyric.featuring != null">, {{ theLyric.featurer.three }}</span>
-            <span *ngIf="theLyric.featuring != null">, {{ theLyric.featurer.four }}</span>
-            <span *ngIf="theLyric.featuring != null">, {{ theLyric.featurer.five }}</span>
-            <span *ngIf="theLyric.featuring != null">, {{ theLyric.featurer.six }}</span>
-            <span *ngIf="theLyric.featuring != null">, {{ theLyric.featurer.seven }}</span>
-            <span *ngIf="theLyric.featuring != null">, {{ theLyric.featurer.eight }}</span>
-            <span *ngIf="theLyric.featuring != null">, {{ theLyric.featurer.nine }}</span>
-            <span *ngIf="theLyric.featuring != null">, {{ theLyric.featurer.ten }}</span>
+            <span *ngIf="theLyric.featuring != null">
+                <span>feat. {{theLyric.featuring.one.name}}</span>
+                <span *ngIf="theLyric.featuring.two != null">, {{ theLyric.featuring.two.name }}</span>
+                <span *ngIf="theLyric.featuring.three != null">, {{ theLyric.featuring.three.name }}</span>
+                <span *ngIf="theLyric.featuring.four != null">, {{ theLyric.featuring.four.name }}</span>
+                <span *ngIf="theLyric.featuring.five != null">, {{ theLyric.featuring.five.name }}</span>
+                <span *ngIf="theLyric.featuring.six != null">, {{ theLyric.featuring.six.name }}</span>
+                <span *ngIf="theLyric.featuring.seven != null">, {{ theLyric.featuring.seven.name }}</span>
+              </span>
         </h4>
     </div>
   </div>

@@ -39,7 +39,7 @@
                 </div>
         <div *ngIf="noSingerToAdd" class="alert noSingerToAdd">
           <p>Non Atis sa pako sou sit la. Eske ou vle ajoute l?</p>
-          <button type="button" (click)="createNewSinger()" class="btn btn-success">Wi</button>
+          <button type="button" (click)="createNewSinger(lyric.singerOnPage, 0)" class="btn btn-success">Wi</button>
           <button type="button" (click)="cancelNewSingerCreation()" class="btn btn-danger">Non</button>
         </div>
         <div *ngIf="singerCreateSuccessfully" class="alert alert-success">
@@ -73,134 +73,197 @@
         <input type="text"
               name="featurer1"
               id="featurer1"
-              [(ngModel)]="featurer.one"
-              (input)="checkForFeaturersName(featurer.one)"
+              [(ngModel)]="featuring.one"
+              (input)="checkForFeaturersName(featuring.one, 1)"
               class="form-control input-lg"
               placeholder="Non Atis ki featuring sou mizik sa?">
 
-              <div *ngIf="featurerOneToAdd != null" class="alert singerAvailable">
-                  <p>Chwazi &#8595;</p>
-                  <button (click)="setSingerName(singerExist._id, singerExist.name)"
-                          *ngFor="let featurerOneExist of featurerOneToAdd"
-                          class="btn btn-success singerToAdd">{{ featurerOneExist.name }}</button>
-                  </div>
+          <div *ngIf="featurerOneToAdd != null" class="alert singerAvailable">
+            <p>Chwazi &#8595;</p>
+            <button (click)="setFeaturerName(featuring.one, featurerOneExist._id, featurerOneExist.name, 1)"
+                *ngFor="let featurerOneExist of featurerOneToAdd"
+                class="btn btn-success singerToAdd">{{ featurerOneExist.name }}</button>
+          </div>
           <div *ngIf="nofeaturerOneToAdd" class="alert noSingerToAdd">
             <p>Non Atis sa pako sou sit la. Eske ou vle ajoute l?</p>
-            <button type="button" (click)="createNewSinger(featurer.one)" class="btn btn-success">Wi</button>
+            <button type="button" (click)="createNewSinger(featuring.one, 1)" class="btn btn-success">Wi</button>
             <button type="button" (click)="cancelNewSingerCreation(f1)" class="btn btn-danger">Non</button>
           </div>
           <div *ngIf="featurerOneCreateSuccessfully" class="alert alert-success">
             <p>Nou ajoute atis sa nan lis atis nou!</p>
           </div>
-        <div *ngIf="!featurer2"><a (click)="featurerAvailable('2')">+Ajoute yon lot atis anko</a></div>
+        <div *ngIf="!featurer2 && featurer.one != null"><a (click)="featurerAvailable('2')">+Ajoute yon lot atis anko</a></div>
       </div>
       <div *ngIf="featurer2" class="form-group">
         <label for="featurer2">Lot atis ki sou mizik la:</label>
         <input type="text"
               name="featurer2"
               id="featurer2"
-              [(ngModel)]="featurer.two"
-              (input)="checkForFeaturersName(featurer.two)"
+              [(ngModel)]="featuring.two"
+              (input)="checkForFeaturersName(featuring.two, 2)"
               class="form-control input-lg"
               placeholder="Non Atis ki featuring sou mizik sa?">
-        <div *ngIf="!featurer3"><a (click)="featurerAvailable('3')">+Ajoute yon lot atis anko</a></div>
+              
+              <div *ngIf="featurerTwoToAdd != null" class="alert singerAvailable">
+                  <p>Chwazi &#8595;</p>
+                  <button (click)="setFeaturerName(featuring.two, featurerTwoExist._id, featurerTwoExist.name, 2)"
+                      *ngFor="let featurerTwoExist of featurerTwoToAdd"
+                      class="btn btn-success singerToAdd">{{ featurerTwoExist.name }}</button>
+                </div>
+                <div *ngIf="nofeaturerTwoToAdd" class="alert noSingerToAdd">
+                  <p>Non Atis sa pako sou sit la. Eske ou vle ajoute l?</p>
+                  <button type="button" (click)="createNewSinger(featuring.two, 2)" class="btn btn-success">Wi</button>
+                  <button type="button" (click)="cancelNewSingerCreation(f2)" class="btn btn-danger">Non</button>
+                </div>
+                <div *ngIf="featurerTwoCreateSuccessfully" class="alert alert-success">
+                  <p>Nou ajoute atis sa nan lis atis nou!</p>
+                </div>
+        <div *ngIf="!featurer3 && featurer.two != null"><a (click)="featurerAvailable('3')">+Ajoute yon lot atis anko</a></div>
       </div>
       <div *ngIf="featurer3" class="form-group">
         <label for="featurer3">Lot atis ki sou mizik la:</label>
         <input type="text"
               name="featurer3"
               id="featurer3"
-              [(ngModel)]="featurer.three"
+              [(ngModel)]="featuring.three"
+              (input)="checkForFeaturersName(featuring.three, 3)"
               class="form-control input-lg"
               placeholder="Non Atis ki featuring sou mizik sa?">
-        <div *ngIf="!featurer4"><a (click)="featurerAvailable('4')">+Ajoute yon lot atis anko</a></div>
+
+              <div *ngIf="featurerThreeToAdd != null" class="alert singerAvailable">
+                  <p>Chwazi &#8595;</p>
+                  <button (click)="setFeaturerName(featuring.three, featurerThreeExist._id, featurerThreeExist.name, 3)"
+                      *ngFor="let featurerThreeExist of featurerThreeToAdd"
+                      class="btn btn-success singerToAdd">{{ featurerThreeExist.name }}</button>
+                </div>
+                <div *ngIf="nofeaturerThreeToAdd" class="alert noSingerToAdd">
+                  <p>Non Atis sa pako sou sit la. Eske ou vle ajoute l?</p>
+                  <button type="button" (click)="createNewSinger(featuring.three, 3)" class="btn btn-success">Wi</button>
+                  <button type="button" (click)="cancelNewSingerCreation(f3)" class="btn btn-danger">Non</button>
+                </div>
+                <div *ngIf="featurerThreeCreateSuccessfully" class="alert alert-success">
+                  <p>Nou ajoute atis sa nan lis atis nou!</p>
+                </div>
+        <div *ngIf="!featurer4 && featurer.three != null"><a (click)="featurerAvailable('4')">+Ajoute yon lot atis anko</a></div>
       </div>
       <div *ngIf="featurer4" class="form-group">
         <label for="featurer4">Lot atis ki sou mizik la:</label>
         <input type="text"
               name="featurer4"
               id="featurer4"
-              [(ngModel)]="featurer.four"
+              [(ngModel)]="featuring.four"
+              (input)="checkForFeaturersName(featuring.four, 4)"
               class="form-control input-lg"
               placeholder="Non Atis ki featuring sou mizik sa?">
-        <div *ngIf="!featurer5"><a (click)="featurerAvailable('5')">+Ajoute yon lot atis anko</a></div>
+
+              <div *ngIf="featurerFourToAdd != null" class="alert singerAvailable">
+                  <p>Chwazi &#8595;</p>
+                  <button (click)="setFeaturerName(featuring.four, featurerFourExist._id, featurerFourExist.name, 4)"
+                      *ngFor="let featurerFourExist of featurerFourToAdd"
+                      class="btn btn-success singerToAdd">{{ featurerFourExist.name }}</button>
+                </div>
+                <div *ngIf="nofeaturerFourToAdd" class="alert noSingerToAdd">
+                  <p>Non Atis sa pako sou sit la. Eske ou vle ajoute l?</p>
+                  <button type="button" (click)="createNewSinger(featuring.four, 4)" class="btn btn-success">Wi</button>
+                  <button type="button" (click)="cancelNewSingerCreation(f4)" class="btn btn-danger">Non</button>
+                </div>
+                <div *ngIf="featurerFourCreateSuccessfully" class="alert alert-success">
+                  <p>Nou ajoute atis sa nan lis atis nou!</p>
+                </div>
+        <div *ngIf="!featurer5 && featurer.four != null"><a (click)="featurerAvailable('5')">+Ajoute yon lot atis anko</a></div>
       </div>
       <div *ngIf="featurer5" class="form-group">
         <label for="featurer5">Lot atis ki sou mizik la:</label>
         <input type="text"
               name="featurer5"
               id="featurer5"
-              [(ngModel)]="featurer.five"
+              [(ngModel)]="featuring.five"
+              (input)="checkForFeaturersName(featuring.five, 5)"
               class="form-control input-lg"
               placeholder="Non Atis ki featuring sou mizik sa?">
-        <div *ngIf="!featurer6"><a (click)="featurerAvailable('6')">+Ajoute yon lot atis anko</a></div>
+
+              <div *ngIf="featurerFiveToAdd != null" class="alert singerAvailable">
+                  <p>Chwazi &#8595;</p>
+                  <button (click)="setFeaturerName(featuring.five, featurerFiveExist._id, featurerFiveExist.name, 5)"
+                      *ngFor="let featurerFiveExist of featurerFiveToAdd"
+                      class="btn btn-success singerToAdd">{{ featurerFiveExist.name }}</button>
+                </div>
+                <div *ngIf="nofeaturerFiveToAdd" class="alert noSingerToAdd">
+                  <p>Non Atis sa pako sou sit la. Eske ou vle ajoute l?</p>
+                  <button type="button" (click)="createNewSinger(featuring.five, 5)" class="btn btn-success">Wi</button>
+                  <button type="button" (click)="cancelNewSingerCreation(f5)" class="btn btn-danger">Non</button>
+                </div>
+                <div *ngIf="featurerFiveCreateSuccessfully" class="alert alert-success">
+                  <p>Nou ajoute atis sa nan lis atis nou!</p>
+                </div>
+        <div *ngIf="!featurer6 && featurer.five != null"><a (click)="featurerAvailable('6')">+Ajoute yon lot atis anko</a></div>
       </div>
       <div *ngIf="featurer6" class="form-group">
           <label for="featurer6">Lot atis ki sou mizik la:</label>
         <input type="text"
               name="featurer6"
               id="featurer6"
-              [(ngModel)]="featurer.six"
+              [(ngModel)]="featuring.six"
+              (input)="checkForFeaturersName(featuring.six, 6)"
               class="form-control input-lg"
               placeholder="Non Atis ki featuring sou mizik sa?">
-        <div *ngIf="!featurer7"><a (click)="featurerAvailable('7')">+Ajoute yon lot atis anko</a></div>
+
+              <div *ngIf="featurerSixToAdd != null" class="alert singerAvailable">
+                  <p>Chwazi &#8696;</p>
+                  <button (click)="setFeaturerName(featuring.six, featurerSixExist._id, featurerSixExist.name, 6)"
+                      *ngFor="let featurerSixExist of featurerSixToAdd"
+                      class="btn btn-success singerToAdd">{{ featurerSixExist.name }}</button>
+                </div>
+                <div *ngIf="nofeaturerSixToAdd" class="alert noSingerToAdd">
+                  <p>Non Atis sa pako sou sit la. Eske ou vle ajoute l?</p>
+                  <button type="button" (click)="createNewSinger(featuring.six, 6)" class="btn btn-success">Wi</button>
+                  <button type="button" (click)="cancelNewSingerCreation(f6)" class="btn btn-danger">Non</button>
+                </div>
+                <div *ngIf="featurerSixCreateSuccessfully" class="alert alert-success">
+                  <p>Nou ajoute atis sa nan lis atis nou!</p>
+                </div>
+        <div *ngIf="!featurer7 && featurer.six != null"><a (click)="featurerAvailable('7')">+Ajoute yon lot atis anko</a></div>
       </div>
       <div *ngIf="featurer7" class="form-group">
           <label for="featurer7">Lot atis ki sou mizik la:</label>
         <input type="text"
               name="featurer7"
               id="featurer7"
-              [(ngModel)]="featurer.seven"
+              [(ngModel)]="featuring.seven"
+              (input)="checkForFeaturersName(featuring.seven, 7)"
               class="form-control input-lg"
               placeholder="Non Atis ki featuring sou mizik sa?">
-        <div *ngIf="!featurer8"><a (click)="featurerAvailable('8')">+Ajoute yon lot atis anko</a></div>
+
+              <div *ngIf="featurerSevenToAdd != null" class="alert singerAvailable">
+                  <p>Chwazi &#8797;</p>
+                  <button (click)="setFeaturerName(featuring.seven, featurerSevenExist._id, featurerSevenExist.name, 7)"
+                      *ngFor="let featurerSevenExist of featurerSevenToAdd"
+                      class="btn btn-success singerToAdd">{{ featurerSevenExist.name }}</button>
+                </div>
+                <div *ngIf="nofeaturerSevenToAdd" class="alert noSingerToAdd">
+                  <p>Non Atis sa pako sou sit la. Eske ou vle ajoute l?</p>
+                  <button type="button" (click)="createNewSinger(featuring.seven, 7)" class="btn btn-success">Wi</button>
+                  <button type="button" (click)="cancelNewSingerCreation(f7)" class="btn btn-danger">Non</button>
+                </div>
+                <div *ngIf="featurerSevenCreateSuccessfully" class="alert alert-success">
+                  <p>Nou ajoute atis sa nan lis atis nou!</p>
+                </div>
       </div>
-      <div *ngIf="featurer8" class="form-group">
-          <label for="featurer8">Lot atis ki sou mizik la:</label>
-        <input type="text"
-              name="featurer8"
-              id="featurer8"
-              [(ngModel)]="featurer.eight"
-              class="form-control input-lg"
-              placeholder="Non Atis ki featuring sou mizik sa?">
-        <div *ngIf="!featurer9"><a (click)="featurerAvailable('9')">+Ajoute yon lot atis anko</a></div>
-      </div>
-      <div *ngIf="featurer9" class="form-group">
-          <label for="featurer9">Lot atis ki sou mizik la:</label>
-        <input type="text"
-              name="featurer9"
-              id="featurer9"
-              [(ngModel)]="featurer.nine"
-              class="form-control input-lg"
-              placeholder="Non Atis ki featuring sou mizik sa?">
-        <div *ngIf="!featurer10"><a (click)="featurerAvailable('10')">+Ajoute yon lot atis anko</a></div>
-      </div>
-      <div *ngIf="featurer10" class="form-group">
-          <label for="featurer10">Lot atis ki sou mizik la:</label>
-        <input type="text"
-              name="featurer10"
-              id="featurer10"
-              [(ngModel)]="featurer.ten"
-              class="form-control input-lg"
-              placeholder="Non Atis ki featuring sou mizik sa?">
-      </div>
+      <!-- Released Date -->
       <div class="form-group">
         <label for="realeasedDate">Kilè mizik sa soti?:</label>
         <input type="date"
               name="realeasedDate"
               id="realeasedDate"
-              [(ngModel)]="lyric.realeasedDate"
+              [(ngModel)]="lyric.released_date"
               class="form-control input-lg">
       </div>
       <!-- Album -->
-      <div class="form-group">
+      <div *ngIf="singerAlbumList.length > 0" class="form-group">
         <label for="album">Albòm mizik sa:</label>
-        <input type="text"
-              name="album"
-              id="album"
-              [(ngModel)]="lyric.album"
-              class="form-control input-lg"
-              placeholder="Sou ki albòm mizik sa ye?">
+        <select name="album" id="album" class="form-control input-lg" [(ngModel)]="lyric.album">
+            <option *ngFor="let album of singerAlbumList" value="{{album._id}}">{{ album.name }}</option>
+          </select>
       </div>
       <!-- Category -->
       <div class="form-group">
@@ -241,7 +304,21 @@
     <div *ngIf="existingLyricTitles.length > 0" class="addingLyricsValidation">
         <h2>Mizik sou sit la ki gen non tankou sa:</h2>
         <ul>
-          <li *ngFor="let existingLyric of existingLyricTitles"><span *ngIf="existingLyric.score > 0.5"><a [routerLink]="['/', existingLyric.url]">{{existingLyric.title}} - {{existingLyric.singer}}</a></span></li>
+          <li *ngFor="let existingLyric of existingLyricTitles">
+            <span *ngIf="existingLyric.score > 0.5">
+              <a [routerLink]="['/lyrics/', existingLyric.url]">{{existingLyric.title}} - {{existingLyric.singer.name}}
+                <span *ngIf="existingLyric.featuring != null">
+                  <span>feat. {{existingLyric.featuring.one.name}}</span>
+                  <span *ngIf="existingLyric.featuring.two != null">, {{ existingLyric.featuring.two.name }}</span>
+                  <span *ngIf="existingLyric.featuring.three != null">, {{ existingLyric.featuring.three.name }}</span>
+                  <span *ngIf="existingLyric.featuring.four != null">, {{ existingLyric.featuring.four.name }}</span>
+                  <span *ngIf="existingLyric.featuring.five != null">, {{ existingLyric.featuring.five.name }}</span>
+                  <span *ngIf="existingLyric.featuring.six != null">, {{ existingLyric.featuring.six.name }}</span>
+                  <span *ngIf="existingLyric.featuring.seven != null">, {{ existingLyric.featuring.seven.name }}</span>
+                </span>
+              </a>
+            </span>
+          </li>
         </ul>
     </div>
 

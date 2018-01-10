@@ -37,10 +37,21 @@
     <div class="resultSummary"><p>Nou jwenn {{ searchResult.length }} rezilta pou rechèch sa:</p></div>  
 
       <div class="oneResult" *ngFor="let result of searchResult">
-        <!-- <a [routerLink]="['/lyrics/', result.url]">{{result.title}} - {{result.singer}}</a> -->
         <a [routerLink]="['/lyrics/', result.url]">
         <div class="oneResultTitle"><p>{{ result.title }}</p></div>
-        <div class="oneResultSingers"><p>{{ result.singer.name }} <span *ngIf="result.featuring != null">feat. {{ result.featuring.one}}</span></p></div>
+        <div class="oneResultSingers">
+          <p>{{result.singer.name}}
+            <span *ngIf="result.featuring != null">
+              <span>feat. {{result.featuring.one.name}}</span>
+              <span *ngIf="result.featuring.two != null">, {{ result.featuring.two.name }}</span>
+              <span *ngIf="result.featuring.three != null">, {{ result.featuring.three.name }}</span>
+              <span *ngIf="result.featuring.four != null">, {{ result.featuring.four.name }}</span>
+              <span *ngIf="result.featuring.five != null">, {{ result.featuring.five.name }}</span>
+              <span *ngIf="result.featuring.six != null">, {{ result.featuring.six.name }}</span>
+              <span *ngIf="result.featuring.seven != null">, {{ result.featuring.seven.name }}</span>
+            </span>
+          </p>
+        </div>
         </a>
       </div>
     <img *ngIf="showLoader" class="loader" src="./assets/logos/loader.gif" alt="">

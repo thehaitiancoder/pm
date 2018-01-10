@@ -25,6 +25,12 @@ export class LyricService {
     .toPromise();
   }
 
+  updateLyricWithFeaturing(lyric) {
+    return this._http.put('/lyrics/featuring', lyric)
+    .map( response => response.json())
+    .toPromise();
+  }
+
   lyricTitleCheck(lyricTitle){
     return this._http.post('/lyrics/checktitle', lyricTitle)
     .map(response => response.json())
@@ -83,6 +89,12 @@ export class LyricService {
   createNewSinger(singerToCreate) {
     return this._http.post('/my/api/singer/', singerToCreate)
     .map( response => response.json())
+    .toPromise();
+  }
+
+  getSingAlbum(singerId) {
+    return this._http.get('/my/api/album/' + singerId)
+    .map(response => response.json())
     .toPromise();
   }
 

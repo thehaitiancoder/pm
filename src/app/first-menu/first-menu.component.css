@@ -41,7 +41,7 @@
         width: 100%;
     }
 
-    #searchInput {
+    #searchInputMob {
         padding-left: 1%;
     }
 
@@ -147,7 +147,14 @@ a.dropdown-toggle:focus {
 
 /* Search styles */
 
-#searchInput:focus {
+#searchInputMob:focus {
+    border-color: #ccc;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+#searchInputDes:focus {
     border-color: #ccc;
     -webkit-box-shadow: none !important;
     -moz-box-shadow: none !important;
@@ -207,10 +214,6 @@ a.dropdown-toggle:focus {
     /* For desktop: */
     .mobile {
         display: none;
-    }
-
-    #searchInput {
-        padding-left: 4%;
     }
 
     .longerForm {

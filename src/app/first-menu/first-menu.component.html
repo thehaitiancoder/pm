@@ -27,10 +27,10 @@
         </li>
       </ul>
     
-      <form [ngClass]="makeSearchInputLonger" *ngIf="displaySearchInMenu" class="navbar-form navbar-left" id="theSearch" autocomplete="off">
+      <form [ngClass]="makeSearchInputLonger" *ngIf="displaySearchInMenu" class="navbar-form navbar-left" id="theSearchDes" autocomplete="off">
           <div [ngClass]="makeInputGroupLonger" class="input-group">
             <input type="text"
-                  id="searchInput"
+                  id="searchInputDes"
                   (click)="searchForLyrics()"
                   (input)="searchForLyrics()"
                   (focusout)="closeResult()"
@@ -56,10 +56,10 @@
     <div class="container-fluid">
       <div class="navbar-header">
         <button *ngIf="displaySearchInMenu && hideLaunchSearch" class="launchSearch" (click)="showSearchFormCall()"><img src="./assets/logos/launch_search_mobile.png" alt="search"></button>
-          <form *ngIf="displaySearchInMenu && showSearchForm" class="navbar-form navbar-left mobileSearchForm" id="theSearch" autocomplete="off">
+          <form *ngIf="displaySearchInMenu && showSearchForm" class="navbar-form navbar-left mobileSearchForm" id="theSearchMob" autocomplete="off">
               <div class="input-group">
                 <input type="text"
-                      id="searchInput"
+                      id="searchInputMob"
                       (input)="searchForLyrics()"
                       (focusout)="closeResult()"
                       (keyup)="hideLoader()"
@@ -274,7 +274,19 @@
           <!-- <a [routerLink]="['/lyrics/', result.url]">{{result.title}} - {{result.singer}}</a> -->
           <a [routerLink]="['/lyrics/', result.url]">
           <div class="oneResultTitle"><p>{{ result.title }}</p></div>
-          <div class="oneResultSingers"><p>{{result.singer}} <span *ngIf="result.featurer.one != null">feat. {{ result.featurer.one}}</span></p></div>
+          <div class="oneResultSingers">
+              <p>{{result.singer.name}}
+                  <span *ngIf="result.featuring != null">
+                    <span>feat. {{result.featuring.one.name}}</span>
+                    <span *ngIf="result.featuring.two != null">, {{ result.featuring.two.name }}</span>
+                    <span *ngIf="result.featuring.three != null">, {{ result.featuring.three.name }}</span>
+                    <span *ngIf="result.featuring.four != null">, {{ result.featuring.four.name }}</span>
+                    <span *ngIf="result.featuring.five != null">, {{ result.featuring.five.name }}</span>
+                    <span *ngIf="result.featuring.six != null">, {{ result.featuring.six.name }}</span>
+                    <span *ngIf="result.featuring.seven != null">, {{ result.featuring.seven.name }}</span>
+                  </span>
+                </p>
+          </div>
           </a>
         </div>
       <img *ngIf="showLoader" class="loader" src="./assets/logos/loader.gif" alt="">

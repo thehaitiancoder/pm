@@ -21,7 +21,9 @@ module.exports = function(app){
     app.get('/auth/userprofile/:id', authController.getLoggedUserProfile);
 
     app.post('/lyrics/new', lyricController.addNewLyric);
-    app.post('/lyrics/featuring', lyricController.createFeaturing)
+    app.post('/lyrics/featuring', lyricController.createFeaturing);
+    app.put('/lyrics/featuring', lyricController.updateLyricWithFeaturing);
+    app.get('/my/api/album/:singerId', lyricController.getSingerAlbum);
     app.post('/lyrics/checktitle', lyricController.checkTitleExist);
     app.get('/lyrics/user/:id', lyricController.getLoggedUserLyrics)
     app.get('/search/:term', lyricController.generalLyricSearch);

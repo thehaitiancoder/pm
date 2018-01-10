@@ -3,6 +3,7 @@ const Featurer = require('mongoose').model('Featurer');
 const User = require('mongoose').model('User');
 const Comments = require('mongoose').model('Comment');
 const Singer = require('mongoose').model('Singer');
+const Album = require('mongoose').model('Album');
 const comments = new Comments;
 
 module.exports = {
@@ -28,8 +29,28 @@ module.exports = {
         .catch(console.log)
     },
 
+    updateLyricWithFeaturing(req, res) {
+        Lyric.findByIdAndUpdate(req.body._id, {
+            $set: {
+                featuring: req.body.featuring
+            }
+        })
+        .then( updatedLyric => res.json(updatedLyric))
+        .catch(console.log)
+    },
+
     checkTitleExist(req, res) {
-        Lyric.find({$text: {$search: req.body.title}}, {score: {$meta: 'textScore'}}).sort({ score: { $meta: "textScore" } })
+        Lyric.find({$text: {$search: req.body.title}}, {score: {$meta: 'textScore'}})
+        .sort({ score: { $meta: "textScore" } })
+        .populate('singer')
+        .populate('album')
+        .populate({path: 'featuring', populate: {path: 'one', model: 'Singer'}})
+        .populate({path: 'featuring', populate: {path: 'two', model: 'Singer'}})
+        .populate({path: 'featuring', populate: {path: 'three', model: 'Singer'}})
+        .populate({path: 'featuring', populate: {path: 'four', model: 'Singer'}})
+        .populate({path: 'featuring', populate: {path: 'five', model: 'Singer'}})
+        .populate({path: 'featuring', populate: {path: 'six', model: 'Singer'}})
+        .populate({path: 'featuring', populate: {path: 'seven', model: 'Singer'}})
         .then(titleExist => {res.json(titleExist)})
         .catch(console.log)
     },
@@ -43,14 +64,33 @@ module.exports = {
     },
 
     generalLyricSearch(req, res) {
-        Lyric.find({$text: {$search: req.params.term}}, {score: {$meta: 'textScore'}}).sort({ score: { $meta: "textScore" } }).populate('singer')
+        Lyric.find({$text: {$search: req.params.term}}, {score: {$meta: 'textScore'}})
+        .sort({ score: { $meta: "textScore" } })
+        .populate('singer')
+        .populate('album')
+        .populate({path: 'featuring', populate: {path: 'one', model: 'Singer'}})
+        .populate({path: 'featuring', populate: {path: 'two', model: 'Singer'}})
+        .populate({path: 'featuring', populate: {path: 'three', model: 'Singer'}})
+        .populate({path: 'featuring', populate: {path: 'four', model: 'Singer'}})
+        .populate({path: 'featuring', populate: {path: 'five', model: 'Singer'}})
+        .populate({path: 'featuring', populate: {path: 'six', model: 'Singer'}})
+        .populate({path: 'featuring', populate: {path: 'seven', model: 'Singer'}})
         .then(lyricsSearched => {res.json(lyricsSearched)})
         .catch(console.log)
     },
 
     displayOneLyric(req, res) {
         console.log(req.body)
-        Lyric.findOne({url: req.body.url}).populate('singer')
+        Lyric.findOne({url: req.body.url})
+        .populate('singer')
+        .populate('album')
+        .populate({path: 'featuring', populate: {path: 'one', model: 'Singer'}})
+        .populate({path: 'featuring', populate: {path: 'two', model: 'Singer'}})
+        .populate({path: 'featuring', populate: {path: 'three', model: 'Singer'}})
+        .populate({path: 'featuring', populate: {path: 'four', model: 'Singer'}})
+        .populate({path: 'featuring', populate: {path: 'five', model: 'Singer'}})
+        .populate({path: 'featuring', populate: {path: 'six', model: 'Singer'}})
+        .populate({path: 'featuring', populate: {path: 'seven', model: 'Singer'}})
         .then(lyricToDisplay => {
             // Increase the view for this lyric
             Lyric.findByIdAndUpdate(lyricToDisplay._id, {
@@ -97,7 +137,16 @@ module.exports = {
     },
 
     getTop100Lyric(req, res) {
-        Lyric.find().sort({views: 'desc'}).limit(parseInt(req.params.qty)).populate('singer')
+        Lyric.find().sort({views: 'desc'}).limit(parseInt(req.params.qty))
+        .populate('singer')
+        .populate('album')
+        .populate({path: 'featuring', populate: {path: 'one', model: 'Singer'}})
+        .populate({path: 'featuring', populate: {path: 'two', model: 'Singer'}})
+        .populate({path: 'featuring', populate: {path: 'three', model: 'Singer'}})
+        .populate({path: 'featuring', populate: {path: 'four', model: 'Singer'}})
+        .populate({path: 'featuring', populate: {path: 'five', model: 'Singer'}})
+        .populate({path: 'featuring', populate: {path: 'six', model: 'Singer'}})
+        .populate({path: 'featuring', populate: {path: 'seven', model: 'Singer'}})
         .then(top100Lyrics => {res.json(top100Lyrics)})
         .catch(console.log)
     },
@@ -111,6 +160,12 @@ module.exports = {
     createNewSinger(req, res) { // to moved to its own controller
         Singer.create(req.body)
         .then( singer => res.json(singer))
+        .catch(console.log)
+    },
+
+    getSingerAlbum(req, res) {
+        Album.find({singer: req.params.singerId})
+        .then( album => {res.json(album)})
         .catch(console.log)
     }
 }

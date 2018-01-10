@@ -29,7 +29,7 @@ const FeaturingSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Lyric'
     }, 
-    Five: {
+    five: {
         type: Schema.Types.ObjectId,
         ref: 'Lyric'
     }, 
@@ -38,18 +38,6 @@ const FeaturingSchema = new Schema({
         ref: 'Lyric'
     }, 
     seven: {
-        type: Schema.Types.ObjectId,
-        ref: 'Lyric'
-    }, 
-    eight: {
-        type: Schema.Types.ObjectId,
-        ref: 'Lyric'
-    }, 
-    nine: {
-        type: Schema.Types.ObjectId,
-        ref: 'Lyric'
-    }, 
-    ten: {
         type: Schema.Types.ObjectId,
         ref: 'Lyric'
     }
