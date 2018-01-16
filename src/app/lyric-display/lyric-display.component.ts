@@ -17,13 +17,17 @@ export class LyricDisplayComponent implements OnInit {
   url = {url: ''};
   theLyric = null;
   addedComment = null;
-  theComments = null;
+  theComments: Array<Object> = [];
   showSoundcloudPlayer: Boolean = false;
   soundCloudSrc: SafeResourceUrl;
   youtubeSrc: SafeResourceUrl;
   upvotedCommentColor = '';
   upvotedCommentNewSum = 0;
   upvotedComment = null;
+  upvoted = false;
+  commentFieldIsActive: Boolean = false;
+  commentFieldLength = 2;
+  userNotLoggedIn: Boolean = false;
 
   constructor(
     private _route: ActivatedRoute,
@@ -56,11 +60,21 @@ export class LyricDisplayComponent implements OnInit {
         }
         console.log(this.theLyric)
 
-        //Load the comments on init
+        // Load the comments on init
         // Future Update: Needs to be loaded on call to save on bandwitch on loading time
         this._lyricService.getAllTheCommentsForActiveLyric(lyricToDisplay._id)
         .then(theComments => {
           this.theComments = theComments
+          // Checking for the logging user in the upvotes
+          for (var comment=0;comment < theComments.length; comment++) {
+            for (var upvote = 0; upvote < theComments[comment].upvote.length; upvote++) {
+              if (theComments[comment].upvote[upvote].user == this._cookieService.get('userId')) {
+                this.upvotedCommentColor = 'upvotedCommentConfColor';
+                this.upvoted = true;
+              }
+            }
+          }
+
           console.log(theComments)
         })
       })
@@ -79,22 +93,38 @@ export class LyricDisplayComponent implements OnInit {
   addComment(){
     this.comment.lyric = this.theLyric._id;
     this.comment.user = this._cookieService.get('userId');
-    this._lyricService.addComment(this.comment)
-    .then(addedComment => {
-      this.addedComment = addedComment
+
+    if (this.comment.content.length > 0) {
+      this._lyricService.addComment(this.comment)
+      .then(addedComment => {
+        this.theComments.splice(0, 0, addedComment);
+        this.comment.content = '';
+        this.commentFieldIsActive = false;
+        this.commentFieldLength = 2;
+      })
+    }
+  }
+
+  voteCommentUp(commentId) {
+    this.comment._id = commentId;
+    if (this.upvoted == false) { this.comment.upvote = {user: this._cookieService.get('userId')}};
+    if ( this.upvoted == true ) { this.comment.downvote = {user: this._cookieService.get('userId')}};
+    this._lyricService.voteCommentUpOrDown(this.comment)
+    .then(upvotedComment => {
+      console.log(upvotedComment)
+      this.upvotedComment = upvotedComment;
+      this.upvotedCommentColor = 'upvotedCommentConfColor';
+      this.upvoted = true;
     })
   }
 
-  voteCommentUpOrDown(commentId, upOrDownvote){
-    this.comment._id = commentId;
-    this.comment.user = this._cookieService.get('userId');
-    if (upOrDownvote == 1) { this.comment.upvote = 1};
-    if (upOrDownvote == -1) { this.comment.downvote = -1}
-    this._lyricService.voteCommentUpOrDown(this.comment)
-    .then(upvotedComment => {
-      this.upvotedComment = upvotedComment;
-      this.upvotedCommentColor = 'upvotedCommentConfColor';
-    })
+  commentFieldActive() {
+    this.commentFieldIsActive = true;
+    this.commentFieldLength = 7;
+
+    if (this._cookieService.get('userId') == undefined) {
+      this.userNotLoggedIn = true;
+    }
   }
 
 }

@@ -1,5 +1,9 @@
 const mongoose = require('mongoose');
+const validator = require('validator');
 const { Schema } = mongoose;
+
+const UpvoteSchema = new Schema({user: String});
+const DownvoteSchema = new Schema({user: String});
 
 const CommentSchema = new Schema({
     lyric: {
@@ -27,14 +31,8 @@ const CommentSchema = new Schema({
     content: {
         type: String
     },
-    upvote: {
-        type: Number,
-        default: 0
-    },
-    downvote: {
-        type: Number,
-        default: 0
-    }
+    upvote: [UpvoteSchema],
+    downvote: [DownvoteSchema]
 }, {timestamps: true})
 
 module.exports = mongoose.model('Comment', CommentSchema);

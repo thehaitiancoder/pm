@@ -9,7 +9,7 @@
 <div *ngIf="theLyric != null" class="container">
   <div class="page-header">
     <div class="clipart">
-      <img src="./assets/clipart/mypain.jpg" alt="clipart" class="img-circle">
+      <img src="./assets/logos/lyric_background.jpg" alt="clipart" class="img-circle">
     </div>
     <div class="bigTitle">
         <h1>{{ theLyric.title }}</h1>
@@ -45,32 +45,40 @@
         <div class="col-md-8">
           <pre>{{ theLyric.lyrics}}</pre>
           
-          <form (submit)="addComment()">
+          <form class="comment" (submit)="addComment()" #commentForm="ngForm">
             <div class="form-group">
-              <label for="comment">Fè yon komantè:</label>
-              <textarea class="form-control" name="content" [(ngModel)]="comment.content" rows="2" id="comment"></textarea>
+              <textarea class="form-control"
+                        name="content"
+                        [(ngModel)]="comment.content"
+                        (click)="commentFieldActive()"
+                        required
+                        minlength="1"
+                        [rows]="commentFieldLength" 
+                        id="comment"
+                        placeholder="Fè yon komantè!"></textarea>
             </div>
-            <button type="submit" class="btn btn-default">Komante!</button>
+            <div *ngIf="userNotLoggedIn" class="form-group">
+                <button type="button" class="btn btn-default signUp" *ngIf="loggedUserId == null"><a data-toggle="modal" href="#SignUpModal"><span class="glyphicon glyphicon-user"></span> Anrejistre</a></button>
+                <button type="button" class="btn btn-default login" *ngIf="loggedUserId == null"><a data-toggle="modal" href="#LogInModal"><span class="glyphicon glyphicon-log-in"></span> Konekte</a></button>
+                <span> Pou w ka komante oswa mete non w ak email ou anba</span>
+            </div>
+            <button *ngIf="commentFieldIsActive" [disabled]="commentForm.invalid" type="submit" class="btn btn-default">Komante!</button>
           </form>
 
           <div *ngIf="theComments != null" class="theComments">
             <div *ngFor="let comment of theComments" class="singleComment">
               <div class="commentHeader">
-                <p>{{ comment.user.username }}</p>
+                <p *ngIf="comment.user">{{ comment.user.username }}</p>
                 <span>{{ comment.createdAt | date: 'dd/MM/yyyy' }}</span>
               </div>
               <div class="commentBody"><pre id="commentBody">{{ comment.content}}</pre></div>
               <div class="commentFooter">
-                <button (click)="voteCommentUpOrDown(comment._id, 1)"
+                <button (click)="voteCommentUp(comment._id)"
                         [ngClass]="upvotedCommentColor"
                         class="btn btn-default">
                         <span class="glyphicon glyphicon-thumbs-up"></span>
-                        <span>{{ comment.upvote }}</span>
-                </button>
-                <button (click)="voteCommentUpOrDown(comment._id, -1)"
-                        class="btn btn-default">
-                        <span class="glyphicon glyphicon-thumbs-down"></span>
-                        <span>{{ comment.downvote }}</span>
+                        <span *ngIf="upvotedComment == null">{{ comment.upvote.length }}</span>
+                        <span *ngIf="upvotedComment != null">{{ upvotedComment.upvote.length + 1}}</span>
                 </button>
               </div>
             </div>

@@ -57,6 +57,7 @@ export class LyricService {
 
   // Future update: Create a comment service instead of having the comments in here
   addComment(thecomment) {
+    console.log(thecomment)
     return this._http.post('/lyric/comments', thecomment)
     .map(response => response.json())
     .toPromise();

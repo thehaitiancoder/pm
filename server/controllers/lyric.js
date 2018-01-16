@@ -105,6 +105,7 @@ module.exports = {
     },
 
     addComment(req, res) {
+        console.log(req.body)
         Comments.create(req.body)
         .then(comment => {
             res.json(comment)
@@ -113,26 +114,31 @@ module.exports = {
     },
 
     getAllCommentsForActiveLyric(req, res) {
-        Comments.find({lyric: req.params.lyricId}).populate('user').sort({upvote: 'desc'}).sort({downvote: 'desc'})
+        // .sort({upvote: 'desc'}).sort({downvote: 'desc'})
+        Comments.find({lyric: req.params.lyricId}).populate('user')
         .then(theComments => { res.json(theComments) })
         .catch(console.log)
     },
 
     voteCommentUpOrDown(req, res) {
-        if (req.body.upvote == 1) {
+        console.log(req.body)
+        if (req.body.upvote) {
             Comments.findByIdAndUpdate(req.body._id, {
-                $inc: {upvote: 1}
+                $push: {upvote: req.body.upvote}
             })
             .then(updatedComment => { res.json(updatedComment)})
             .catch(console.log)
         }
-        if (req.body.downvote == -1) {
+
+        if (req.body.downvote) {
             Comments.findByIdAndUpdate(req.body._id, {
-                $inc: {downvote: -1}
+                $pull: {upvote: req.body.downvote}
             })
             .then(updatedComment => { res.json(updatedComment)})
             .catch(console.log)
         }
+        
+        
         
     },
 

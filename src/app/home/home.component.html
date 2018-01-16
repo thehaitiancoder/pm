@@ -16,7 +16,7 @@
         <input type="text"
               id="searchInput"
               (input)="searchForLyrics()"
-              
+              (focusout)="closeResult()"
               (keyup)="hideLoader()"
               [(ngModel)]="searchInput"
               autofocus
