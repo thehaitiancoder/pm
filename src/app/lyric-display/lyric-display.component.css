@@ -44,6 +44,22 @@
         background-color: #ccc;
         border-radius: 4px;
     }
+
+    .ad_right_lyric {
+        margin-left: 15px;
+        margin-right: 15px;
+        margin-top: 30px;
+    }
+
+    .ad_right_lyric > iframe {
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
+
+    .desktop {
+        display: none;
+    }
 }
 
 .mainMenu {
@@ -128,6 +144,15 @@ pre {
     text-decoration: none;
 }
 
+.playWatchAndMore {
+    display: inline-block;
+}
+
+.share > img {
+    width: 200px;
+    height: 41px;
+}
+
 @media only screen and (min-width: 768px) {
     /* For desktop: */
     .container {
@@ -159,6 +184,23 @@ pre {
         padding: 10px;
         background-color: #ccc;
         border-radius: 4px;
+    }
+
+    .col-md-4 {
+        margin-top: 20px;
+    }
+
+    .share {
+        display: inline-block;
+        width: 47%;
+    }
+
+    .affix {
+        top: 80px;
+    }
+
+    .mobile {
+        display: none;
     }
 
 }

@@ -36,10 +36,13 @@
             type="button" class="btn btn-default playYoutube">
       <span class="glyphicon glyphicon-film"></span> Gade
     </button></a>
-
-    <div class="soudcloudPlayer" *ngIf="showSoundcloudPlayer">
-        <iframe width="100%" height="166" scrolling="no" frameborder="no" [src]="soundCloudSrc"></iframe>
-    </div>
+  </div>
+  <div class="share desktop">
+    <img class="fb_share" src="./assets/logos/share-facebook.png" alt="share">
+    <img class="fb_share" src="./assets/logos/share-twitter.png" alt="share">
+  </div>
+  <div class="soudcloudPlayer" *ngIf="showSoundcloudPlayer">
+    <iframe width="100%" height="166" scrolling="no" frameborder="no" [src]="soundCloudSrc"></iframe>
   </div>
     <div class="row">
         <div class="col-md-8">
@@ -60,7 +63,7 @@
             <div *ngIf="userNotLoggedIn" class="form-group">
                 <button type="button" class="btn btn-default signUp" *ngIf="loggedUserId == null"><a data-toggle="modal" href="#SignUpModal"><span class="glyphicon glyphicon-user"></span> Anrejistre</a></button>
                 <button type="button" class="btn btn-default login" *ngIf="loggedUserId == null"><a data-toggle="modal" href="#LogInModal"><span class="glyphicon glyphicon-log-in"></span> Konekte</a></button>
-                <span> Pou w ka komante oswa mete non w ak email ou anba</span>
+                <span> Pou w ka komante!</span>
             </div>
             <button *ngIf="commentFieldIsActive" [disabled]="commentForm.invalid" type="submit" class="btn btn-default">Komante!</button>
           </form>
@@ -84,7 +87,14 @@
             </div>
           </div>
         </div>
-        <div class="col-md-4">.col-xs-3 .col-md-5</div>
+        <div class="col-md-4">
+          <div class="ad_right_lyric desktop" data-spy="affix" data-offset-top="205">
+            <iframe src="//cdn.bannersnack.com/banners/bxuios5po/embed/index.html?userId=16738576&t=1516214565" width="300" height="250" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true"></iframe>
+          </div>
+          <div class="ad_right_lyric mobile">
+            <iframe src="//cdn.bannersnack.com/banners/bxuios5po/embed/index.html?userId=16738576&t=1516214565" width="300" height="250" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true"></iframe>
+          </div>
+        </div>
       </div>
 </div>
 
