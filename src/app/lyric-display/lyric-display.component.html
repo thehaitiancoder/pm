@@ -46,29 +46,30 @@
   </div>
     <div class="row">
         <div class="col-md-8">
-          <pre>{{ theLyric.lyrics}}</pre>
-          
-          <form class="comment" (submit)="addComment()" #commentForm="ngForm">
-            <div class="form-group">
-              <textarea class="form-control"
-                        name="content"
-                        [(ngModel)]="comment.content"
-                        (click)="commentFieldActive()"
-                        required
-                        minlength="1"
-                        [rows]="commentFieldLength" 
-                        id="comment"
-                        placeholder="Fè yon komantè!"></textarea>
-            </div>
-            <div *ngIf="userNotLoggedIn" class="form-group">
-                <button type="button" class="btn btn-default signUp" *ngIf="loggedUserId == null"><a data-toggle="modal" href="#SignUpModal"><span class="glyphicon glyphicon-user"></span> Anrejistre</a></button>
-                <button type="button" class="btn btn-default login" *ngIf="loggedUserId == null"><a data-toggle="modal" href="#LogInModal"><span class="glyphicon glyphicon-log-in"></span> Konekte</a></button>
-                <span> Pou w ka komante!</span>
-            </div>
-            <button *ngIf="commentFieldIsActive" [disabled]="commentForm.invalid" type="submit" class="btn btn-default">Komante!</button>
-          </form>
+          <pre class="lyricContent">{{ theLyric.lyrics}}</pre>
 
           <div *ngIf="theComments != null" class="theComments">
+            <h3>{{ theComments.length }} Kòmantè</h3>
+              <form *ngIf="displayCommentForm" class="comment" (submit)="addComment()" #commentForm="ngForm">
+                  <div class="form-group">
+                    <textarea class="form-control"
+                              name="content"
+                              [(ngModel)]="comment.content"
+                              (click)="commentFieldActive()"
+                              required
+                              minlength="1"
+                              [rows]="commentFieldLength" 
+                              id="comment"
+                              placeholder="Fè yon komantè!"></textarea>
+                  </div>
+                  <button *ngIf="commentFieldIsActive" [disabled]="commentForm.invalid" type="submit" class="btn btn-default">Komante!</button>
+                </form>
+                <div *ngIf="userNotLoggedIn" class="form-group">
+                    <button type="button" class="btn btn-default signUp" *ngIf="loggedUserId == null"><a data-toggle="modal" href="#SignUpModal"><span class="glyphicon glyphicon-user"></span> Anrejistre</a></button>
+                    <button type="button" class="btn btn-default login" *ngIf="loggedUserId == null"><a data-toggle="modal" href="#LogInModal"><span class="glyphicon glyphicon-log-in"></span> Konekte</a></button>
+                    <span> Pou w ka komante!</span>
+                </div>
+
             <div *ngFor="let comment of theComments" class="singleComment">
               <div class="commentHeader">
                 <p *ngIf="comment.user">{{ comment.user.username }}</p>
@@ -77,12 +78,20 @@
               <div class="commentBody"><pre id="commentBody">{{ comment.content}}</pre></div>
               <div class="commentFooter">
                 <button (click)="voteCommentUp(comment._id)"
-                        [ngClass]="upvotedCommentColor"
+                        [ngClass]="{'upvotedCommentConfColor': upvoteToHighlight == comment.upvote[0].user}"
+                        [ngClass]="{'upvotedCommentConfColor': upvoteToIncrease == comment._id}"
                         class="btn btn-default">
+                        {{upvoteToHighlight}} {{comment.upvote[0].user}}
+                        <span *ngIf="comment._id"><span *ngFor="let upvoteId of comment.upvote">{{upvoteId.user}}</span></span>
                         <span class="glyphicon glyphicon-thumbs-up"></span>
                         <span *ngIf="upvotedComment == null">{{ comment.upvote.length }}</span>
-                        <span *ngIf="upvotedComment != null">{{ upvotedComment.upvote.length + 1}}</span>
+                        <span *ngIf="upvotedComment != null && upvoteToIncrease == comment._id">{{ upvotedComment.upvote.length + 1}}</span>
                 </button>
+                <div *ngIf="userNotLoggedInToLikeComment && userWantToLikeComment && commentToShowError == comment._id" class="form-group likeCommentError">
+                    <button type="button" class="btn btn-default signUp" *ngIf="loggedUserId == null"><a data-toggle="modal" href="#SignUpModal"><span class="glyphicon glyphicon-user"></span> Anrejistre</a></button>
+                    <button type="button" class="btn btn-default login" *ngIf="loggedUserId == null"><a data-toggle="modal" href="#LogInModal"><span class="glyphicon glyphicon-log-in"></span> Konekte</a></button>
+                    <span> Pou w ka renmen kòmantè sa!</span>
+                </div>
               </div>
             </div>
           </div>

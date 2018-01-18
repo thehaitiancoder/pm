@@ -21,13 +21,19 @@ export class LyricDisplayComponent implements OnInit {
   showSoundcloudPlayer: Boolean = false;
   soundCloudSrc: SafeResourceUrl;
   youtubeSrc: SafeResourceUrl;
+  displayCommentForm: Boolean = true; // Hides the comment form onclik if the user is not logged in and ask for loggin.
   upvotedCommentColor = '';
   upvotedCommentNewSum = 0;
   upvotedComment = null;
+  upvoteToIncrease: String;
+  upvoteToHighlight: String;
   upvoted = false;
   commentFieldIsActive: Boolean = false;
   commentFieldLength = 2;
   userNotLoggedIn: Boolean = false;
+  userNotLoggedInToLikeComment: Boolean = false;
+  userWantToLikeComment: Boolean = false;
+  commentToShowError: String;
 
   constructor(
     private _route: ActivatedRoute,
@@ -49,7 +55,7 @@ export class LyricDisplayComponent implements OnInit {
       this._lyricService.displayOneLyric(this.url)
       .then(lyricToDisplay => {
         this.theLyric = lyricToDisplay;
-        this._title.setTitle(`Pawòl ${this.theLyric.title} - ${this.theLyric.singer} | PawolMizik.com`)
+        this._title.setTitle(`Pawòl ${this.theLyric.title} - ${this.theLyric.singer.name} | PawolMizik.com`)
 
         this._meta.addTags([
           {name: "", content: ""}
@@ -66,14 +72,7 @@ export class LyricDisplayComponent implements OnInit {
         .then(theComments => {
           this.theComments = theComments
           // Checking for the logging user in the upvotes
-          for (var comment=0;comment < theComments.length; comment++) {
-            for (var upvote = 0; upvote < theComments[comment].upvote.length; upvote++) {
-              if (theComments[comment].upvote[upvote].user == this._cookieService.get('userId')) {
-                this.upvotedCommentColor = 'upvotedCommentConfColor';
-                this.upvoted = true;
-              }
-            }
-          }
+          this.checkForUpvotes(theComments);
 
           console.log(theComments)
         })
@@ -106,16 +105,24 @@ export class LyricDisplayComponent implements OnInit {
   }
 
   voteCommentUp(commentId) {
-    this.comment._id = commentId;
-    if (this.upvoted == false) { this.comment.upvote = {user: this._cookieService.get('userId')}};
-    if ( this.upvoted == true ) { this.comment.downvote = {user: this._cookieService.get('userId')}};
-    this._lyricService.voteCommentUpOrDown(this.comment)
-    .then(upvotedComment => {
-      console.log(upvotedComment)
-      this.upvotedComment = upvotedComment;
-      this.upvotedCommentColor = 'upvotedCommentConfColor';
-      this.upvoted = true;
+    if (this._cookieService.get('userId') == undefined) {
+      this.userWantToLikeComment = true;
+      this.userNotLoggedInToLikeComment = true;
+      this.commentToShowError = commentId
+    }
+    else {
+      this.comment._id = commentId;
+      if (this.upvoted == false) { this.comment.upvote = {user: this._cookieService.get('userId')}};
+      if ( this.upvoted == true ) { this.comment.downvote = {user: this._cookieService.get('userId')}};
+      this._lyricService.voteCommentUpOrDown(this.comment)
+      .then(upvotedComment => {
+        console.log(upvotedComment)
+        this.upvotedComment = upvotedComment;
+        this.upvotedCommentColor = 'upvotedCommentConfColor';
+        this.upvoteToIncrease = upvotedComment._id;
+        this.upvoted = true;
     })
+    }
   }
 
   commentFieldActive() {
@@ -124,6 +131,26 @@ export class LyricDisplayComponent implements OnInit {
 
     if (this._cookieService.get('userId') == undefined) {
       this.userNotLoggedIn = true;
+      this.displayCommentForm = false;
+
+    }
+  }
+
+  checkForUpvotes(theComments){
+    console.log('hittssssssssssssssss')
+    for (var comment=0;comment < theComments.length; comment++) {
+      console.log('hit2')
+      for (var upvote = 0; upvote < theComments[comment].upvote.length; upvote++) {
+        console.log('hit3')
+        if (theComments[comment].upvote[upvote].user == this._cookieService.get('userId')) {
+          console.log('last log')
+          this.upvotedCommentColor = 'upvotedCommentConfColor';
+          this.upvoted = true;
+          this.upvoteToHighlight = theComments[comment].upvote[upvote].user; // the ID of the Upvote
+          console.log(theComments[comment].upvote[upvote].user)
+        }
+        else { this.upvotedCommentColor = ''}
+      }
     }
   }
 

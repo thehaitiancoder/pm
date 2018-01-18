@@ -33,22 +33,26 @@
     }
 
     .comment {
-        margin-left: 15px;
-        margin-right: 15px;
+        margin-bottom: 30px;
+        padding-bottom: 10px;
+        border-bottom: 1px dotted;
     }
 
     .theComments {
-        margin: 30px 15px 0px 15px;
-        border: 1px solid #ccc;
         padding: 10px;
-        background-color: #ccc;
-        border-radius: 4px;
+        background-color: navajowhite;
     }
 
+    .singleComment {
+        margin: 0px 0px 30px 0px;
+        border-bottom: 1px dotted #000;
+    }    
+
     .ad_right_lyric {
-        margin-left: 15px;
-        margin-right: 15px;
+        margin-left: auto;
+        margin-right: auto;
         margin-top: 30px;
+        width: 300px;
     }
 
     .ad_right_lyric > iframe {
@@ -69,7 +73,7 @@
 pre {
     background-color: white;
     border: none;
-    margin: 20px 0px 50px 0px;
+    margin: 20px 0px 20px 0px;
     font-family: Helvetica, Arial, sans-serif;
     white-space: pre-line;
 }
@@ -93,6 +97,10 @@ pre {
     font-weight: bold;
 }
 
+.theComments > h3 {
+    margin-top: 0px;
+}
+
 .commentHeader > span {
     float: right;
     color: grey;
@@ -100,7 +108,8 @@ pre {
 
 .commentBody {
     background-color: white;
-    
+    border-radius: 10px;
+    min-height: 60px;
 }
 
 #commentBody {
@@ -109,17 +118,13 @@ pre {
     padding: 10px;
 }
 
-.singleComment {
-    margin: 0px 0px 30px 0px;
-    border-bottom: 1px dotted #000;
-}
-
 .commentFooter { 
     padding: 0px 0px 10px 0px;
 }
 
 .upvotedCommentConfColor { 
     color: green;
+    border-color: green;
 }
 
 .bigTitle {
@@ -144,6 +149,10 @@ pre {
     text-decoration: none;
 }
 
+.form-group > .signUp > a:active, .form-group > .login > a:active {
+    text-decoration: none;
+}
+
 .playWatchAndMore {
     display: inline-block;
 }
@@ -153,11 +162,16 @@ pre {
     height: 41px;
 }
 
+.likeCommentError {
+    margin-top: 10px;
+}
+
 @media only screen and (min-width: 768px) {
     /* For desktop: */
     .container {
         padding-left: 30px;
         padding-right: 30px;
+        padding-bottom: 30px;
         background-color: whitesmoke;
         max-width: 970px;
     }
@@ -165,6 +179,10 @@ pre {
     pre {
         padding: 25px;
         font-size: 18px;
+    }
+
+    .lyricContent {
+        border: 1px solid #ccc;
     }
 
     .clipart {
@@ -178,13 +196,27 @@ pre {
         width: 80px;
     }
 
-    .theComments {
-        margin: 30px 0px 0px 0px;
-        border: 1px solid #ccc;
-        padding: 10px;
-        background-color: #ccc;
-        border-radius: 4px;
+    .comment {
+        margin-bottom: 30px;
+        padding-bottom: 10px;
+        border-bottom: 1px dotted;
     }
+
+    .theComments {
+        padding: 10px 45px 45px 45px;
+        background-color: navajowhite;
+        margin-left: -30px;
+        width: 105%;
+        margin-right: 0px;
+    }
+
+    .singleComment {
+        margin: 0px 0px 10px 0px;
+        border-bottom: 1px dotted #000;
+        margin-left: -45px;
+        padding-left: 45px;
+    }
+    
 
     .col-md-4 {
         margin-top: 20px;
