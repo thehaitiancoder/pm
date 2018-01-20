@@ -76,23 +76,7 @@
                 <span>{{ comment.createdAt | date: 'dd/MM/yyyy' }}</span>
               </div>
               <div class="commentBody"><pre id="commentBody">{{ comment.content}}</pre></div>
-              <div class="commentFooter">
-                <button (click)="voteCommentUp(comment._id)"
-                        [ngClass]="{'upvotedCommentConfColor': upvoteToHighlight == comment.upvote[0].user}"
-                        [ngClass]="{'upvotedCommentConfColor': upvoteToIncrease == comment._id}"
-                        class="btn btn-default">
-                        {{upvoteToHighlight}} {{comment.upvote[0].user}}
-                        <span *ngIf="comment._id"><span *ngFor="let upvoteId of comment.upvote">{{upvoteId.user}}</span></span>
-                        <span class="glyphicon glyphicon-thumbs-up"></span>
-                        <span *ngIf="upvotedComment == null">{{ comment.upvote.length }}</span>
-                        <span *ngIf="upvotedComment != null && upvoteToIncrease == comment._id">{{ upvotedComment.upvote.length + 1}}</span>
-                </button>
-                <div *ngIf="userNotLoggedInToLikeComment && userWantToLikeComment && commentToShowError == comment._id" class="form-group likeCommentError">
-                    <button type="button" class="btn btn-default signUp" *ngIf="loggedUserId == null"><a data-toggle="modal" href="#SignUpModal"><span class="glyphicon glyphicon-user"></span> Anrejistre</a></button>
-                    <button type="button" class="btn btn-default login" *ngIf="loggedUserId == null"><a data-toggle="modal" href="#LogInModal"><span class="glyphicon glyphicon-log-in"></span> Konekte</a></button>
-                    <span> Pou w ka renmen kòmantè sa!</span>
-                </div>
-              </div>
+              <!-- <div class="commentFooter"></div> -->
             </div>
           </div>
         </div>

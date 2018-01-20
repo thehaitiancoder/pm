@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
+const CollaboratersSchema = new Schema({user: String});
+
 const LyricSchema = new Schema({
     author: { // The user that submitted this lyric
         type: Schema.Types.ObjectId,
@@ -25,6 +27,7 @@ const LyricSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Featurer'
     },
+    feat: [CollaboratersSchema],
     released_date: {
         type: Date
     },
@@ -34,7 +37,7 @@ const LyricSchema = new Schema({
     },
     category: {
         type: String,
-        enum: ['Rap', 'Konpa', 'Reggae', 'Levanjil', 'Rasin', 'Kanaval', 'Mond']
+        enum: ['Rap', 'Konpa', 'Reggea', 'Levanjil', 'Rasin', 'Kanaval', 'Mond']
     },
     soundcloud: {
         type: String

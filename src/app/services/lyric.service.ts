@@ -69,11 +69,12 @@ export class LyricService {
     .toPromise();
   }
 
-  voteCommentUpOrDown(comment) {
-    return this._http.put('/lyric/comments/votes', comment)
-    .map(response => response.json())
-    .toPromise();
-  }
+  // Reserved to Like and Unlike comment
+  // voteCommentUpOrDown(comment) {
+  //   return this._http.put('/lyric/comments/votes', comment)
+  //   .map(response => response.json())
+  //   .toPromise();
+  // }
 
   getTop100Lyric(qty) {
     return this._http.get('/lyrics/top/' + qty)

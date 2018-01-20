@@ -12,13 +12,48 @@ module.exports = {
         Lyric.create(req.body)
         .then(lyric => {
             // Give the user credits for the added lyric
-            User.findByIdAndUpdate(req.body.author, {
-                $inc: {
-                    balance_lyric_pending: 5
+            if (lyric.soundcloud != null || lyric.youtube != null) {
+                // Full credit
+                if (lyric.soundcloud != null && lyric.youtube != null) {
+                    User.findByIdAndUpdate(req.body.author, {
+                        $inc: {
+                            balance_lyric_pending: 7
+                        }
+                    })
+                    .catch(console.log)
+                    res.json(lyric)
                 }
-            })
-            .catch(console.log)
-            res.json(lyric)
+                // Credit for Soundcloud Link
+                else if (lyric.soundcloud != null) {
+                    User.findByIdAndUpdate(req.body.author, {
+                        $inc: {
+                            balance_lyric_pending: 6
+                        }
+                    })
+                    .catch(console.log)
+                    res.json(lyric)
+                }
+                // Credit for Youtube Link
+                else if (lyric.youtube != null) {
+                    User.findByIdAndUpdate(req.body.author, {
+                        $inc: {
+                            balance_lyric_pending: 6
+                        }
+                    })
+                    .catch(console.log)
+                    res.json(lyric)
+                }
+            }
+            // Credit for lyric Only
+            else {
+                User.findByIdAndUpdate(req.body.author, {
+                    $inc: {
+                        balance_lyric_pending: 5
+                    }
+                })
+                .catch(console.log)
+                res.json(lyric)
+            }
         })
         .catch(console.log)
     },
@@ -44,19 +79,28 @@ module.exports = {
         .sort({ score: { $meta: "textScore" } })
         .populate('singer')
         .populate('album')
-        .populate({path: 'featuring', populate: {path: 'one', model: 'Singer'}})
-        .populate({path: 'featuring', populate: {path: 'two', model: 'Singer'}})
-        .populate({path: 'featuring', populate: {path: 'three', model: 'Singer'}})
-        .populate({path: 'featuring', populate: {path: 'four', model: 'Singer'}})
-        .populate({path: 'featuring', populate: {path: 'five', model: 'Singer'}})
-        .populate({path: 'featuring', populate: {path: 'six', model: 'Singer'}})
-        .populate({path: 'featuring', populate: {path: 'seven', model: 'Singer'}})
+        .populate({path: 'featuring', populate: {path: 'one'}})
+        .populate({path: 'featuring', populate: {path: 'two'}})
+        .populate({path: 'featuring', populate: {path: 'three'}})
+        .populate({path: 'featuring', populate: {path: 'four'}})
+        .populate({path: 'featuring', populate: {path: 'five'}})
+        .populate({path: 'featuring', populate: {path: 'six'}})
+        .populate({path: 'featuring', populate: {path: 'seven'}})
         .then(titleExist => {res.json(titleExist)})
         .catch(console.log)
     },
 
     getLoggedUserLyrics(req, res) { // Track submitted lyrics to pay users for submission
         Lyric.find({author: req.params.id}).sort({createdAt: 'desc'})
+        .populate('singer')
+        .populate('album')
+        .populate({path: 'featuring', populate: {path: 'one'}})
+        .populate({path: 'featuring', populate: {path: 'two'}})
+        .populate({path: 'featuring', populate: {path: 'three'}})
+        .populate({path: 'featuring', populate: {path: 'four'}})
+        .populate({path: 'featuring', populate: {path: 'five'}})
+        .populate({path: 'featuring', populate: {path: 'six'}})
+        .populate({path: 'featuring', populate: {path: 'seven'}})
         .then(loggedUserLyrics => {
             console.log(loggedUserLyrics)
             res.json(loggedUserLyrics)})
@@ -68,13 +112,13 @@ module.exports = {
         .sort({ score: { $meta: "textScore" } })
         .populate('singer')
         .populate('album')
-        .populate({path: 'featuring', populate: {path: 'one', model: 'Singer'}})
-        .populate({path: 'featuring', populate: {path: 'two', model: 'Singer'}})
-        .populate({path: 'featuring', populate: {path: 'three', model: 'Singer'}})
-        .populate({path: 'featuring', populate: {path: 'four', model: 'Singer'}})
-        .populate({path: 'featuring', populate: {path: 'five', model: 'Singer'}})
-        .populate({path: 'featuring', populate: {path: 'six', model: 'Singer'}})
-        .populate({path: 'featuring', populate: {path: 'seven', model: 'Singer'}})
+        .populate({path: 'featuring', populate: {path: 'one'}})
+        .populate({path: 'featuring', populate: {path: 'two'}})
+        .populate({path: 'featuring', populate: {path: 'three'}})
+        .populate({path: 'featuring', populate: {path: 'four'}})
+        .populate({path: 'featuring', populate: {path: 'five'}})
+        .populate({path: 'featuring', populate: {path: 'six'}})
+        .populate({path: 'featuring', populate: {path: 'seven'}})
         .then(lyricsSearched => {res.json(lyricsSearched)})
         .catch(console.log)
     },
@@ -84,13 +128,13 @@ module.exports = {
         Lyric.findOne({url: req.body.url})
         .populate('singer')
         .populate('album')
-        .populate({path: 'featuring', populate: {path: 'one', model: 'Singer'}})
-        .populate({path: 'featuring', populate: {path: 'two', model: 'Singer'}})
-        .populate({path: 'featuring', populate: {path: 'three', model: 'Singer'}})
-        .populate({path: 'featuring', populate: {path: 'four', model: 'Singer'}})
-        .populate({path: 'featuring', populate: {path: 'five', model: 'Singer'}})
-        .populate({path: 'featuring', populate: {path: 'six', model: 'Singer'}})
-        .populate({path: 'featuring', populate: {path: 'seven', model: 'Singer'}})
+        .populate({path: 'featuring', populate: {path: 'one'}})
+        .populate({path: 'featuring', populate: {path: 'two'}})
+        .populate({path: 'featuring', populate: {path: 'three'}})
+        .populate({path: 'featuring', populate: {path: 'four'}})
+        .populate({path: 'featuring', populate: {path: 'five'}})
+        .populate({path: 'featuring', populate: {path: 'six'}})
+        .populate({path: 'featuring', populate: {path: 'seven'}})
         .then(lyricToDisplay => {
             // Increase the view for this lyric
             Lyric.findByIdAndUpdate(lyricToDisplay._id, {
@@ -115,44 +159,22 @@ module.exports = {
 
     getAllCommentsForActiveLyric(req, res) {
         // .sort({upvote: 'desc'}).sort({downvote: 'desc'})
-        Comments.find({lyric: req.params.lyricId}).populate('user')
+        Comments.find({lyric: req.params.lyricId}).populate('user').sort('-createdAt')
         .then(theComments => { res.json(theComments) })
         .catch(console.log)
-    },
-
-    voteCommentUpOrDown(req, res) {
-        console.log(req.body)
-        if (req.body.upvote) {
-            Comments.findByIdAndUpdate(req.body._id, {
-                $push: {upvote: req.body.upvote}
-            })
-            .then(updatedComment => { res.json(updatedComment)})
-            .catch(console.log)
-        }
-
-        if (req.body.downvote) {
-            Comments.findByIdAndUpdate(req.body._id, {
-                $pull: {upvote: req.body.downvote}
-            })
-            .then(updatedComment => { res.json(updatedComment)})
-            .catch(console.log)
-        }
-        
-        
-        
     },
 
     getTop100Lyric(req, res) {
         Lyric.find().sort({views: 'desc'}).limit(parseInt(req.params.qty))
         .populate('singer')
         .populate('album')
-        .populate({path: 'featuring', populate: {path: 'one', model: 'Singer'}})
-        .populate({path: 'featuring', populate: {path: 'two', model: 'Singer'}})
-        .populate({path: 'featuring', populate: {path: 'three', model: 'Singer'}})
-        .populate({path: 'featuring', populate: {path: 'four', model: 'Singer'}})
-        .populate({path: 'featuring', populate: {path: 'five', model: 'Singer'}})
-        .populate({path: 'featuring', populate: {path: 'six', model: 'Singer'}})
-        .populate({path: 'featuring', populate: {path: 'seven', model: 'Singer'}})
+        .populate({path: 'featuring', populate: {path: 'one'}})
+        .populate({path: 'featuring', populate: {path: 'two'}})
+        .populate({path: 'featuring', populate: {path: 'three'}})
+        .populate({path: 'featuring', populate: {path: 'four'}})
+        .populate({path: 'featuring', populate: {path: 'five'}})
+        .populate({path: 'featuring', populate: {path: 'six'}})
+        .populate({path: 'featuring', populate: {path: 'seven'}})
         .then(top100Lyrics => {res.json(top100Lyrics)})
         .catch(console.log)
     },

@@ -1,8 +1,7 @@
 <div class="container">
   <div class="panel panel-default">
-      <div class="panel-heading">Detay Kont ou</div>
+      <div class="panel-heading">Detay Kont ou ({{ loggedUserLyrics.length }} pawòl)</div>
       <div class="panel-body">
-        <p>Pawòl: {{ loggedUserLyrics.length }}</p>
         <p>Rekonpans:</p>
         <ul>
           <li>5 goud pou pawol chak mizik (Fòk pawòl yo gen mwens ke 20% erè).</li>
@@ -33,7 +32,21 @@
         <tbody>
           <tr *ngFor="let lyric of loggedUserLyrics; let i= index">
             <td>{{i+1}}</td>
-            <td>{{ lyric.title }} - {{ lyric.singer}} <span *ngIf="lyric.featurer.one != null">feat. {{lyric.featurer.one}}</span><span *ngIf="lyric.featurer.two != null">, {{lyric.featurer.two}}</span></td>
+            <td><a [routerLink]="['/lyrics/', lyric.url]">
+              <div>
+                <p>{{ lyric.title }} - {{ lyric.singer.name }}
+                    <span *ngIf="lyric.featuring != null">
+                        <span>feat. {{lyric.featuring.one.name}}</span>
+                        <span *ngIf="lyric.featuring.two != null">, {{ lyric.featuring.two.name }}</span>
+                        <span *ngIf="lyric.featuring.three != null">, {{ lyric.featuring.three.name }}</span>
+                        <span *ngIf="lyric.featuring.four != null">, {{ lyric.featuring.four.name }}</span>
+                        <span *ngIf="lyric.featuring.five != null">, {{ lyric.featuring.five.name }}</span>
+                        <span *ngIf="lyric.featuring.six != null">, {{ lyric.featuring.six.name }}</span>
+                        <span *ngIf="lyric.featuring.seven != null">, {{ lyric.featuring.seven.name }}</span>
+                      </span>
+                </p>
+            </div></a>
+            </td>
             <td>{{lyric.createdAt | date: 'dd/MM/yyyy'}}</td>
             <td *ngIf="lyric.soundcloud != null || lyric.youtube != null">Jiska 7 Goud</td>
             <td *ngIf="lyric.soundcloud == null && lyric.youtube == null">5 Goud</td>
@@ -44,3 +57,5 @@
       </table>
   </div>
 </div>
+
+<app-footer></app-footer>

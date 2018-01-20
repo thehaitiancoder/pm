@@ -14,32 +14,32 @@ const FeaturingSchema = new Schema({
     },
     one : {
         type: Schema.Types.ObjectId,
-        ref: 'Lyric',
+        ref: 'Singer',
         required: true
     },
     two: {
         type: Schema.Types.ObjectId,
-        ref: 'Lyric'
+        ref: 'Singer'
     },
     three: {
         type: Schema.Types.ObjectId,
-        ref: 'Lyric'
+        ref: 'Singer'
     }, 
     four: {
         type: Schema.Types.ObjectId,
-        ref: 'Lyric'
+        ref: 'Singer'
     }, 
     five: {
         type: Schema.Types.ObjectId,
-        ref: 'Lyric'
+        ref: 'Singer'
     }, 
     six: {
         type: Schema.Types.ObjectId,
-        ref: 'Lyric'
+        ref: 'Singer'
     }, 
     seven: {
         type: Schema.Types.ObjectId,
-        ref: 'Lyric'
+        ref: 'Singer'
     }
 }, {timestamps: true})
 

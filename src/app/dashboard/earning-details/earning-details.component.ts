@@ -8,7 +8,7 @@ import { LyricService } from '../../services/lyric.service';
   styleUrls: ['./earning-details.component.css']
 })
 export class EarningDetailsComponent implements OnInit {
-  loggedUserLyrics = null;
+  loggedUserLyrics: Array<Object> = [];
 
   constructor(
     private _cookieService: CookieService,

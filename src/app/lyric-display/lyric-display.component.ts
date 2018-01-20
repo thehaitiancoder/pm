@@ -13,6 +13,7 @@ import { CookieService } from 'ngx-cookie';
   styleUrls: ['./lyric-display.component.css']
 })
 export class LyricDisplayComponent implements OnInit {
+  loggedInUser: String;
   comment = new Comment();
   url = {url: ''};
   theLyric = null;
@@ -27,6 +28,7 @@ export class LyricDisplayComponent implements OnInit {
   upvotedComment = null;
   upvoteToIncrease: String;
   upvoteToHighlight: String;
+  ownerOfUpvote: String;
   upvoted = false;
   commentFieldIsActive: Boolean = false;
   commentFieldLength = 2;
@@ -82,16 +84,21 @@ export class LyricDisplayComponent implements OnInit {
 
     })
 
+    this.loggedInUser = this._cookieService.get('userId');
+
   }
 
+  // Generates the soundcloud player for this lyric
+  // this can be call on click only if the lyric has a soundcloud link
   playSoundcloud(soundcloudLink){
     this.soundCloudSrc = this._sanitizer.bypassSecurityTrustResourceUrl(`https://w.soundcloud.com/player/?url=${soundcloudLink}&amp;color=%23ff5500&amp;auto_play=true&amp;hide_related=true&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true`)
     this.showSoundcloudPlayer = true;
   }
 
+  // This method adds comments to a lyric
   addComment(){
-    this.comment.lyric = this.theLyric._id;
-    this.comment.user = this._cookieService.get('userId');
+    this.comment.lyric = this.theLyric._id; // the Id of the lyric is required
+    this.comment.user = this._cookieService.get('userId'); // Only logged In user should add comments
 
     if (this.comment.content.length > 0) {
       this._lyricService.addComment(this.comment)
@@ -101,27 +108,6 @@ export class LyricDisplayComponent implements OnInit {
         this.commentFieldIsActive = false;
         this.commentFieldLength = 2;
       })
-    }
-  }
-
-  voteCommentUp(commentId) {
-    if (this._cookieService.get('userId') == undefined) {
-      this.userWantToLikeComment = true;
-      this.userNotLoggedInToLikeComment = true;
-      this.commentToShowError = commentId
-    }
-    else {
-      this.comment._id = commentId;
-      if (this.upvoted == false) { this.comment.upvote = {user: this._cookieService.get('userId')}};
-      if ( this.upvoted == true ) { this.comment.downvote = {user: this._cookieService.get('userId')}};
-      this._lyricService.voteCommentUpOrDown(this.comment)
-      .then(upvotedComment => {
-        console.log(upvotedComment)
-        this.upvotedComment = upvotedComment;
-        this.upvotedCommentColor = 'upvotedCommentConfColor';
-        this.upvoteToIncrease = upvotedComment._id;
-        this.upvoted = true;
-    })
     }
   }
 
@@ -137,17 +123,12 @@ export class LyricDisplayComponent implements OnInit {
   }
 
   checkForUpvotes(theComments){
-    console.log('hittssssssssssssssss')
     for (var comment=0;comment < theComments.length; comment++) {
-      console.log('hit2')
       for (var upvote = 0; upvote < theComments[comment].upvote.length; upvote++) {
-        console.log('hit3')
         if (theComments[comment].upvote[upvote].user == this._cookieService.get('userId')) {
-          console.log('last log')
           this.upvotedCommentColor = 'upvotedCommentConfColor';
-          this.upvoted = true;
-          this.upvoteToHighlight = theComments[comment].upvote[upvote].user; // the ID of the Upvote
-          console.log(theComments[comment].upvote[upvote].user)
+          // this.upvoted = true;
+          this.ownerOfUpvote = theComments[comment].upvote[upvote].user; // the ID of the Upvote
         }
         else { this.upvotedCommentColor = ''}
       }

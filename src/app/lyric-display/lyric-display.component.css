@@ -172,8 +172,11 @@ pre {
         padding-left: 30px;
         padding-right: 30px;
         padding-bottom: 30px;
-        background-color: whitesmoke;
         max-width: 970px;
+    }
+    
+    .page-header {
+        border-radius: 30px;
     }
 
     pre {
@@ -205,8 +208,6 @@ pre {
     .theComments {
         padding: 10px 45px 45px 45px;
         background-color: navajowhite;
-        margin-left: -30px;
-        width: 105%;
         margin-right: 0px;
     }
 

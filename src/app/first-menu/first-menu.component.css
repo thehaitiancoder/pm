@@ -73,8 +73,8 @@
 }
 
 .navbar-inverse {
-    background-color: white;
-    border-color: #080808;
+    background-color: ghostwhite;
+    border-color: #ccc;
 }
 
 .navbar-nav > li > a {

@@ -32,7 +32,8 @@ module.exports = function(app){
 
     app.post('/lyric/comments', lyricController.addComment);
     app.get('/lyric/comments/:lyricId', lyricController.getAllCommentsForActiveLyric);
-    app.put('/lyric/comments/votes', lyricController.voteCommentUpOrDown);
+    // Reserved to LIKE and UNLIKE comment
+    // app.put('/lyric/comments/votes', lyricController.voteCommentUpOrDown);
 
     app.get('/my/api/singer/:name', lyricController.checkForSingerName);
     app.post('/my/api/singer/', lyricController.createNewSinger);

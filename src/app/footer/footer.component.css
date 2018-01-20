@@ -1,5 +1,38 @@
 footer {
     height: 250px;
-    background-color: black;
-    margin-top: 30px;
+    background-color: ghostwhite;
+    margin-top: 100px;
+    border-top: 1px solid #ccc;
 }
+
+.logoFooter {
+    color: #ccc;
+    font-size: 3em;
+    width: 30%;
+    margin: 0px auto 20px auto;
+    padding: 50px 0px 0px 0px;
+}
+
+.logoFooter > p {
+    text-align: center;
+}
+
+#copy {
+    font-size: initial;
+}
+
+.network { margin-right: 40px}
+
+.social {
+    width: 300px;
+    margin: 0px auto 0px auto;
+}
+
+#pawol {
+    color: blue;
+}
+
+#mizik {
+    color: red;
+}
+
