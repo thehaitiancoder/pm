@@ -10,6 +10,7 @@
     h2 {
         margin: 0px 0px 0px 0px;
         border-bottom: 1px solid #ccc;
+        text-align: center;
     }
     
     .lyric {
@@ -50,7 +51,7 @@
 }
 
 main {
-    background-color: whitesmoke;
+    background-color: ghostwhite;
 }
 
 .moreLyrics {
@@ -70,6 +71,8 @@ main {
     h2 {
         margin: 0px 0px 0px 0px;
         border-bottom: 1px solid #ccc;
+        text-align: center;
+        padding: 10px;
     }
     
     .lyric {

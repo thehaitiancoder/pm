@@ -3,7 +3,9 @@
 </div>
 
 <div *ngIf="loggedUserProfil" class="container userWelcome page-header">
-    <a [routerLink]="['/dashboard']"><h1 id="welcomeHeader">Dashboard</h1></a>
+    <a [routerLink]="['/dashboard']"><h4 id="welcomeHeader">Dashboard</h4></a>
 </div>
 
 <router-outlet></router-outlet>
+
+<app-footer></app-footer>

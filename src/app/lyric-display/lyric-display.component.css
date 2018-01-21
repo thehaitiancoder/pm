@@ -10,7 +10,11 @@
     }
 
     .page-header {
-        background-color: whitesmoke;
+        background-image: url('/assets/logos/lyric_background.jpg');
+        background-size: 80px;
+        background-repeat: no-repeat;
+        background-position-x: right;
+        background-position-y: center;
     }
 
     .bigTitle {

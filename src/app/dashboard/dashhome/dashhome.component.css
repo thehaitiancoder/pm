@@ -3,13 +3,12 @@
 }
 
 .one {
-    width: 46%;
     height: 200px;
     margin: 0% auto 0% auto;
     padding: 20px;
     border: 1px solid #ccc;
     vertical-align: top;
-    background-color: whitesmoke;
+    background-color: ghostwhite;
     text-align: center;
 }
     .one > h1 {

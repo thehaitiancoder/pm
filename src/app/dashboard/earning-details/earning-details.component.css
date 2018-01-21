@@ -1,3 +1,11 @@
 .panel {
     margin-bottom: 40px;
 }
+
+.panelLyrics > .panel-body {
+    padding: 0px;
+}
+
+.lyricDetails {
+    margin-bottom: 0px;
+}
