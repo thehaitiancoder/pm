@@ -14,10 +14,12 @@ import { LyricService } from '../services/lyric.service';
 })
 export class FirstMenuComponent implements OnInit {
   usernameExist = null;
+  usernameTooShort: Boolean;
   loggedUserId = null;
   loggedUserProfil = null;
   logginError: String;
-  signUpError= [];
+  signUpError: String;
+  signUpErrors: Array<String> = [];
   logginAttemptRemaining: number = 10;
   emailFormatIsValid: Boolean = false;
   resetReqSuccesfullMsg: String;
@@ -70,8 +72,27 @@ export class FirstMenuComponent implements OnInit {
     })
     .catch(errors => {
       this.signUpError = errors._body;
-      console.log(errors._body)
+      var emailError    = "Email sa anrejistre sou sit la deja!",
+          usernameError = "Non itilizatè sa anrejistre deja",
+          pwdError      = "Mokle ou a pa respekte fòm ke sit la mande w la."
+
+      if (this.signUpError.includes("email")) { this.signUpErrors.push(emailError)}
+      else if (!this.signUpError.includes("email")) { this.removeError(emailError)}
+
+      if (this.signUpError.includes("username")) { this.signUpErrors.push(usernameError) }
+      else if (!this.signUpError.includes("username")) { this.removeError(usernameError)}
+
+      if (this.signUpError.includes("password")) { this.signUpErrors.push(pwdError) }
+      else if (!this.signUpError.includes("password")) { this.removeError(pwdError)}
     })
+  }
+
+  removeError(errorToRemove){
+    for (var error= this.signUpErrors.length-1; error>=0; error--) {
+      if (this.signUpErrors[error] === errorToRemove) {
+          this.signUpErrors.splice(error, 1);
+      }
+    }
   }
 
   login(){
@@ -132,15 +153,25 @@ export class FirstMenuComponent implements OnInit {
   }
 
   usernameAvailability(){
-    this._authService.usernameAvailability(this.user.username)
-    .then(usernameExist => {
-      if (usernameExist == this.user.username) {
-        this.usernameExist = usernameExist
-      }
-      else if (usernameExist != this.user.username) {
-        this.usernameExist = false  
-      }
-    })
+    if (this.user.username.length > 0 && this.user.username.length < 3) {
+      this.usernameTooShort = true;
+      this.usernameExist = null;
+    }
+    else if (this.user.username.length >= 3) {
+      this._authService.usernameAvailability(this.user.username)
+      .then(usernameExist => {
+        if (usernameExist == this.user.username) {
+          this.usernameExist = usernameExist
+        }
+        else if (usernameExist != this.user.username) {
+          this.usernameExist = false  
+        }
+      })
+    }
+    else if (this.user.username.length == 0) {
+      this.usernameExist = null;
+      this.usernameTooShort = false;
+    }
   }
 
   printPwdReq(){
@@ -175,6 +206,9 @@ export class FirstMenuComponent implements OnInit {
   checkPwdConf() {
     if (this.user.password == this.user.password_confirmation) {
       this.pwdConfMet = true;
+    }
+    else if (this.user.password != this.user.password_confirmation){
+      this.pwdConfMet = false;
     }
   }
 

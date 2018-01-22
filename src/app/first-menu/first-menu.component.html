@@ -115,7 +115,7 @@
         <div class="modal-body">
             <div *ngIf="signUpError" class="alert alert-warning">
                 <strong>Woyyyyyy!</strong>
-                <p>{{ signUpError[1] }}</p>
+                <p *ngFor="let error of signUpErrors">{{ error }}</p>
             </div>
           <form (submit)='register()' #form="ngForm">
             <div class="form-group">
@@ -123,8 +123,11 @@
                     name="username"
                     [(ngModel)]="user.username"
                     required
-                    (change)="usernameAvailability()"
+                    pattern="\S+"
+                    (input)="usernameAvailability()"
+                    (keyup)="usernameAvailability()"
                     minlength="3"
+                    maxlength="20"
                     class="form-control signupEntries" 
                     placeholder="Non itilizatè w">
               <!-- Alert flashing for username availability -->
@@ -134,15 +137,23 @@
               <div *ngIf='usernameExist' class="alert alert-danger">
                   <strong>Woyyyyyy!</strong> Nom itilizatè sa egziste deja
               </div>
+              <div *ngIf='usernameTooShort && usernameExist == null' class="alert alert-danger">
+                  <strong>Woyyyyyy!</strong> Nom itilizatè sa two kout
+              </div>
             </div>
 
             <div class="form-group">
               <input type="email"
                     name="email"
                     [(ngModel)]="user.email"
+                    (change)="emailErrorCheck()"
                     required
                     class="form-control signupEntries" 
                     placeholder="Email adrès ou">
+              <div *ngIf="logginError" class="alert alert-warning">
+                <strong>Woyyyyyy!</strong>
+                <p>{{ logginError }}</p>
+              </div>
             </div>
             <div class="form-group">
               <input type="password"
@@ -184,6 +195,9 @@
                     placeholder="Konfime Mokle ou">
               <div *ngIf='pwdConfMet' class="alert alert-success">
                 <p>Mokle ou yo menm</p>
+              </div>
+              <div *ngIf='pwdConfMet == false' class="alert alert-warning">
+                  <p>Mokle ou yo pa menm</p>
               </div>
             </div>
             <button type="submit" [disabled]="form.invalid" class="btn btn-primary  signupEntries">Anrejistre</button>
@@ -275,10 +289,15 @@
                     <input type="email"
                           name="email"
                           [(ngModel)]="user.email"
+                          (change)="emailErrorCheck()"
                           required
                           class="form-control signupEntries" 
                           id="email"
                           placeholder="Email adrès ou">
+                    <div *ngIf="logginError" class="alert alert-warning">
+                      <strong>Woyyyyyy!</strong>
+                      <p>{{ logginError }}</p>
+                    </div>
                   </div>
                   <button type="submit" class="btn btn-primary  signupEntries">Chanje Mokle</button>
                 </form>
