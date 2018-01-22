@@ -29,6 +29,12 @@ export class AuthService {
     .toPromise();
   }
 
+  reset(user) {
+    return this._http.put('/auth/login/reset', user)
+    .map(response => response.json())
+    .toPromise();
+  }
+
   logout(): Promise<User>{
     return this._http.delete(this.base + 'logout')
     .map(response => response.json())

@@ -64,8 +64,7 @@ const LyricSchema = new Schema({
         type: String
     },
     views: {
-        type: Number,
-        default: 0
+        type: Number
     },
     clipart: {
         type: String

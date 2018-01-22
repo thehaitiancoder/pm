@@ -19,6 +19,7 @@ module.exports = function(app){
     app.delete('/auth/logout', authController.logout);
     app.get('/auth/usernamecheck/:username', authController.usernameCheck);
     app.get('/auth/userprofile/:id', authController.getLoggedUserProfile);
+    app.put('/auth/login/reset', authController.reset);
 
     app.post('/lyrics/new', lyricController.addNewLyric);
     app.post('/lyrics/featuring', lyricController.createFeaturing);

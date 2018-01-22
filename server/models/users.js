@@ -13,6 +13,8 @@ const UserSchema        = new Schema({
         unique: true,
         minlength: 3
     },
+    pwdResetToken: { type: String},
+    timeResetSent: { type: Date},
     email: {
         type: String,
         trim: true,

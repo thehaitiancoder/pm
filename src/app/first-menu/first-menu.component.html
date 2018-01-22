@@ -113,6 +113,10 @@
           <h4 class="modal-title">Kreye Kont ou sou Pawolmizik!</h4>
         </div>
         <div class="modal-body">
+            <div *ngIf="signUpError" class="alert alert-warning">
+                <strong>Woyyyyyy!</strong>
+                <p>{{ signUpError[1] }}</p>
+            </div>
           <form (submit)='register()' #form="ngForm">
             <div class="form-group">
               <input type="text"
@@ -146,8 +150,10 @@
                     required
                     minlength="8"
                     (click)="printPwdReq()"
+                    (focus)="printPwdReq()"
                     (input)="checkPwdReq(password)"
                     (change)="checkPwdReq(password)"
+                    (keyup)="checkPwdReq(password)"
                     #password="ngModel"
                     [(ngModel)]="user.password"
                     class="form-control signupEntries"
@@ -172,6 +178,7 @@
                     minlength="8"
                     #pwdConf="ngModel"
                     (input)="checkPwdConf()"
+                    (keyup)="checkPwdConf()"
                     [(ngModel)]="user.password_confirmation"
                     class="form-control signupEntries"
                     placeholder="Konfime Mokle ou">
@@ -203,11 +210,17 @@
           <h4 class="modal-title">Konekte</h4>
         </div>
         <div class="modal-body">
-          <form (submit)='login()'>
+          <div *ngIf="logginError" class="alert alert-warning">
+              <strong>Woyyyyyy!</strong>
+              <p>{{ logginError }}</p>
+              <p *ngIf="emailFormatIsValid">Ou ka eseye konekte <strong>{{ logginAttemptRemaining }}</strong> fwa ankò</p>
+            </div>
+          <form (submit)='login()' #loginForm="ngForm">
             <div class="form-group">
               <input type="email"
                     name="email"
                     [(ngModel)]="user.email"
+                    (change)="emailErrorCheck()"
                     required
                     class="form-control signupEntries" 
                     placeholder="Email adrès ou">
@@ -216,13 +229,15 @@
               <input type="password"
                     name="password"
                     [(ngModel)]="user.password"
+                    required
+                    minlength="8"
                     class="form-control signupEntries"
                     placeholder="Mokle ou">
             </div>
             <div class="checkbox">
               <label><input type="checkbox"> Kite'm konekte</label>
             </div>
-            <button type="submit" class="btn btn-primary  signupEntries">Konekte</button>
+            <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary  signupEntries">Konekte</button>
           </form>
           <p><a data-toggle="modal" href="#SignUpModal" data-dismiss="modal">Klike la pou kreye yon kont </a>siw pako genyen!</p>
           <p>Ou bliye mokle ou?<a data-toggle="modal" href="#PasswordResetModal" data-dismiss="modal"> Klike la pou retwouve li</a></p>
@@ -246,18 +261,28 @@
           <h4 class="modal-title">Retwouve Mokle ou</h4>
         </div>
         <div class="modal-body">
-          <p>Rantre email adrès ou pou w ka resevwa yon lyen pou chanje mokle ou.</p>
-          <form action="/action_page.php">
-            <div class="form-group">
-              <input type="email"
-                    name="email"
-                    required
-                    class="form-control signupEntries" 
-                    id="email"
-                    placeholder="Email adrès ou">
+            <div *ngIf="resetReqSuccesfullMsg && !askVisitorToRegister" class="alert alert-success">
+                <p>{{ resetReqSuccesfullMsg }}</p>
             </div>
-            <button type="submit" class="btn btn-primary  signupEntries">Chanje Mokle</button>
-          </form>
+            <div *ngIf="askVisitorToRegister" class="alert alert-info">
+                <strong>Dezole ou pa gen kont sou PawolMizik!</strong>
+                <div><a data-toggle="modal" href="#SignUpModal" data-dismiss="modal"><button class="btn btn-success btn-lg">Klike la pou kreye yon kont</button></a></div>
+            </div>
+            <div *ngIf="!resetReqSuccesfullMsg && !askVisitorToRegister">
+                <p>Rantre email adrès ou pou w ka resevwa yon lyen pou chanje mokle ou.</p>
+                <form (submit)="reset()">
+                  <div class="form-group">
+                    <input type="email"
+                          name="email"
+                          [(ngModel)]="user.email"
+                          required
+                          class="form-control signupEntries" 
+                          id="email"
+                          placeholder="Email adrès ou">
+                  </div>
+                  <button type="submit" class="btn btn-primary  signupEntries">Chanje Mokle</button>
+                </form>
+            </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Anile</button>

@@ -59,6 +59,16 @@
               class="form-control"
               placeholder="Mete pawol mizik yo la"></textarea>
       </div>
+      <!-- Add views -->
+      <div class="form-group">
+        <label for="views">Old Views:</label>
+        <input type="number" name="views" class="form-control" [(ngModel)]="lyric.views">
+      </div>
+      <!-- Add Url -->
+      <div class="form-group">
+        <label for="url">Old Url:</label>
+        <input type="text" name="url" class="form-control" [(ngModel)]="lyric.url">
+      </div>
       <!-- If featurers -->
       <div class="form-group">
         <label for="featuring">Eske gen lot atis ki chante sou mizik sa (Featuring)?</label>

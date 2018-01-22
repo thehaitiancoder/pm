@@ -16,6 +16,12 @@ export class FirstMenuComponent implements OnInit {
   usernameExist = null;
   loggedUserId = null;
   loggedUserProfil = null;
+  logginError: String;
+  signUpError= [];
+  logginAttemptRemaining: number = 10;
+  emailFormatIsValid: Boolean = false;
+  resetReqSuccesfullMsg: String;
+  askVisitorToRegister: Boolean = false;
   pwdReq = null;
   pwdReqMet = false;
   pwdConfMet = null;
@@ -62,15 +68,57 @@ export class FirstMenuComponent implements OnInit {
     .then(() => {
       location.href = '/dashboard';
     })
-    .catch(errors => console.log(errors))
+    .catch(errors => {
+      this.signUpError = errors._body;
+      console.log(errors._body)
+    })
   }
 
   login(){
-    this._authService.login(this.user)
-    .then((user) => {
-      location.href = '/dashboard';
+    const emailFormatReg = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (emailFormatReg.test(this.user.email.toString())) {
+      this.emailFormatIsValid = true;
+      this._authService.login(this.user)
+      .then((user) => {
+        location.href = '/dashboard';
+      })
+      .catch(errors => {
+        console.log(errors)
+        this.logginError = errors._body;
+        this.logginAttemptRemaining -= 1;
+        if (this.logginAttemptRemaining == 0) {
+          
+        }
+      })
+    }
+    else {
+      this.logginError = 'Email ou a gen yon erè. Korije li'
+    }
+  }
+
+  emailErrorCheck(){
+    const emailFormatReg = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (this.user.email.length > 0) {
+      if (!emailFormatReg.test(this.user.email.toString())) {
+        this.logginError = 'Email ou a gen yon erè. Korije li'
+      }
+      else { this.logginError = ''}
+    }
+    else {
+      this.logginError = 'Antre Email ou pouw ka konekte'
+    }
+  }
+
+  reset() {
+    this._authService.reset(this.user)
+    .then(response => {
+      this.resetReqSuccesfullMsg = response;
     })
-    .catch(errors => console.log(errors))
+    .catch(errors => {
+      if (errors.status == 401) {
+        this.askVisitorToRegister = true;
+      }
+    })
   }
 
   logout(){
@@ -108,14 +156,20 @@ export class FirstMenuComponent implements OnInit {
     const pwdLowcaseReq = new RegExp("(?=.*[a-z])");
     const pwdUpperReq = new RegExp("(?=.*[A-Z])");
     const pwdNumberReq = new RegExp("(?=.*[0-9])");
-    if (pwdLowcaseReq.test(password.model)){ this.pwdLowercaseReq = "pwdLowercaseReq" }
-    if (pwdUpperReq.test(password.model)){ this.pwdUppercaseReq = "pwdUppercaseReq" }
-    if (pwdNumberReq.test(password.model)) { this.pwdNumberReq = 'pwdNumberReq' }
-    if (password.model.length >= 8) { this.pwdLenghtReq = "pwdLenghtReq" }
-    if (this.pwdLowercaseReq == "pwdLowercaseReq" && this.pwdUppercaseReq == "pwdUppercaseReq" && this.pwdNumberReq == 'pwdNumberReq' && this.pwdLenghtReq === "pwdLenghtReq") {
-      this.pwdReqMet = true;
-      this.pwdReq = false;
-    }
+    if (pwdLowcaseReq.test(this.user.password.toString())){ this.pwdLowercaseReq = "pwdLowercaseReq" }
+    if (!pwdLowcaseReq.test(this.user.password.toString())) { this.pwdLowercaseReq = null}
+
+    if (pwdUpperReq.test(this.user.password.toString())){ this.pwdUppercaseReq = "pwdUppercaseReq" }
+    if (!pwdUpperReq.test(this.user.password.toString())){ this.pwdUppercaseReq = null }
+
+    if (pwdNumberReq.test(this.user.password.toString())) { this.pwdNumberReq = 'pwdNumberReq' }
+    if (!pwdNumberReq.test(this.user.password.toString())) { this.pwdNumberReq = null }
+
+    if (this.user.password.toString().length >= 8) { this.pwdLenghtReq = "pwdLenghtReq" }
+    if (this.user.password.toString().length < 8) { this.pwdLenghtReq = null }
+
+    if (this.pwdLowercaseReq == "pwdLowercaseReq" && this.pwdUppercaseReq == "pwdUppercaseReq" && this.pwdNumberReq == 'pwdNumberReq' && this.pwdLenghtReq === "pwdLenghtReq") { this.pwdReqMet = true; this.pwdReq = false;}
+    if (this.pwdLowercaseReq != "pwdLowercaseReq" || this.pwdUppercaseReq != "pwdUppercaseReq" || this.pwdNumberReq != 'pwdNumberReq' || this.pwdLenghtReq != "pwdLenghtReq") { this.pwdReqMet = false; this.pwdReq = true;}
   }
 
   checkPwdConf() {
