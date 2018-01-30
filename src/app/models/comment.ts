@@ -1,6 +1,6 @@
 export class Comment {
     _id: String;
-    lyric: String;
+    song: String;
     user: String;
     content: String;
     upvote: Object;

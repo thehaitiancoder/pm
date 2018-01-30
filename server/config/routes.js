@@ -1,5 +1,8 @@
 const authController = require('../controllers/auth');
-const lyricController = require('../controllers/lyric');
+const songController = require('../controllers/song');
+const commentController = require('../controllers/comment');
+const singerController = require('../controllers/singer');
+const searchController = require('../controllers/search');
 const path = require('path');
 const multer = require('multer');
 
@@ -21,23 +24,24 @@ module.exports = function(app){
     app.get('/auth/userprofile/:id', authController.getLoggedUserProfile);
     app.put('/auth/login/reset', authController.reset);
 
-    app.post('/lyrics/new', lyricController.addNewLyric);
-    app.post('/lyrics/featuring', lyricController.createFeaturing);
-    app.put('/lyrics/featuring', lyricController.updateLyricWithFeaturing);
-    app.get('/my/api/album/:singerId', lyricController.getSingerAlbum);
-    app.post('/lyrics/checktitle', lyricController.checkTitleExist);
-    app.get('/lyrics/user/:id', lyricController.getLoggedUserLyrics)
-    app.get('/search/:term', lyricController.generalLyricSearch);
-    app.post('/showlyrics/', lyricController.displayOneLyric);
-    app.get('/lyrics/top/:qty', lyricController.getTop100Lyric);
+    app.post('/lyrics/new', songController.addNewSong);
+    app.post('/lyrics/featuring', songController.createFeaturing);
+    app.put('/lyrics/featuring', songController.updateSongWithFeaturing);
+    app.post('/lyrics/checktitle', songController.checkTitleExist);
+    app.get('/lyrics/user/:id', songController.getLoggedUserSongs)
+    app.post('/showlyrics/', songController.displayOneSong);
+    
+    app.get('/search/:term', searchController.generalSongSearch);
+    app.get('/lyrics/top/:qty', searchController.getTop100Song);
+    app.get('/my/api/album/:singerId', searchController.getSingerAlbum);
 
-    app.post('/lyric/comments', lyricController.addComment);
-    app.get('/lyric/comments/:lyricId', lyricController.getAllCommentsForActiveLyric);
+    app.post('/lyric/comments', commentController.addComment);
+    app.get('/lyric/comments/:lyricId', commentController.getAllCommentsForActiveSong);
     // Reserved to LIKE and UNLIKE comment
-    // app.put('/lyric/comments/votes', lyricController.voteCommentUpOrDown);
+    // app.put('/lyric/comments/votes', songController.voteCommentUpOrDown);
 
-    app.get('/my/api/singer/:name', lyricController.checkForSingerName);
-    app.post('/my/api/singer/', lyricController.createNewSinger);
+    app.get('/my/api/singer/:name', singerController.checkForSingerName);
+    app.post('/my/api/singer/', singerController.createNewSinger);
 
 
 

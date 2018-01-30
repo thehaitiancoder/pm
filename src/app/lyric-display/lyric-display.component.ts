@@ -97,8 +97,8 @@ export class LyricDisplayComponent implements OnInit {
 
   // This method adds comments to a lyric
   addComment(){
-    this.comment.lyric = this.theLyric._id; // the Id of the lyric is required
-    this.comment.user = this._cookieService.get('userId'); // Only logged In user should add comments
+    this.comment.song = this.theLyric._id; // the Id of the lyric is required
+    this.comment.user = this.loggedInUser; // Only logged In user should add comments
 
     if (this.comment.content.length > 0) {
       this._lyricService.addComment(this.comment)

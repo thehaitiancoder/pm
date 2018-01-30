@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const CollaboratersSchema = new Schema({user: String});
+const FeaturedArtistSchema = new Schema({user: String});
 
-const LyricSchema = new Schema({
-    author: { // The user that submitted this lyric
+const SongSchema = new Schema({
+    author: { // The user that submitted this Song
         type: Schema.Types.ObjectId,
         ref: 'User',
         required: true
@@ -27,7 +27,7 @@ const LyricSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Featurer'
     },
-    feat: [CollaboratersSchema],
+    feat: [FeaturedArtistSchema],
     released_date: {
         type: Date
     },
@@ -71,5 +71,5 @@ const LyricSchema = new Schema({
     }
 }, {timestamps: true})
 
-LyricSchema.index({title: 'text'});
-module.exports = mongoose.model('Lyric', LyricSchema);
+SongSchema.index({title: 'text'});
+module.exports = mongoose.model('Song', SongSchema);

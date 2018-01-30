@@ -6,9 +6,9 @@ const UpvoteSchema = new Schema({user: String});
 const DownvoteSchema = new Schema({user: String});
 
 const CommentSchema = new Schema({
-    lyric: {
+    song: {
         type: Schema.Types.ObjectId,
-        ref: 'Lyric',
+        ref: 'Song',
         required: true
     },
     user: {
