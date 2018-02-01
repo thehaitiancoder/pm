@@ -17,5 +17,5 @@ export class Lyric {
     verifier: String= null;
     clipart: String = null;
     certified: String = null;
-    feat: Object;
+    feat = [];
 }

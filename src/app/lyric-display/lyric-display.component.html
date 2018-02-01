@@ -24,6 +24,17 @@
                 <span *ngIf="theLyric.featuring.seven != null">, {{ theLyric.featuring.seven.name }}</span>
               </span>
         </h4>
+        <h4>{{ theLyric.singer.name }}
+            <span *ngIf="theLyric.feat.length > 0">
+                <span>feat. {{theLyric.feat[0].singer.name}}</span>
+                <span *ngIf="theLyric.feat[1]">, {{ theLyric.feat[1].singer.name }}</span>
+                <span *ngIf="theLyric.feat[2]">, {{ theLyric.feat[2].singer.name }}</span>
+                <span *ngIf="theLyric.feat[3]">, {{ theLyric.feat[3].singer.name }}</span>
+                <span *ngIf="theLyric.feat[4]">, {{ theLyric.feat[4].singer.name }}</span>
+                <span *ngIf="theLyric.feat[5]">, {{ theLyric.feat[5].singer.name }}</span>
+                <span *ngIf="theLyric.feat[6]">, {{ theLyric.feat[6].singer.name }}</span>
+              </span>
+        </h4>
     </div>
   </div>
 

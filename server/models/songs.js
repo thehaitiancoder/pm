@@ -1,7 +1,13 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const FeaturedArtistSchema = new Schema({user: String});
+const FeaturedArtistSchema = new Schema({
+    singer: {
+        type: Schema.Types.ObjectId,
+        ref: 'Singer',
+        required: true
+    }
+});
 
 const SongSchema = new Schema({
     author: { // The user that submitted this Song

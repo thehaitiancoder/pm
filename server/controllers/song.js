@@ -116,6 +116,7 @@ module.exports = {
         .populate({path: 'featuring', populate: {path: 'five'}})
         .populate({path: 'featuring', populate: {path: 'six'}})
         .populate({path: 'featuring', populate: {path: 'seven'}})
+        .populate('feat.singer')
         .then(songToDisplay => {
             // Increase the view for this song
             Song.findByIdAndUpdate(songToDisplay._id, {

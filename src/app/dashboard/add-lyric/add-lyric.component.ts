@@ -267,7 +267,7 @@ export class AddLyricComponent implements OnInit {
         this.nofeaturerSevenToAdd = false;
         this.featurerSevenCreateSuccessfully = true;
       }
-
+ 
       setTimeout(() => {
         if (featNo == 0) { this.singerCreateSuccessfully = false;}
         if (featNo == 1) { this.featurerOneCreateSuccessfully = false};
@@ -450,13 +450,13 @@ export class AddLyricComponent implements OnInit {
   }
 
   setFeaturerName(featurerNameDisplay, featurerId, featurerName, feat){
-    if (feat == 1) { this.featuring.one = featurerName; this.featurer.one = featurerId; this.lyric.feat = {one: featurerId}; this.featurerOneToAdd = null;}
-    if (feat == 2) { this.featuring.two = featurerName; this.featurer.two = featurerId; this.lyric.feat = {two: featurerId}; this.featurerTwoToAdd = null;}
-    if (feat == 3) { this.featuring.three = featurerName; this.featurer.three = featurerId; this.lyric.feat = {three: featurerId}; this.featurerThreeToAdd = null;}
-    if (feat == 4) { this.featuring.four = featurerName; this.featurer.four = featurerId; this.lyric.feat = {four: featurerId}; this.featurerFourToAdd = null;}
-    if (feat == 5) { this.featuring.five = featurerName; this.featurer.five = featurerId; this.lyric.feat = {five: featurerId}; this.featurerFiveToAdd = null;}
-    if (feat == 6) { this.featuring.six = featurerName; this.featurer.six = featurerId; this.lyric.feat = {six: featurerId}; this.featurerSixToAdd = null;}
-    if (feat == 7) { this.featuring.seven = featurerName; this.featurer.seven = featurerId; this.lyric.feat = {seven: featurerId}; this.featurerSevenToAdd = null;}
+    if (feat == 1) { this.featuring.one = featurerName; this.featurer.one = featurerId; this.lyric.feat.push({singer: featurerId}) ; this.featurerOneToAdd = null;}
+    if (feat == 2) { this.featuring.two = featurerName; this.featurer.two = featurerId; this.lyric.feat.push({singer: featurerId}) ; this.featurerTwoToAdd = null;}
+    if (feat == 3) { this.featuring.three = featurerName; this.featurer.three = featurerId; this.lyric.feat.push({singer: featurerId}) ; this.featurerThreeToAdd = null;}
+    if (feat == 4) { this.featuring.four = featurerName; this.featurer.four = featurerId; this.lyric.feat.push({singer: featurerId}) ; this.featurerFourToAdd = null;}
+    if (feat == 5) { this.featuring.five = featurerName; this.featurer.five = featurerId; this.lyric.feat.push({singer: featurerId}) ; this.featurerFiveToAdd = null;}
+    if (feat == 6) { this.featuring.six = featurerName; this.featurer.six = featurerId; this.lyric.feat.push({singer: featurerId}) ; this.featurerSixToAdd = null;}
+    if (feat == 7) { this.featuring.seven = featurerName; this.featurer.seven = featurerId; this.lyric.feat.push({singer: featurerId}) ; this.featurerSevenToAdd = null;}
     
     
   }
