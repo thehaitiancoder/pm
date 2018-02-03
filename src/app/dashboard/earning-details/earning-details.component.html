@@ -37,14 +37,14 @@
                 <td><a [routerLink]="['/lyrics/', lyric.url]">
                   <div>
                     <p>{{ lyric.title }} - {{ lyric.singer.name }}
-                        <span *ngIf="lyric.featuring != null">
-                            <span>feat. {{lyric.featuring.one.name}}</span>
-                            <span *ngIf="lyric.featuring.two != null">, {{ lyric.featuring.two.name }}</span>
-                            <span *ngIf="lyric.featuring.three != null">, {{ lyric.featuring.three.name }}</span>
-                            <span *ngIf="lyric.featuring.four != null">, {{ lyric.featuring.four.name }}</span>
-                            <span *ngIf="lyric.featuring.five != null">, {{ lyric.featuring.five.name }}</span>
-                            <span *ngIf="lyric.featuring.six != null">, {{ lyric.featuring.six.name }}</span>
-                            <span *ngIf="lyric.featuring.seven != null">, {{ lyric.featuring.seven.name }}</span>
+                          <span *ngIf="lyric.feat.length > 0">
+                            <span>feat. {{lyric.feat[0].singer.name}}</span>
+                            <span *ngIf="lyric.feat[1]">, {{ lyric.feat[1].singer.name }}</span>
+                            <span *ngIf="lyric.feat[2]">, {{ lyric.feat[2].singer.name }}</span>
+                            <span *ngIf="lyric.feat[3]">, {{ lyric.feat[3].singer.name }}</span>
+                            <span *ngIf="lyric.feat[4]">, {{ lyric.feat[4].singer.name }}</span>
+                            <span *ngIf="lyric.feat[5]">, {{ lyric.feat[5].singer.name }}</span>
+                            <span *ngIf="lyric.feat[6]">, {{ lyric.feat[6].singer.name }}</span>
                           </span>
                     </p>
                 </div></a>

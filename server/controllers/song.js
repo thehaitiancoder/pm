@@ -1,5 +1,4 @@
 const Song = require('mongoose').model('Song');
-const Featurer = require('mongoose').model('Featurer');
 const User = require('mongoose').model('User');
 const Album = require('mongoose').model('Album');
 
@@ -55,49 +54,15 @@ module.exports = {
         .catch(console.log)
     },
 
-    createFeaturing(req, res) {
-        Featurer.create(req.body)
-        .then( featurerList => { res.json(featurerList)})
-        .catch(console.log)
-    },
-
-    updateSongWithFeaturing(req, res) {
-        Song.findByIdAndUpdate(req.body._id, {
-            $set: {
-                featuring: req.body.featuring
-            }
-        })
-        .then( updatedSong => res.json(updatedSong))
-        .catch(console.log)
-    },
-
     checkTitleExist(req, res) {
         Song.find({$text: {$search: req.body.title}}, {score: {$meta: 'textScore'}})
-        .sort({ score: { $meta: "textScore" } })
-        .populate('singer')
-        .populate('album')
-        .populate({path: 'featuring', populate: {path: 'one'}})
-        .populate({path: 'featuring', populate: {path: 'two'}})
-        .populate({path: 'featuring', populate: {path: 'three'}})
-        .populate({path: 'featuring', populate: {path: 'four'}})
-        .populate({path: 'featuring', populate: {path: 'five'}})
-        .populate({path: 'featuring', populate: {path: 'six'}})
-        .populate({path: 'featuring', populate: {path: 'seven'}})
+        .sort({ score: { $meta: "textScore" } }).populate('singer').populate('album').populate('feat.singer')
         .then(titleExist => {res.json(titleExist)})
         .catch(console.log)
     },
 
     getLoggedUserSongs(req, res) { // Track submitted lyrics to pay users for submission
-        Song.find({author: req.params.id}).sort({createdAt: 'desc'})
-        .populate('singer')
-        .populate('album')
-        .populate({path: 'featuring', populate: {path: 'one'}})
-        .populate({path: 'featuring', populate: {path: 'two'}})
-        .populate({path: 'featuring', populate: {path: 'three'}})
-        .populate({path: 'featuring', populate: {path: 'four'}})
-        .populate({path: 'featuring', populate: {path: 'five'}})
-        .populate({path: 'featuring', populate: {path: 'six'}})
-        .populate({path: 'featuring', populate: {path: 'seven'}})
+        Song.find({author: req.params.id}).sort({createdAt: 'desc'}).populate('singer').populate('album').populate('feat.singer')
         .then(loggedUserSongs => {
             console.log(loggedUserSongs)
             res.json(loggedUserSongs)})
@@ -106,17 +71,7 @@ module.exports = {
 
     displayOneSong(req, res) {
         console.log(req.body)
-        Song.findOne({url: req.body.url})
-        .populate('singer')
-        .populate('album')
-        .populate({path: 'featuring', populate: {path: 'one'}})
-        .populate({path: 'featuring', populate: {path: 'two'}})
-        .populate({path: 'featuring', populate: {path: 'three'}})
-        .populate({path: 'featuring', populate: {path: 'four'}})
-        .populate({path: 'featuring', populate: {path: 'five'}})
-        .populate({path: 'featuring', populate: {path: 'six'}})
-        .populate({path: 'featuring', populate: {path: 'seven'}})
-        .populate('feat.singer')
+        Song.findOne({url: req.body.url}).populate('singer').populate('album').populate('feat.singer')
         .then(songToDisplay => {
             // Increase the view for this song
             Song.findByIdAndUpdate(songToDisplay._id, {

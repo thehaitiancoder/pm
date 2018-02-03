@@ -1,9 +1,7 @@
 <div class="container">
   <div *ngIf="!lyricAddedConfirmation">
     <form (submit)='addLyric()' #form="ngForm" autocomplete="off">
-      <p>Itilize fomilè sa pou ajoute pawol mizik.
-        <a href="#" data-toggle="popover" title="Popover Header" data-content="Some content inside the popover">Klike pou detay</a>
-      </p>
+      <p>Itilize fomilè sa pou ajoute pawol mizik.</p>
       <!-- Title -->
       <div class="form-group">
         <label for="title">Tit mizik la:</label>
@@ -219,7 +217,7 @@
               placeholder="Non Atis ki featuring sou mizik sa?">
 
               <div *ngIf="featurerSixToAdd != null" class="alert singerAvailable">
-                  <p>Chwazi &#8696;</p>
+                  <p>Chwazi &#8595;</p>
                   <button (click)="setFeaturerName(featuring.six, featurerSixExist._id, featurerSixExist.name, 6)"
                       *ngFor="let featurerSixExist of featurerSixToAdd"
                       class="btn btn-success singerToAdd">{{ featurerSixExist.name }}</button>
@@ -245,7 +243,7 @@
               placeholder="Non Atis ki featuring sou mizik sa?">
 
               <div *ngIf="featurerSevenToAdd != null" class="alert singerAvailable">
-                  <p>Chwazi &#8797;</p>
+                  <p>Chwazi &#8595;</p>
                   <button (click)="setFeaturerName(featuring.seven, featurerSevenExist._id, featurerSevenExist.name, 7)"
                       *ngFor="let featurerSevenExist of featurerSevenToAdd"
                       class="btn btn-success singerToAdd">{{ featurerSevenExist.name }}</button>
@@ -279,6 +277,7 @@
       <div class="form-group">
         <label for="category">Kategori mizik la:</label>
         <select name="category" class="form-control input-lg" [(ngModel)]="lyric.category" id="category">
+          <option value="Mond">Nan Ki kategori mizik sa ye?</option>
           <option value="Rap">Rap</option>
           <option value="Konpa">Konpa</option>
           <option value="Reggea">Reggea</option>
@@ -317,14 +316,14 @@
           <li *ngFor="let existingLyric of existingLyricTitles">
             <span *ngIf="existingLyric.score > 0.5">
               <a [routerLink]="['/lyrics/', existingLyric.url]">{{existingLyric.title}} - {{existingLyric.singer.name}}
-                <span *ngIf="existingLyric.featuring != null">
-                  <span>feat. {{existingLyric.featuring.one.name}}</span>
-                  <span *ngIf="existingLyric.featuring.two != null">, {{ existingLyric.featuring.two.name }}</span>
-                  <span *ngIf="existingLyric.featuring.three != null">, {{ existingLyric.featuring.three.name }}</span>
-                  <span *ngIf="existingLyric.featuring.four != null">, {{ existingLyric.featuring.four.name }}</span>
-                  <span *ngIf="existingLyric.featuring.five != null">, {{ existingLyric.featuring.five.name }}</span>
-                  <span *ngIf="existingLyric.featuring.six != null">, {{ existingLyric.featuring.six.name }}</span>
-                  <span *ngIf="existingLyric.featuring.seven != null">, {{ existingLyric.featuring.seven.name }}</span>
+                <span *ngIf="existingLyric.feat.length > 0">
+                  <span>feat. {{existingLyric.feat[0].singer.name}}</span>
+                  <span *ngIf="existingLyric.feat[1]">, {{ existingLyric.feat[1].singer.name }}</span>
+                  <span *ngIf="existingLyric.feat[2]">, {{ existingLyric.feat[2].singer.name }}</span>
+                  <span *ngIf="existingLyric.feat[3]">, {{ existingLyric.feat[3].singer.name }}</span>
+                  <span *ngIf="existingLyric.feat[4]">, {{ existingLyric.feat[4].singer.name }}</span>
+                  <span *ngIf="existingLyric.feat[5]">, {{ existingLyric.feat[5].singer.name }}</span>
+                  <span *ngIf="existingLyric.feat[6]">, {{ existingLyric.feat[6].singer.name }}</span>
                 </span>
               </a>
             </span>

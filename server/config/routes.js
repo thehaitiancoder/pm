@@ -17,6 +17,7 @@ const multer = require('multer');
 // })
 
 module.exports = function(app){
+    const api = '/pm/api/';
     app.post('/auth/login', authController.login);
     app.post('/auth/register', authController.register);
     app.delete('/auth/logout', authController.logout);
@@ -24,24 +25,23 @@ module.exports = function(app){
     app.get('/auth/userprofile/:id', authController.getLoggedUserProfile);
     app.put('/auth/login/reset', authController.reset);
 
-    app.post('/lyrics/new', songController.addNewSong);
-    app.post('/lyrics/featuring', songController.createFeaturing);
-    app.put('/lyrics/featuring', songController.updateSongWithFeaturing);
-    app.post('/lyrics/checktitle', songController.checkTitleExist);
-    app.get('/lyrics/user/:id', songController.getLoggedUserSongs)
-    app.post('/showlyrics/', songController.displayOneSong);
+    app.post(api + 'lyrics/new', songController.addNewSong);
+    app.post(api + 'lyrics/checktitle', songController.checkTitleExist);
+    app.get(api + 'lyrics/user/:id', songController.getLoggedUserSongs);
+    /*  The following call should have been a Get req, but instead is a POST because the 
+        lyric is to be retrieved using a slug, thus passing the slug with the url would cause
+        some issues due to some unicodes in the slugs */
+    app.post(api + 'showlyrics', songController.displayOneSong);
     
-    app.get('/search/:term', searchController.generalSongSearch);
-    app.get('/lyrics/top/:qty', searchController.getTop100Song);
-    app.get('/my/api/album/:singerId', searchController.getSingerAlbum);
+    app.get( api + 'search/:term', searchController.generalSongSearch);
+    app.get( api + 'lyrics/top/:qty', searchController.getTop100Song);
+    app.get( api + 'album/:singerId', searchController.getSingerAlbum);
 
-    app.post('/lyric/comments', commentController.addComment);
-    app.get('/lyric/comments/:lyricId', commentController.getAllCommentsForActiveSong);
-    // Reserved to LIKE and UNLIKE comment
-    // app.put('/lyric/comments/votes', songController.voteCommentUpOrDown);
+    app.post(api + 'lyric/comments', commentController.addComment);
+    app.get( api + 'lyric/comments/:lyricId', commentController.getAllCommentsForActiveSong);
 
-    app.get('/my/api/singer/:name', singerController.checkForSingerName);
-    app.post('/my/api/singer/', singerController.createNewSinger);
+    app.get(api + 'singer/:name', singerController.checkForSingerName);
+    app.post(api + 'singer', singerController.createNewSinger);
 
 
 

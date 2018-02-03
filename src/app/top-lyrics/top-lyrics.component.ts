@@ -17,8 +17,12 @@ export class TopLyricsComponent implements OnInit {
 
   ngOnInit() {
     this._lyricService.getTop100Lyric(10)
-    .then(theLyrics => {this.theLyrics = theLyrics})
+    .then(theLyrics => {
+      this.theLyrics = theLyrics
+      console.log(theLyrics)
+    })
     .catch(console.log)
+
   }
 
   getMoreLyrics(qty){

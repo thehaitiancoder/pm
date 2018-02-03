@@ -7,50 +7,38 @@ import { Featurer } from '../models/featuring';
 
 @Injectable()
 export class LyricService {
-  base= '/lyrics/new';
+  api = '/pm/api/';
 
   constructor(
     private _http: Http
   ) { }
 
   addNewLyric(lyric: Lyric){
-    return this._http.post(this.base, lyric)
+    return this._http.post(this.api + 'lyrics/new', lyric)
     .map(response => response.json())
     .toPromise();
   }
 
-  createFeaturing(featurer: Featurer) {
-    return this._http.post('/lyrics/featuring', featurer)
-    .map( response => response.json())
-    .toPromise();
-  }
-
-  updateLyricWithFeaturing(lyric) {
-    return this._http.put('/lyrics/featuring', lyric)
-    .map( response => response.json())
-    .toPromise();
-  }
-
   lyricTitleCheck(lyricTitle){
-    return this._http.post('/lyrics/checktitle', lyricTitle)
+    return this._http.post(this.api + 'lyrics/checktitle', lyricTitle)
     .map(response => response.json())
     .toPromise();
   }
 
   getLoggedUserLyric(userId) {
-    return this._http.get('/lyrics/user/' + userId)
+    return this._http.get(this.api + 'lyrics/user/' + userId)
     .map(response => response.json())
     .toPromise();
   }
 
   generalLyricSearch(termToSearchFor){
-    return this._http.get('/search/' + termToSearchFor)
+    return this._http.get(this.api + 'search/' + termToSearchFor)
     .map(response => response.json())
     .toPromise();
   }
 
   displayOneLyric(url){
-    return this._http.post('/showlyrics/', url)
+    return this._http.post(this.api + 'showlyrics', url)
     .map(response => response.json())
     .toPromise();
   }
@@ -58,44 +46,37 @@ export class LyricService {
   // Future update: Create a comment service instead of having the comments in here
   addComment(thecomment) {
     console.log(thecomment)
-    return this._http.post('/lyric/comments', thecomment)
+    return this._http.post(this.api + 'lyric/comments', thecomment)
     .map(response => response.json())
     .toPromise();
   }
 
   getAllTheCommentsForActiveLyric(lyricId){
-    return this._http.get('/lyric/comments/' + lyricId)
+    return this._http.get(this.api + 'lyric/comments/' + lyricId)
     .map(response => response.json())
     .toPromise();
   }
 
-  // Reserved to Like and Unlike comment
-  // voteCommentUpOrDown(comment) {
-  //   return this._http.put('/lyric/comments/votes', comment)
-  //   .map(response => response.json())
-  //   .toPromise();
-  // }
-
   getTop100Lyric(qty) {
-    return this._http.get('/lyrics/top/' + qty)
+    return this._http.get(this.api + 'lyrics/top/' + qty)
     .map(response => response.json())
     .toPromise();
   }
 
   checkForSingerName(singerToLookFor){ // to be moved to a singer service
-    return this._http.get('/my/api/singer/' + singerToLookFor)
+    return this._http.get(this.api + 'singer/' + singerToLookFor)
     .map( response => response.json())
     .toPromise();
   }
 
   createNewSinger(singerToCreate) {
-    return this._http.post('/my/api/singer/', singerToCreate)
+    return this._http.post(this.api + 'singer', singerToCreate)
     .map( response => response.json())
     .toPromise();
   }
 
   getSingAlbum(singerId) {
-    return this._http.get('/my/api/album/' + singerId)
+    return this._http.get(this.api + 'album/' + singerId)
     .map(response => response.json())
     .toPromise();
   }

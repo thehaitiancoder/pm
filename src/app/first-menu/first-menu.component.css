@@ -162,13 +162,15 @@ a.dropdown-toggle:focus {
 }
 
 .searchResult {
-    margin: 50px auto 5% auto;
+    margin: 0px auto 5% auto;
     border: 1px solid #ccc;
     border-top: none;
     max-height: 560px;
     padding: 1%;
     overflow: auto;
     background-color: whitesmoke;
+    position: fixed;
+    z-index: 1;
 }
 
 .resultSummary > p {

@@ -27,13 +27,7 @@ const SongSchema = new Schema({
         ref: 'Singer',
         required: true
     },
-    // to be removed
-    featurer: {one: String, two: String, three: String, four: String, Five: String, six: String, seven: String, eight: String, nine: String, ten: String},
-    featuring: { // the artists collaborating on this song
-        type: Schema.Types.ObjectId,
-        ref: 'Featurer'
-    },
-    feat: [FeaturedArtistSchema],
+    feat: [FeaturedArtistSchema], // the artists collaborating on this son
     released_date: {
         type: Date
     },

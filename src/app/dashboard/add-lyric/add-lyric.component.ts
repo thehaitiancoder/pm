@@ -9,6 +9,7 @@ import { Featurer } from '../../models/featuring';
 import { Featuring } from '../../models/featurer_binding';
 import { Singer } from '../../models/singer';
 import { CookieService } from 'ngx-cookie';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -80,7 +81,8 @@ export class AddLyricComponent implements OnInit {
   constructor(
     private _authService: AuthService,
     private _lyricService: LyricService,
-    private _cookieService: CookieService
+    private _cookieService: CookieService,
+    private _router: Router
   ) { }
 
   ngOnInit() {
@@ -91,29 +93,13 @@ export class AddLyricComponent implements OnInit {
     // create slug
     // this.lyric.url = this.lyric.singerOnPage.toLowerCase().replace(/ +/g, "-") + "-" + this.lyric.title.toLowerCase().replace(/ +/g, "-");
 
-    if (this.featurer.one != null) {
-      this._lyricService.addNewLyric(this.lyric)
-      .then(addedlyric => {
-        // Create the featuring here
-        this.featurer.lyric = addedlyric._id;
-        this.featurer.singer = addedlyric.singer;
-        this._lyricService.createFeaturing(this.featurer)
-        .then(feauringList => {
-            // Update the lyric with the featuring ID
-            var lyric = {_id: addedlyric._id, featuring: feauringList._id}
-            this._lyricService.updateLyricWithFeaturing(lyric)
-            .then(finalLyric => {
-              this.lyricAddedConfirmation = true;
-            })
-        })
+    this._lyricService.addNewLyric(this.lyric)
+      .then(addedlyric => { 
+        this.lyricAddedConfirmation = true; 
+        setTimeout(() => {
+          this._router.navigate(['dashboard', 'home']);
+        }, 3000);
       })
-    }
-    else {
-      this._lyricService.addNewLyric(this.lyric)
-      .then(addedlyric => {
-        this.lyricAddedConfirmation = true;
-      })
-    }
   }
 
   lyricAvailability() {
@@ -164,16 +150,16 @@ export class AddLyricComponent implements OnInit {
 
   }
 
-  checkForSingerName(){
+  checkForSingerName(){ // See checkForFeaturersName() method for comments that can help for this method
     var singerToLookFor = this.lyric.singerOnPage
 
-    if (this.lyric.singerOnPage.length == 0) { //handle the keyup event
+    if (this.lyric.singerOnPage.length == 0) {
       this.noSingerToAdd = false;
       this.singerToAdd = null;
       this.singerAlbumList = [];
     }
 
-    if (this.lyric.singerOnPage.length > 0) {
+    if (this.lyric.singerOnPage.length > 1) {
       this._lyricService.checkForSingerName(singerToLookFor)
       .then(singer => {
         if (singer.length > 0) {
@@ -213,57 +199,63 @@ export class AddLyricComponent implements OnInit {
 
       if (featNo == 1) {
         this.featuring.one = singer.name;
-        this.featurer.one = singer._id;
-        console.log(this.lyric)
+        this.lyric.feat.push({singer: singer._id});
         this.featurerOneToAdd = null;
+        this.featurer.one = singer; // Show a button to add a new artist
         this.nofeaturerOneToAdd = false;
         this.featurerOneCreateSuccessfully = true;
       }
 
       if (featNo == 2) {
         this.featuring.two = singer.name;
-        this.featurer.two = singer._id;
+        this.lyric.feat.push({singer: singer._id});
         this.featurerTwoToAdd = null;
+        this.featurer.two = singer; // Show a button to add a new artist
         this.nofeaturerTwoToAdd = false;
         this.featurerTwoCreateSuccessfully = true;
       }
 
       if (featNo == 3) {
         this.featuring.three = singer.name;
-        this.featurer.three = singer._id;
+        this.lyric.feat.push({singer: singer._id});
         this.featurerThreeToAdd = null;
+        this.featurer.three = singer; // Show a button to add a new artist
         this.nofeaturerThreeToAdd = false;
         this.featurerThreeCreateSuccessfully = true;
       }
 
       if (featNo == 4) {
         this.featuring.four = singer.name;
-        this.featurer.four = singer._id;
+        this.lyric.feat.push({singer: singer._id});
         this.featurerFourToAdd = null;
+        this.featurer.four = singer; // Show a button to add a new artist
         this.nofeaturerFourToAdd = false;
         this.featurerFourCreateSuccessfully = true;
       }
 
       if (featNo == 5) {
         this.featuring.five = singer.name;
-        this.featurer.five = singer._id;
+        this.lyric.feat.push({singer: singer._id});
         this.featurerFiveToAdd = null;
+        this.featurer.five = singer; // Show a button to add a new artist
         this.nofeaturerFiveToAdd = false;
         this.featurerFiveCreateSuccessfully = true;
       }
 
       if (featNo == 6) {
         this.featuring.six = singer.name;
-        this.featurer.six = singer._id;
+        this.lyric.feat.push({singer: singer._id});
         this.featurerSixToAdd = null;
+        this.featurer.six = singer; // Show a button to add a new artist
         this.nofeaturerSixToAdd = false;
         this.featurerSixCreateSuccessfully = true;
       }
 
       if (featNo == 7) {
         this.featuring.seven = singer.name;
-        this.featurer.seven = singer._id;
+        this.lyric.feat.push({singer: singer._id});
         this.featurerSevenToAdd = null;
+        this.featurer.seven = singer; // Show a button to add a new artist
         this.nofeaturerSevenToAdd = false;
         this.featurerSevenCreateSuccessfully = true;
       }
@@ -285,41 +277,41 @@ export class AddLyricComponent implements OnInit {
     this.noSingerToAdd = false;
   }
 
-  checkForFeaturersName(featurerName, feat) {
+  checkForFeaturersName(featurerName, feat) { // Look up the name for the featured artists
+    /*  This function makes a call to the db to look for an artist name
+        If a match is found the user should pick one of the artist
+        Otherwise the user will add the artist to the DB */
 
-    if (feat == 1) {
-      if (featurerName.length == 0) { //handle the keyup event
+    if (feat == 1) { // First featured artist on the song; 7 possible
+      if (featurerName.length == 0) { //handle the keyup event (if user clears the field, hides the options)
         this.nofeaturerOneToAdd = false;
         this.featurerOneToAdd = null;
       }
   
-      if (featurerName.length > 0) {
+      if (featurerName.length > 1) { // Makes the call only if the artist name is at least 2 char long
         this._lyricService.checkForSingerName(featurerName)
         .then(featurerOne => {
-          console.log(featurerOne)
           if (featurerOne.length > 0) {
-            this.featurerOneToAdd = featurerOne;
+            this.featurerOneToAdd = featurerOne; // List of suggested artists
             this.nofeaturerOneToAdd = false;
           }
   
           if (featurerOne.length == 0) {
-            this.nofeaturerOneToAdd = true;
+            this.nofeaturerOneToAdd = true; // Present the user with option to add a new artist
           }
         })
-        .catch(console.log)
       }
     }
 
     if (feat == 2) {
-      if (featurerName.length == 0) { //handle the keyup event
+      if (featurerName.length == 0) {
         this.nofeaturerTwoToAdd = false;
         this.featurerTwoToAdd = null;
       }
   
-      if (featurerName.length > 0) {
+      if (featurerName.length > 1) {
         this._lyricService.checkForSingerName(featurerName)
         .then(featurerTwo => {
-          console.log(featurerTwo)
           if (featurerTwo.length > 0) {
             this.featurerTwoToAdd = featurerTwo;
             this.nofeaturerTwoToAdd = false;
@@ -329,7 +321,6 @@ export class AddLyricComponent implements OnInit {
             this.nofeaturerTwoToAdd = true;
           }
         })
-        .catch(console.log)
       }
     }
 
@@ -339,10 +330,9 @@ export class AddLyricComponent implements OnInit {
         this.featurerThreeToAdd = null;
       }
   
-      if (featurerName.length > 0) {
+      if (featurerName.length > 1) {
         this._lyricService.checkForSingerName(featurerName)
         .then(featurerThree => {
-          console.log(featurerThree)
           if (featurerThree.length > 0) {
             this.featurerThreeToAdd = featurerThree;
             this.nofeaturerThreeToAdd = false;
@@ -352,20 +342,18 @@ export class AddLyricComponent implements OnInit {
             this.nofeaturerThreeToAdd = true;
           }
         })
-        .catch(console.log)
       }
     }
 
     if (feat == 4) {
-      if (featurerName.length == 0) { //handle the keyup event
+      if (featurerName.length == 0) {
         this.nofeaturerFourToAdd = false;
         this.featurerFourToAdd = null;
       }
   
-      if (featurerName.length > 0) {
+      if (featurerName.length > 1) {
         this._lyricService.checkForSingerName(featurerName)
         .then(featurerFour => {
-          console.log(featurerFour)
           if (featurerFour.length > 0) {
             this.featurerFourToAdd = featurerFour;
             this.nofeaturerFourToAdd = false;
@@ -375,20 +363,18 @@ export class AddLyricComponent implements OnInit {
             this.nofeaturerFourToAdd = true;
           }
         })
-        .catch(console.log)
       }
     }
 
     if (feat == 5) {
-      if (featurerName.length == 0) { //handle the keyup event
+      if (featurerName.length == 0) {
         this.nofeaturerFiveToAdd = false;
         this.featurerFiveToAdd = null;
       }
   
-      if (featurerName.length > 0) {
+      if (featurerName.length > 1) {
         this._lyricService.checkForSingerName(featurerName)
         .then(featurerFive => {
-          console.log(featurerFive)
           if (featurerFive.length > 0) {
             this.featurerFiveToAdd = featurerFive;
             this.nofeaturerFiveToAdd = false;
@@ -398,20 +384,18 @@ export class AddLyricComponent implements OnInit {
             this.nofeaturerFiveToAdd = true;
           }
         })
-        .catch(console.log)
       }
     }
 
     if (feat == 6) {
-      if (featurerName.length == 0) { //handle the keyup event
+      if (featurerName.length == 0) {
         this.nofeaturerSixToAdd = false;
         this.featurerSixToAdd = null;
       }
   
-      if (featurerName.length > 0) {
+      if (featurerName.length > 1) {
         this._lyricService.checkForSingerName(featurerName)
         .then(featurerSix => {
-          console.log(featurerSix)
           if (featurerSix.length > 0) {
             this.featurerSixToAdd = featurerSix;
             this.nofeaturerSixToAdd = false;
@@ -421,20 +405,18 @@ export class AddLyricComponent implements OnInit {
             this.nofeaturerSixToAdd = true;
           }
         })
-        .catch(console.log)
       }
     }
 
     if (feat == 7) {
-      if (featurerName.length == 0) { //handle the keyup event
+      if (featurerName.length == 0) {
         this.nofeaturerSevenToAdd = false;
         this.featurerSevenToAdd = null;
       }
   
-      if (featurerName.length > 0) {
+      if (featurerName.length > 1) {
         this._lyricService.checkForSingerName(featurerName)
         .then(featurerSeven => {
-          console.log(featurerSeven)
           if (featurerSeven.length > 0) {
             this.featurerSevenToAdd = featurerSeven;
             this.nofeaturerSevenToAdd = false;
@@ -444,7 +426,6 @@ export class AddLyricComponent implements OnInit {
             this.nofeaturerSevenToAdd = true;
           }
         })
-        .catch(console.log)
       }
     }
   }
