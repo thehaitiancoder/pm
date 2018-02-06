@@ -44,29 +44,6 @@
           <p>Nou ajoute atis sa nan lis atis nou!</p>
         </div>
       </div>
-      <!-- Lyrics -->
-      <div class="form-group">
-        <label for="lyrics">Pawol mizik la:</label>
-        <textarea name="lyrics"
-              required
-              id="lyrics"
-              rows="20"
-              [(ngModel)]="lyric.lyrics"
-              (change)="lyricAvailability()"
-              [ngClass]="errorColorLyric"
-              class="form-control"
-              placeholder="Mete pawol mizik yo la"></textarea>
-      </div>
-      <!-- Add views -->
-      <div class="form-group">
-        <label for="views">Old Views:</label>
-        <input type="number" name="views" class="form-control" [(ngModel)]="lyric.views">
-      </div>
-      <!-- Add Url -->
-      <div class="form-group">
-        <label for="url">Old Url:</label>
-        <input type="text" name="url" class="form-control" [(ngModel)]="lyric.url">
-      </div>
       <!-- If featurers -->
       <div class="form-group">
         <label for="featuring">Eske gen lot atis ki chante sou mizik sa (Featuring)?</label>
@@ -257,6 +234,29 @@
                   <p>Nou ajoute atis sa nan lis atis nou!</p>
                 </div>
       </div>
+      <!-- Lyrics -->
+      <div class="form-group">
+          <label for="lyrics">Pawol mizik la:</label>
+          <textarea name="lyrics"
+                required
+                id="lyrics"
+                rows="20"
+                [(ngModel)]="lyric.lyrics"
+                (change)="lyricAvailability()"
+                [ngClass]="errorColorLyric"
+                class="form-control"
+                placeholder="Mete pawol mizik yo la"></textarea>
+        </div>
+        <!-- Add views -->
+        <div class="form-group">
+          <label for="views">Old Views:</label>
+          <input type="number" name="views" class="form-control" [(ngModel)]="lyric.views">
+        </div>
+        <!-- Add Url -->
+        <div class="form-group">
+          <label for="url">Old Url:</label>
+          <input type="text" name="url" class="form-control" [(ngModel)]="lyric.url">
+        </div>
       <!-- Released Date -->
       <div class="form-group">
         <label for="realeasedDate">Kilè mizik sa soti?:</label>
