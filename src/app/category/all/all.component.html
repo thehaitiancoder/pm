@@ -1,0 +1,38 @@
+<div *ngFor="let category of categoriesNameAndSongsCount"></div>
+<div *ngIf="category." class="category">
+  <a [routerLink]="['/category', 'rap']">
+    <img src="./assets/clipart/album-cover.png" alt="rap-category">
+    <p>RAP</p>
+  </a>
+</div>
+
+<div class="category">
+    <a [routerLink]="['/category', 'konpa']">
+      <img src="./assets/clipart/album-cover.png" alt="konpa-category">
+      <p>KONPA</p>
+    </a>
+  </div>
+  
+<div class="category">
+  <a [routerLink]="['/category', 'kanaval']">
+    <img src="./assets/clipart/album-cover.png" alt="kanaval-category">
+    <p>KANAVAL</p>
+  </a>
+</div>
+
+<div class="category">
+    <a [routerLink]="['/category', 'raboday']">
+      <img src="./assets/clipart/album-cover.png" alt="raboday-category">
+      <p>RABODAY</p>
+    </a>
+  </div>
+</div>
+
+<div *ngFor="let category of categoriesNameAndSongsCount">
+  <div class="category">
+    <a [routerLink]="['/category', Object.keys(category)]">
+      <img src="./assets/clipart/album-cover.png" alt="raboday-category">
+      <p>{{ Object.keys(category) }}</p>
+    </a>
+      </div>
+</div>

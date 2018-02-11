@@ -8,6 +8,10 @@ import { FirstMenuComponent } from './first-menu/first-menu.component';
 import { DashhomeComponent } from './dashboard/dashhome/dashhome.component';
 import { EarningDetailsComponent } from './dashboard/earning-details/earning-details.component';
 import { LyricDisplayComponent } from './lyric-display/lyric-display.component';
+import { CategoryComponent } from './category/category.component';
+import { RapComponent } from './category/rap/rap.component';
+import { KonpaComponent } from './category/konpa/konpa.component';
+import { AllComponent } from './category/all/all.component';
 
 const routes: Routes = [
   {
@@ -18,6 +22,29 @@ const routes: Routes = [
   {
     path: 'logged',
     redirectTo: 'dashboard'
+  },
+  {
+    path: 'category',
+    component: CategoryComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'all',
+        pathMatch: 'full'
+      },
+      {
+        path: 'all',
+        component: AllComponent
+      },
+      {
+        path: 'rap',
+        component: RapComponent
+      },
+      {
+        path: 'konpa',
+        component: KonpaComponent
+      }
+    ]
   },
   {
     path: 'dashboard',

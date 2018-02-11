@@ -10,8 +10,8 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul *ngIf="searchActiveDesktop" class="nav navbar-nav">
-        <li><a href="#">Rap</a></li>
-        <li><a href="#">Konpa</a></li>
+        <li><a [routerLink]="['/category', 'rap']">Rap</a></li>
+        <li><a [routerLink]="['/category', 'konpa']">Konpa</a></li>
         <li><a href="#">Kanaval</a></li>
         <li><a href="#">Rabòday</a></li>
       </ul>

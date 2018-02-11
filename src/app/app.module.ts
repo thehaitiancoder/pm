@@ -19,6 +19,11 @@ import { EarningDetailsComponent } from './dashboard/earning-details/earning-det
 import { LyricDisplayComponent } from './lyric-display/lyric-display.component';
 import { FooterComponent } from './footer/footer.component';
 import { TopLyricsComponent } from './top-lyrics/top-lyrics.component';
+import { CategoryComponent } from './category/category.component';
+import { RapComponent } from './category/rap/rap.component';
+import { KonpaComponent } from './category/konpa/konpa.component';
+import { AllComponent } from './category/all/all.component';
+import { CategoryService } from './services/category.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +36,11 @@ import { TopLyricsComponent } from './top-lyrics/top-lyrics.component';
     EarningDetailsComponent,
     LyricDisplayComponent,
     FooterComponent,
-    TopLyricsComponent
+    TopLyricsComponent,
+    CategoryComponent,
+    RapComponent,
+    KonpaComponent,
+    AllComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +49,7 @@ import { TopLyricsComponent } from './top-lyrics/top-lyrics.component';
     FormsModule,
     CookieModule.forRoot()
   ],
-  providers: [AuthService, LyricService],
+  providers: [AuthService, LyricService, CategoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

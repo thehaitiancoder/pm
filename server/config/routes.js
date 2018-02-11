@@ -3,6 +3,7 @@ const songController = require('../controllers/song');
 const commentController = require('../controllers/comment');
 const singerController = require('../controllers/singer');
 const searchController = require('../controllers/search');
+const categoryController = require('../controllers/category');
 const path = require('path');
 const multer = require('multer');
 
@@ -42,6 +43,8 @@ module.exports = function(app){
 
     app.get(api + 'singer/:name', singerController.checkForSingerName);
     app.post(api + 'singer', singerController.createNewSinger);
+
+    app.get(api + 'category', categoryController.getCategoriesSongsCount);
 
 
 
