@@ -1,0 +1,62 @@
+@media only screen and (max-width: 767px) {
+    /* For mobile phones: */
+}
+
+@media only screen and (min-width: 768px) {
+    /* For desktop: */
+    .top_artist > .one {
+        width: 125px;
+        display: inline-block;
+        margin-right: 1%
+    }
+
+    .top_artist > .one > img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .top_artist > .one > p {
+        text-align: center;
+    }
+
+    .top_songs {
+        margin: 50px 0px 0px 0px;
+    }
+
+    .top_songs > h1 {
+        text-align: center;
+        margin-bottom: 0px;
+    }
+
+    .left {
+        width: 20px;
+        display: inline-block;
+        vertical-align: text-bottom;
+        color: gray;
+    }
+
+    .middle {
+        width: 88%;
+        display: inline-block;
+    }
+
+    .songTitle {
+        font-size: 2em;
+        margin-bottom: 0px;
+    }
+
+    a {
+        color: black;
+    }
+
+    a:hover {
+        color: blue;
+        text-decoration: none;
+    }
+
+    .right {
+        width: 5%;
+        display: inline-block;
+        color: gray;
+    }
+}
