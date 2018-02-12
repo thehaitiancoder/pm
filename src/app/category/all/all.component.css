@@ -4,10 +4,25 @@
 
 @media only screen and (min-width: 768px) {
     /* For desktop: */
-    .category {
+    .categories {
         display: inline-block;
-        width: 20%;
+        width: 18%;
         margin-right: 2%;
+    }
+
+    .category {
+        position: relative;
+        text-align: center;
+        color: white;    
+    }
+
+    .single {
+        position: absolute;
+        top: 44%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: black;
+        font-size: 3em;
     }
 
     img {
@@ -17,6 +32,6 @@
     p {
         text-align: center;
         margin-top: 5px;
-        
+
     }
 }

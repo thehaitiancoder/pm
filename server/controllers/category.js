@@ -21,5 +21,11 @@ module.exports = {
                 })
             }
         })
+    },
+
+    topCategorySong(req, res){
+        Song.find({category: req.params.name}).sort({views: 'desc'}).limit(10).populate('singer').populate('album').populate('feat.singer')
+        .then(topCategorySongs => {res.json(topCategorySongs)})
+        .catch(console.log)
     }
 }

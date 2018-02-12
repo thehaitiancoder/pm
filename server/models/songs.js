@@ -37,7 +37,7 @@ const SongSchema = new Schema({
     },
     category: {
         type: String,
-        enum: ['Rap', 'Konpa', 'Reggea', 'Levanjil', 'Rasin', 'Kanaval', 'Mond']
+        enum: ['Rap', 'Konpa', 'Reggea', 'Levanjil', 'Rasin', 'Kanaval', 'Mond', 'Angaje', 'Twoubadou']
     },
     soundcloud: {
         type: String

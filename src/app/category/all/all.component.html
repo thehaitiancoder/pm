@@ -1,38 +1,85 @@
-<div *ngFor="let category of categoriesNameAndSongsCount"></div>
-<div *ngIf="category." class="category">
-  <a [routerLink]="['/category', 'rap']">
-    <img src="./assets/clipart/album-cover.png" alt="rap-category">
-    <p>RAP</p>
-  </a>
-</div>
+<div class="page-header">
+    <h1>Tout kategori yo</h1>
+  </div>
 
-<div class="category">
+<div *ngFor="let category of categoriesNameAndSongsCount" class="categories">
+  <div *ngIf="category.Rap" class="category">
+    <a [routerLink]="['/category', 'rap']">
+      <img src="./assets/clipart/album-cover.png" alt="rap-category">
+      <p class="single">RAP</p>
+      <p>{{category.Rap }} mizik</p>
+    </a>
+  </div>
+
+  <div *ngIf="category.Konpa" class="category">
     <a [routerLink]="['/category', 'konpa']">
       <img src="./assets/clipart/album-cover.png" alt="konpa-category">
-      <p>KONPA</p>
+      <p class="single">KONPA</p>
+      <p>{{ category.Konpa }} mizik</p>
     </a>
   </div>
   
-<div class="category">
-  <a [routerLink]="['/category', 'kanaval']">
-    <img src="./assets/clipart/album-cover.png" alt="kanaval-category">
-    <p>KANAVAL</p>
-  </a>
-</div>
-
-<div class="category">
-    <a [routerLink]="['/category', 'raboday']">
-      <img src="./assets/clipart/album-cover.png" alt="raboday-category">
-      <p>RABODAY</p>
+  <div *ngIf="category.Kanaval" class="category">
+    <a [routerLink]="['/category', 'kanaval']">
+      <img src="./assets/clipart/album-cover.png" alt="kanaval-category">
+      <p class="single">KANAVAL</p>
+      <p>{{ category.Kanaval }} mizik</p>
     </a>
   </div>
-</div>
 
-<div *ngFor="let category of categoriesNameAndSongsCount">
-  <div class="category">
-    <a [routerLink]="['/category', Object.keys(category)]">
+  <div *ngIf="category.Raboday" class="category">
+    <a [routerLink]="['/category', 'raboday']">
       <img src="./assets/clipart/album-cover.png" alt="raboday-category">
-      <p>{{ Object.keys(category) }}</p>
+      <p class="single">RABODAY</p>
+      <p>{{ category.Raboday }} mizik</p>
     </a>
-      </div>
+  </div>
+
+  <div *ngIf="category.Reggea" class="category">
+    <a [routerLink]="['/category', 'reggea']">
+      <img src="./assets/clipart/album-cover.png" alt="reggea-category">
+      <p class="single">REGGEA</p>
+      <p>{{ category.Reggea }} mizik</p>
+    </a>
+  </div>
+
+  <div *ngIf="category.Mond" class="category">
+    <a [routerLink]="['/category', 'mond']">
+      <img src="./assets/clipart/album-cover.png" alt="mond-category">
+      <p class="single">MOND</p>
+      <p>{{ category.Mond }} mizik</p>
+    </a>
+  </div>
+
+  <div *ngIf="category.Levanjil" class="category">
+    <a [routerLink]="['/category', 'levanjil']">
+      <img src="./assets/clipart/album-cover.png" alt="levanjil-category">
+      <p class="single">LEVANJIL</p>
+      <p>{{ category.Levanjil }} mizik</p>
+    </a>
+  </div>
+
+  <div *ngIf="category.Rasin" class="category">
+    <a [routerLink]="['/category', 'rasin']">
+      <img src="./assets/clipart/album-cover.png" alt="rasin-category">
+      <p class="single">RASIN</p>
+      <p>{{ category.Rasin }} mizik</p>
+    </a>
+  </div>
+
+  <div *ngIf="category.Angaje" class="category">
+    <a [routerLink]="['/category', 'angaje']">
+      <img src="./assets/clipart/album-cover.png" alt="angaje-category">
+      <p class="single">ANGAJE</p>
+      <p>{{ category.Angaje }} mizik</p>
+    </a>
+  </div>
+
+  <div *ngIf="category.Twoubadou" class="category">
+      <a [routerLink]="['/category', 'twoubadou']">
+        <img src="./assets/clipart/album-cover.png" alt="twoubadou-category">
+        <div class="single"><p>TWOU</p><p>BADOU</p></div>
+        <p>{{ category.Twoubadou}} mizik</p>
+      </a>
+    </div>
 </div>

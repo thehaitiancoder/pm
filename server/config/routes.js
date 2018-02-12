@@ -45,6 +45,7 @@ module.exports = function(app){
     app.post(api + 'singer', singerController.createNewSinger);
 
     app.get(api + 'category', categoryController.getCategoriesSongsCount);
+    app.get(api + 'top-category/:name', categoryController.topCategorySong);
 
 
 
