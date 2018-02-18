@@ -1,56 +1,70 @@
 <div class="top_artist">
-  <h1>TOP ATIS RAP</h1>
+  <h2>Top atis rap</h2>
   <div class="one">
+    <a [routerLink]="['/baky-popile']">
       <img src="./assets/figures/baky-popile.jpeg" class="img-circle" alt="Baky Popilè">
       <p>Baky Popilè</p>
+    </a>
   </div>
 
   <div class="one">
+    <a [routerLink]="['/roody-roodboy']">
       <img src="./assets/figures/roody-roodboy.jpg" class="img-circle" alt="Roody RoodBoy">
       <p>Roody RoodBoy</p>
+    </a>
   </div>
 
   <div class="one">
+    <a [routerLink]="['/wendy-traka']">
       <img src="./assets/figures/wendy-traka.jpg" class="img-circle" alt="Wendy Traka">
       <p>Wendy Traka</p>
+    </a>
   </div>
 
   <div class="one">
+    <a [routerLink]="['/trouble-boy-hitmaker']">
       <img src="./assets/figures/trouble-boy-hitmaker.jpg" class="img-circle" alt="Trouble Boy Hitmaker">
       <p>Trouble Boy</p>
+    </a>
   </div>
 
   <div class="one">
+    <a [routerLink]="['/izolan']">
       <img src="./assets/figures/izolan.jpg" class="img-circle" alt="Izolan">
       <p>Izolan</p>
+    </a>
   </div>
 
   <div class="one">
+    <a [routerLink]="['/blaze-one']">
       <img src="./assets/figures/blaze-one.jpg" class="img-circle" alt="Blaze One">
       <p>Blaze One</p>
+    </a>
   </div>
 
   <div class="one">
+    <a [routerLink]="['/fantom']">
       <img src="./assets/figures/fantom.jpg" class="img-circle" alt="Fantom">
       <p>Fantom</p>
+    </a>
   </div>
 
   <div class="one">
+    <a [routerLink]="['/princess-eud']">
       <img src="./assets/figures/princess-eud.jpg" class="img-circle" alt="Princess Eud">
       <p>Princess Eud</p>
+    </a>
   </div>
 </div>
 
-<div class="row">
-    <div class="col-sm-6 top_songs">
-        <h1>TOP MIZIK RAP</h1>
+    <div class="top_songs">
         <div *ngFor="let result of topRapSongs; let i = index">
             <div class="oneTrack">
                         <div class="left">
                         <p>{{ i+1 }}</p>
                         </div>
                         <a [routerLink]="['/lyrics/', result.url]">
-                        <div class="middle">
+                        <div class="right">
                             <p class="songTitle">{{ result.title }}</p>
                             <p>{{ result.singer.name }}
                                 <span *ngIf="result.feat.length > 0">
@@ -65,14 +79,6 @@
                             </p>
                         </div>
                         </a>
-                        <div class="right">
-                        <p><span class="glyphicon glyphicon-eye-open"></span> {{ result.views }}</p>
-                        </div>
             </div>
         </div>
     </div>
-
-    <div class="col-sm-6">
-        <h1>PAWOL MIZIK JODIA</h1>
-    </div>
-</div>

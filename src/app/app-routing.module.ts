@@ -12,6 +12,14 @@ import { CategoryComponent } from './category/category.component';
 import { RapComponent } from './category/rap/rap.component';
 import { KonpaComponent } from './category/konpa/konpa.component';
 import { AllComponent } from './category/all/all.component';
+import { KanavalComponent } from './category/kanaval/kanaval.component';
+import { RabodayComponent } from './category/raboday/raboday.component';
+import { LevanjilComponent } from './category/levanjil/levanjil.component';
+import { AngajeComponent } from './category/angaje/angaje.component';
+import { RasinComponent } from './category/rasin/rasin.component';
+import { TwoubadouComponent } from './category/twoubadou/twoubadou.component';
+import { ReggeaComponent } from './category/reggea/reggea.component';
+import { MondComponent } from './category/mond/mond.component';
 
 const routes: Routes = [
   {
@@ -43,6 +51,38 @@ const routes: Routes = [
       {
         path: 'konpa',
         component: KonpaComponent
+      },
+      {
+        path: 'kanaval',
+        component: KanavalComponent
+      },
+      {
+        path: 'raboday',
+        component: RabodayComponent
+      },
+      {
+        path: 'levanjil',
+        component: LevanjilComponent
+      },
+      {
+        path: 'angaje',
+        component: AngajeComponent
+      },
+      {
+        path: 'rasin',
+        component: RasinComponent
+      },
+      {
+        path: 'twoubadou',
+        component: TwoubadouComponent
+      },
+      {
+        path: 'reggea',
+        component: ReggeaComponent
+      },
+      {
+        path: 'mond',
+        component: MondComponent
       }
     ]
   },

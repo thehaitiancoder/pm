@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-sm-6 top_songs">
+      <h1>TOP MIZIK RASIN</h1>
+      <div *ngFor="let result of topRapSongs; let i = index">
+          <div class="oneTrack">
+                      <div class="left">
+                      <p>{{ i+1 }}</p>
+                      </div>
+                      <a [routerLink]="['/lyrics/', result.url]">
+                      <div class="middle">
+                          <p class="songTitle">{{ result.title }}</p>
+                          <p>{{ result.singer.name }}
+                              <span *ngIf="result.feat.length > 0">
+                                  <span>feat. {{result.feat[0].singer.name}}</span>
+                                  <span *ngIf="result.feat[1]">, {{ result.feat[1].singer.name }}</span>
+                                  <span *ngIf="result.feat[2]">, {{ result.feat[2].singer.name }}</span>
+                                  <span *ngIf="result.feat[3]">, {{ result.feat[3].singer.name }}</span>
+                                  <span *ngIf="result.feat[4]">, {{ result.feat[4].singer.name }}</span>
+                                  <span *ngIf="result.feat[5]">, {{ result.feat[5].singer.name }}</span>
+                                  <span *ngIf="result.feat[6]">, {{ result.feat[6].singer.name }}</span>
+                                  </span>
+                          </p>
+                      </div>
+                      </a>
+                      <div class="right">
+                      <p><span class="glyphicon glyphicon-eye-open"></span> {{ result.views }}</p>
+                      </div>
+          </div>
+      </div>
+  </div>
+
+  <div class="col-sm-6">
+      <h1>PAWOL MIZIK JODIA</h1>
+  </div>
+</div>

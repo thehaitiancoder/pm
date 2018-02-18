@@ -4,18 +4,29 @@
 
 @media only screen and (min-width: 768px) {
     /* For desktop: */
+    .top_artist {
+        border: 1px solid #ccc;
+        border-radius: 35px;
+        padding: 0px 0px 10px 20px;
+    }
+
     .top_artist > .one {
         width: 125px;
         display: inline-block;
         margin-right: 1%
     }
 
-    .top_artist > .one > img {
+    img {
         width: 120px;
         height: 120px;
+        opacity: 0.7;
     }
 
-    .top_artist > .one > p {
+    img:hover {
+        opacity: 1;
+    }
+
+    .top_artist > .one > a > p {
         text-align: center;
     }
 
@@ -23,7 +34,23 @@
         margin: 50px 0px 0px 0px;
     }
 
-    .top_songs > h1 {
+    .row > div > h2 {
+        text-align: center;
+    }
+
+    .top_songs {
+        margin-top: 50px;
+        background-image: url(/assets/logos/top-ten.png);
+        background-size: 200px;
+        background-repeat: no-repeat;
+        background-position-x: right;
+        background-position-y: 20px;
+        background-color: beige;
+        padding: 20px;
+        border-radius: 50px;
+    }
+
+    .top_songs > h2 {
         text-align: center;
         margin-bottom: 0px;
     }
@@ -35,8 +62,8 @@
         color: gray;
     }
 
-    .middle {
-        width: 84%;
+    .right {
+        width: 95%;
         display: inline-block;
     }
 
@@ -52,11 +79,5 @@
     a:hover {
         color: blue;
         text-decoration: none;
-    }
-
-    .right {
-        width: 10%;
-        display: inline-block;
-        color: gray;
     }
 }

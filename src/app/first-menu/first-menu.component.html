@@ -12,8 +12,8 @@
       <ul *ngIf="searchActiveDesktop" class="nav navbar-nav">
         <li><a [routerLink]="['/category', 'rap']">Rap</a></li>
         <li><a [routerLink]="['/category', 'konpa']">Konpa</a></li>
-        <li><a href="#">Kanaval</a></li>
-        <li><a href="#">Rabòday</a></li>
+        <li><a [routerLink]="['/category', 'kanaval']">Kanaval</a></li>
+        <li><a [routerLink]="['/category', 'raboday']">Rabòday</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li *ngIf="loggedUserId == null"><a data-toggle="modal" href="#SignUpModal"><span class="glyphicon glyphicon-user"></span> Anrejistre</a></li>

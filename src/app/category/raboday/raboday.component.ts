@@ -2,25 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import { CategoryService } from '../../services/category.service';
 
 @Component({
-  selector: 'app-rap',
-  templateUrl: './rap.component.html',
-  styleUrls: ['./rap.component.css']
+  selector: 'app-raboday',
+  templateUrl: './raboday.component.html',
+  styleUrls: ['./raboday.component.css']
 })
-export class RapComponent implements OnInit {
+export class RabodayComponent implements OnInit {
   topRapSongs = null;
-  randomSong: Object;
 
   constructor(
     private _categoryService: CategoryService
   ) { }
 
   ngOnInit() {
-    this._categoryService.topCategorySong('Rap')
+    this._categoryService.topCategorySong('Rabòday')
     .then(topRapSongs => {
       this.topRapSongs = topRapSongs
       console.log(this.topRapSongs)
     })
-
   }
 
 }

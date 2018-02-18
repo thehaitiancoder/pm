@@ -1,78 +1,84 @@
 <div class="top_artist">
-    <h1>TOP ATIS KONPA</h1>
+    <h2>Top atis konpa</h2>
     <div class="one">
+        <a [routerLink]="['/carimi']">
         <img src="./assets/figures/carimi.jpg" class="img-circle" alt="Carimi">
         <p>Carimi</p>
+        </a>
     </div>
   
     <div class="one">
+        <a [routerLink]="['/t-vice']">
         <img src="./assets/figures/t-vice.jpg" class="img-circle" alt="T-Vice">
         <p>T-Vice</p>
+        </a>
     </div>
   
     <div class="one">
+        <a [routerLink]="['/zenglen']">
         <img src="./assets/figures/zenglen.jpg" class="img-circle" alt="Zenglen">
         <p>Zenglen</p>
+        </a>
     </div>
   
     <div class="one">
+        <a [routerLink]="['/nu-look']">
         <img src="./assets/figures/nu-look.jpg" class="img-circle" alt="Nu Look">
         <p>Nu Look</p>
+        </a>
     </div>
   
     <div class="one">
+        <a [routerLink]="['/sweet-micky']">
         <img src="./assets/figures/sweet-micky.jpg" class="img-circle" alt="Sweet Micky">
         <p>Sweet Micky</p>
+        </a>
     </div>
   
     <div class="one">
+        <a [routerLink]="['/klass']">
         <img src="./assets/figures/klass.jpg" class="img-circle" alt="Klass">
         <p>Klass</p>
+        </a>
     </div>
   
     <div class="one">
+        <a [routerLink]="['/djakout-no-1']">
         <img src="./assets/figures/djakout-no1.jpg" class="img-circle" alt="Djakout No 1">
         <p>Djakout No 1</p>
+        </a>
     </div>
   
     <div class="one">
+        <a [routerLink]="['/j-beatz']">
         <img src="./assets/figures/j-beatz.jpg" class="img-circle" alt="J-Beatz">
         <p>J-Beatz</p>
+        </a>
     </div>
 </div>
 
-  <div class="row">
-    <div class="col-sm-6 top_songs">
-      <h1>TOP MIZIK KONPA</h1>
-      <div *ngFor="let result of topRapSongs; let i = index">
-          <div class="oneTrack">
-                    <div class="left">
-                      <p>{{ i+1 }}</p>
-                    </div>
-                    <a [routerLink]="['/lyrics/', result.url]">
-                    <div class="middle">
-                        <p class="songTitle">{{ result.title }}</p>
-                          <p>{{ result.singer.name }}
-                              <span *ngIf="result.feat.length > 0">
-                                  <span>feat. {{result.feat[0].singer.name}}</span>
-                                  <span *ngIf="result.feat[1]">, {{ result.feat[1].singer.name }}</span>
-                                  <span *ngIf="result.feat[2]">, {{ result.feat[2].singer.name }}</span>
-                                  <span *ngIf="result.feat[3]">, {{ result.feat[3].singer.name }}</span>
-                                  <span *ngIf="result.feat[4]">, {{ result.feat[4].singer.name }}</span>
-                                  <span *ngIf="result.feat[5]">, {{ result.feat[5].singer.name }}</span>
-                                  <span *ngIf="result.feat[6]">, {{ result.feat[6].singer.name }}</span>
-                                </span>
-                          </p>
-                    </div>
-                    </a>
-                    <div class="right">
-                      <p><span class="glyphicon glyphicon-eye-open"></span> {{ result.views }}</p>
-                    </div>
-          </div>
-      </div>
+<div class="top_songs">
+        <div *ngFor="let result of topRapSongs; let i = index">
+            <div class="oneTrack">
+                        <div class="left">
+                        <p>{{ i+1 }}</p>
+                        </div>
+                        <a [routerLink]="['/lyrics/', result.url]">
+                        <div class="right">
+                            <p class="songTitle">{{ result.title }}</p>
+                            <p>{{ result.singer.name }}
+                                <span *ngIf="result.feat.length > 0">
+                                    <span>feat. {{result.feat[0].singer.name}}</span>
+                                    <span *ngIf="result.feat[1]">, {{ result.feat[1].singer.name }}</span>
+                                    <span *ngIf="result.feat[2]">, {{ result.feat[2].singer.name }}</span>
+                                    <span *ngIf="result.feat[3]">, {{ result.feat[3].singer.name }}</span>
+                                    <span *ngIf="result.feat[4]">, {{ result.feat[4].singer.name }}</span>
+                                    <span *ngIf="result.feat[5]">, {{ result.feat[5].singer.name }}</span>
+                                    <span *ngIf="result.feat[6]">, {{ result.feat[6].singer.name }}</span>
+                                    </span>
+                            </p>
+                        </div>
+                        </a>
+            </div>
+        </div>
     </div>
-
-    <div class="col-sm-6">
-      <h1>PAWOL MIZIK JODIA</h1>
-    </div>
-  </div>

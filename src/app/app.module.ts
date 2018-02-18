@@ -24,6 +24,14 @@ import { RapComponent } from './category/rap/rap.component';
 import { KonpaComponent } from './category/konpa/konpa.component';
 import { AllComponent } from './category/all/all.component';
 import { CategoryService } from './services/category.service';
+import { KanavalComponent } from './category/kanaval/kanaval.component';
+import { RabodayComponent } from './category/raboday/raboday.component';
+import { LevanjilComponent } from './category/levanjil/levanjil.component';
+import { AngajeComponent } from './category/angaje/angaje.component';
+import { RasinComponent } from './category/rasin/rasin.component';
+import { TwoubadouComponent } from './category/twoubadou/twoubadou.component';
+import { ReggeaComponent } from './category/reggea/reggea.component';
+import { MondComponent } from './category/mond/mond.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +48,15 @@ import { CategoryService } from './services/category.service';
     CategoryComponent,
     RapComponent,
     KonpaComponent,
-    AllComponent
+    AllComponent,
+    KanavalComponent,
+    RabodayComponent,
+    LevanjilComponent,
+    AngajeComponent,
+    RasinComponent,
+    TwoubadouComponent,
+    ReggeaComponent,
+    MondComponent
   ],
   imports: [
     BrowserModule,
