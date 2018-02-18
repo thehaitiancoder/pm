@@ -235,10 +235,9 @@
                 </div>
       </div>
       <!-- Lyrics -->
-      <div *ngIf="lyric.author != 5a75ec9faf18ab20d16d2ad1" class="form-group">
-          <label for="lyrics">Pawol mizik la not-admin:</label>
+      <div class="form-group">
+          <label for="lyrics">Pawol mizik la:</label>
           <textarea name="lyrics"
-                required
                 id="lyrics"
                 rows="20"
                 [(ngModel)]="lyric.lyrics"
@@ -247,17 +246,6 @@
                 class="form-control"
                 placeholder="Mete pawol mizik yo la"></textarea>
         </div>
-        <div *ngIf="lyric.author == 5a75ec9faf18ab20d16d2ad1" class="form-group">
-            <label for="lyrics">Pawol mizik la admin:</label>
-            <textarea name="lyrics"
-                  id="lyrics"
-                  rows="20"
-                  [(ngModel)]="lyric.lyrics"
-                  (change)="lyricAvailability()"
-                  [ngClass]="errorColorLyric"
-                  class="form-control"
-                  placeholder="Mete pawol mizik yo la"></textarea>
-          </div>
         <!-- Add views -->
         <div class="form-group">
           <label for="views">Old Views:</label>
