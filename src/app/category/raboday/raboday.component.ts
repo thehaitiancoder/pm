@@ -14,7 +14,7 @@ export class RabodayComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this._categoryService.topCategorySong('Rabòday')
+    this._categoryService.topCategorySong('Raboday')
     .then(topRapSongs => {
       this.topRapSongs = topRapSongs
       console.log(this.topRapSongs)
