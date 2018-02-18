@@ -7,8 +7,9 @@ export class Lyric {
     singerOnPage = null; // this is to be linked to the singer field of the form
     singer: String = null; // this is to be sent to the db
     released_date: Date = null;
+    carnival_year: String= '2000'; // this is to presented to the user if the category is "Kanaval"
     album: String = null;
-    category?: String = 'Mond';
+    category: String = 'Mond';
     soundcloud: Url = null;
     youtube: Url = null;
     url : String = null;

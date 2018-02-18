@@ -4,7 +4,7 @@
       <p>Itilize fomilè sa pou ajoute pawol mizik.</p>
       <!-- Title -->
       <div class="form-group">
-        <label for="title">Tit mizik la:</label>
+        <!-- <label for="title">Tit mizik la:</label> -->
         <input type="text"
               name="title"
               id="title"
@@ -17,7 +17,7 @@
       </div>
       <!-- Singer -->
       <div class="form-group">
-        <label for="singer">Chantè mizik la:</label>
+        <!-- <label for="singer">Chantè mizik la:</label> -->
         <input type="text"
               name="singer"
               id="singer"
@@ -236,7 +236,7 @@
       </div>
       <!-- Lyrics -->
       <div class="form-group">
-          <label for="lyrics">Pawol mizik la:</label>
+          <!-- <label for="lyrics">Pawol mizik la:</label> -->
           <textarea name="lyrics"
                 id="lyrics"
                 rows="20"
@@ -274,7 +274,7 @@
       </div>
       <!-- Category -->
       <div class="form-group">
-        <label for="category">Kategori mizik la:</label>
+        <!-- <label for="category">Kategori mizik la:</label> -->
         <select name="category" class="form-control input-lg" [(ngModel)]="lyric.category" id="category">
           <option value="Mond">Nan Ki kategori mizik sa ye?</option>
           <option value="Angaje">Angaje</option>
@@ -287,6 +287,14 @@
           <option value="Reggea">Reggea</option>
           <option value="Twoubadou">Twoubadou</option>
         </select>
+      </div>
+      <!-- Carnival Year -->
+      <div *ngIf="lyric.category == 'Kanaval'" class="form-group">
+          <!-- <label for="carnival_date">Ki ane kanaval sa?</label> -->
+          <select name="carnival_date" class="form-control input-lg" [(ngModel)]="lyric.carnival_year" id="carnival_year">
+              <option value="2000">Ki ane kanaval sa?</option>
+              <option *ngFor='let year of carnival_year' value="{{year}}">{{ year }}</option>
+          </select>
       </div>
       <!-- Audio Link -->
       <div class="form-group">

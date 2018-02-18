@@ -31,6 +31,7 @@ const SongSchema = new Schema({
     released_date: {
         type: Date
     },
+    carnival_year: {type: String}, // The user must include the year if the song is a carnival song
     album: {
         type: Schema.Types.ObjectId,
         ref: 'Album'
