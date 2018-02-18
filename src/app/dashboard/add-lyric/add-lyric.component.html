@@ -236,7 +236,7 @@
       </div>
       <!-- Lyrics -->
       <div *ngIf="lyric.author != 5a75ec9faf18ab20d16d2ad1" class="form-group">
-          <label for="lyrics">Pawol mizik la:</label>
+          <label for="lyrics">Pawol mizik la not-admin:</label>
           <textarea name="lyrics"
                 required
                 id="lyrics"
@@ -248,7 +248,7 @@
                 placeholder="Mete pawol mizik yo la"></textarea>
         </div>
         <div *ngIf="lyric.author == 5a75ec9faf18ab20d16d2ad1" class="form-group">
-            <label for="lyrics">Pawol mizik la:</label>
+            <label for="lyrics">Pawol mizik la admin:</label>
             <textarea name="lyrics"
                   id="lyrics"
                   rows="20"
