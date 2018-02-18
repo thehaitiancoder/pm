@@ -9,9 +9,14 @@ const SingerSchema = new Schema({
         required: true,
         unique: true
     },
+    url : {
+        type: String,
+        trim: true,
+        required: true
+    },
     profil_pic : {
         type: String
-    }
+    },
 }, { timestamps: true})
 
 SingerSchema.plugin(uniqueValidator, {message: '{PATH} must be unique'});

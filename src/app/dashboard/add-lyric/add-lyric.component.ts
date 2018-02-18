@@ -186,6 +186,8 @@ export class AddLyricComponent implements OnInit {
 
   createNewSinger(singerName, featNo) {
     this.singer.name = singerName;
+    // create slug for artist single page
+    this.singer.url = singerName.toLowerCase().replace(/ +/g, "-");
 
     this._lyricService.createNewSinger(this.singer)
     .then(singer => {
