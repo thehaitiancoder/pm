@@ -32,6 +32,7 @@ import { RasinComponent } from './category/rasin/rasin.component';
 import { TwoubadouComponent } from './category/twoubadou/twoubadou.component';
 import { ReggeaComponent } from './category/reggea/reggea.component';
 import { MondComponent } from './category/mond/mond.component';
+import { AtisComponent } from './atis/atis.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { MondComponent } from './category/mond/mond.component';
     RasinComponent,
     TwoubadouComponent,
     ReggeaComponent,
-    MondComponent
+    MondComponent,
+    AtisComponent
   ],
   imports: [
     BrowserModule,

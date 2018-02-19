@@ -20,6 +20,7 @@ import { RasinComponent } from './category/rasin/rasin.component';
 import { TwoubadouComponent } from './category/twoubadou/twoubadou.component';
 import { ReggeaComponent } from './category/reggea/reggea.component';
 import { MondComponent } from './category/mond/mond.component';
+import { AtisComponent } from './atis/atis.component';
 
 const routes: Routes = [
   {
@@ -114,7 +115,10 @@ const routes: Routes = [
     path: 'lyrics/:url',
     component: LyricDisplayComponent
   },
-
+  {
+    path: ':atis',
+    component: AtisComponent
+  },
   {
     path: '**',
     component: HomeComponent
