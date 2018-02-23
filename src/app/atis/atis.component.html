@@ -3,7 +3,25 @@
 </div>
 
 <div class="container">
-  
+  <div class="row">
+      <div *ngIf="artistProfile.length != 0" class="col-sm-4">
+        <div class="profile_pic">
+            <img src="{{artistProfile.profil_pic}}" alt="{{artistProfile.url}}">
+        </div>
+        <div class="name">
+            <p>{{ artistProfile.name }}</p>
+        </div>
+        <div class="slug">
+            <p>{{ artistProfile.url }}</p>
+        </div>
+      </div>
+      <div class="col-sm-8">
+        <h1>Pawol {{ artistProfile.name }}</h1>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo eius tempore placeat, quisquam iste adipisci aut commodi, fuga dicta inventore veritatis? Earum aut iste, quod eveniet dolores aliquid accusantium illo?
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe beatae molestiae totam repellat dignissimos asperiores doloremque ad? Quo, cum nostrum? Suscipit debitis optio deserunt consectetur at ex fuga recusandae est?
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis aperiam voluptatibus sapiente nulla saepe laudantium fugit maiores, optio ipsam laboriosam delectus, odio eveniet quia! Quos, delectus. Tenetur a sunt ipsam.
+      </div>
+  </div>
 </div>
 
 <app-footer></app-footer>

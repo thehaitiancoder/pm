@@ -2,6 +2,7 @@
 
 const Song = require('mongoose').model('Song');
 const Album = require('mongoose').model('Album');
+const Singer = require('mongoose').model('Singer');
 
 module.exports = {
     // This provides search on the whole app
@@ -23,6 +24,12 @@ module.exports = {
     getSingerAlbum(req, res) {
         Album.find({singer: req.params.singerId})
         .then( album => {res.json(album)})
+        .catch(console.log)
+    },
+
+    getSingerProfile(req, res) {
+        Singer.findOne({url: req.params.slug})
+        .then( singerProfile => res.json(singerProfile))
         .catch(console.log)
     }
 }

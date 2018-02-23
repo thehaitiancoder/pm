@@ -34,9 +34,10 @@ module.exports = function(app){
         some issues due to some unicodes in the slugs */
     app.post(api + 'showlyrics', songController.displayOneSong);
     
-    app.get( api + 'search/:term', searchController.generalSongSearch);
-    app.get( api + 'lyrics/top/:qty', searchController.getTop100Song);
-    app.get( api + 'album/:singerId', searchController.getSingerAlbum);
+    app.get(api + 'search/:term', searchController.generalSongSearch);
+    app.get(api + 'lyrics/top/:qty', searchController.getTop100Song);
+    app.get(api + 'album/:singerId', searchController.getSingerAlbum);
+    app.get(api + ':slug', searchController.getSingerProfile);
 
     app.post(api + 'lyric/comments', commentController.addComment);
     app.get( api + 'lyric/comments/:lyricId', commentController.getAllCommentsForActiveSong);

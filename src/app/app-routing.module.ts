@@ -116,7 +116,7 @@ const routes: Routes = [
     component: LyricDisplayComponent
   },
   {
-    path: ':atis',
+    path: ':slug',
     component: AtisComponent
   },
   {
