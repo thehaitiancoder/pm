@@ -3,7 +3,7 @@
 </div>
 
 <div>
-  <div class="row">
+  <div *ngIf="artistProfile != null" class="row">
       <div class="col-sm-4 left_panel">
         <div>
             <img class="profile_pic" src="{{artistProfile.profil_pic}}" alt="{{artistProfile.url}}">
@@ -17,7 +17,7 @@
             </div>
         </div>
       </div>
-      <div class="col-sm-8 right_panel">
+      <div *ngIf="artistTracks != null" class="col-sm-8 right_panel">
         <h1 class="title_right_panel">Mizik &#8595;</h1>
         <div class="oneSong" *ngFor="let result of artistTracks; let i = index">
             <a [routerLink]="['/lyrics/', result.url]">

@@ -8,8 +8,8 @@ import { AtisService } from '../services/atis.service';
   styleUrls: ['./atis.component.css']
 })
 export class AtisComponent implements OnInit {
-  artistProfile = {};
-  artistTracks = [];
+  artistProfile = null;
+  artistTracks = null;
 
   constructor(
     private _routes: ActivatedRoute,
