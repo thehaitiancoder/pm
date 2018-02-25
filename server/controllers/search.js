@@ -31,5 +31,11 @@ module.exports = {
         Singer.findOne({url: req.params.slug})
         .then( singerProfile => res.json(singerProfile))
         .catch(console.log)
+    },
+
+    getArtistTracks(req, res) {
+        Song.find({singer: req.params.singerId}).populate('singer').populate('album').populate('feat.singer')
+        .then(artistTracks => {res.json(artistTracks)})
+        .catch(console.log)
     }
 }

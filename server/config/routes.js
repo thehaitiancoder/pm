@@ -38,6 +38,7 @@ module.exports = function(app){
     app.get(api + 'lyrics/top/:qty', searchController.getTop100Song);
     app.get(api + 'album/:singerId', searchController.getSingerAlbum);
     app.get(api + ':slug', searchController.getSingerProfile);
+    app.get(`${api}:slug/:singerId`, searchController.getArtistTracks);
 
     app.post(api + 'lyric/comments', commentController.addComment);
     app.get( api + 'lyric/comments/:lyricId', commentController.getAllCommentsForActiveSong);

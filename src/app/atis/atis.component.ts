@@ -9,6 +9,7 @@ import { AtisService } from '../services/atis.service';
 })
 export class AtisComponent implements OnInit {
   artistProfile: Object= {};
+  artistTracks: Array<Object> = [];
 
   constructor(
     private _routes: ActivatedRoute,
@@ -23,6 +24,12 @@ export class AtisComponent implements OnInit {
       .then(artistProfile => {
         this.artistProfile = artistProfile;
         console.log(this.artistProfile)
+        
+        this._atisService.getArtistTracks(artistProfile.url, artistProfile._id)
+        .then(artistTracks => {
+          this.artistTracks = artistTracks;
+          console.log(this.artistTracks)
+        })
       })
 
       

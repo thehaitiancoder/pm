@@ -2,24 +2,55 @@
     <app-first-menu></app-first-menu>
 </div>
 
-<div class="container">
+<div>
   <div class="row">
-      <div *ngIf="artistProfile.length != 0" class="col-sm-4">
-        <div class="profile_pic">
-            <img src="{{artistProfile.profil_pic}}" alt="{{artistProfile.url}}">
+      <div *ngIf="artistProfile.length != 0" class="col-sm-4 left_panel">
+        <div>
+            <img class="profile_pic" src="{{artistProfile.profil_pic}}" alt="{{artistProfile.url}}">
         </div>
-        <div class="name">
-            <p>{{ artistProfile.name }}</p>
-        </div>
-        <div class="slug">
-            <p>{{ artistProfile.url }}</p>
+        <div class="over_profile">
+            <div class="artist_name">
+                <p>{{ artistProfile.name }}</p>
+            </div>
+            <div class="artist_slug">
+                <p>{{ artistProfile.url }}</p>
+            </div>
         </div>
       </div>
-      <div class="col-sm-8">
-        <h1>Pawol {{ artistProfile.name }}</h1>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo eius tempore placeat, quisquam iste adipisci aut commodi, fuga dicta inventore veritatis? Earum aut iste, quod eveniet dolores aliquid accusantium illo?
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe beatae molestiae totam repellat dignissimos asperiores doloremque ad? Quo, cum nostrum? Suscipit debitis optio deserunt consectetur at ex fuga recusandae est?
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis aperiam voluptatibus sapiente nulla saepe laudantium fugit maiores, optio ipsam laboriosam delectus, odio eveniet quia! Quos, delectus. Tenetur a sunt ipsam.
+      <div class="col-sm-8 right_panel">
+        <h1 class="title_right_panel">Mizik &#8595;</h1>
+        <div class="oneSong" *ngFor="let result of artistTracks; let i = index">
+            <a [routerLink]="['/lyrics/', result.url]">
+            <div class="left">
+              <p>{{ i+1 }}</p>
+            </div>
+            <div class="right">
+                <p class="songTitle">{{ result.title }}</p>
+                  <p>
+                      <span *ngIf="result.feat.length > 0" class="feat_artist">
+                          <span>feat. {{result.feat[0].singer.name}}</span>
+                          <span *ngIf="result.feat[1]">, {{ result.feat[1].singer.name }}</span>
+                          <span *ngIf="result.feat[2]">, {{ result.feat[2].singer.name }}</span>
+                          <span *ngIf="result.feat[3]">, {{ result.feat[3].singer.name }}</span>
+                          <span *ngIf="result.feat[4]">, {{ result.feat[4].singer.name }}</span>
+                          <span *ngIf="result.feat[5]">, {{ result.feat[5].singer.name }}</span>
+                          <span *ngIf="result.feat[6]">, {{ result.feat[6].singer.name }}</span>
+                        </span>
+                  </p>
+                  <div class="songsExtra">
+                      <div class="views">
+                        <p><span class="glyphicon glyphicon-eye-open"></span> {{ result.views }}</p>
+                      </div>
+                      <div class="soundcloud_youtube">
+                          <img src="./assets/logos/soundcloud.png" alt="soundcloud">
+                          <img src="./assets/logos/youtube.png" alt="youtube">
+                      </div>
+                  </div>
+            </div>
+          </a>
+
+            <div class="divider"></div>
+          </div>
       </div>
   </div>
 </div>
