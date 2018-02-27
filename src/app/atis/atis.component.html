@@ -42,8 +42,8 @@
                         <p><span class="glyphicon glyphicon-eye-open"></span> {{ result.views }}</p>
                       </div>
                       <div class="soundcloud_youtube">
-                          <img src="./assets/logos/soundcloud.png" alt="soundcloud">
-                          <img src="./assets/logos/youtube.png" alt="youtube">
+                          <img *ngIf="result.soundcloud != null" src="./assets/logos/soundcloud.png" alt="soundcloud">
+                          <img *ngIf="result.youtube != null" src="./assets/logos/youtube.png" alt="youtube">
                       </div>
                   </div>
             </div>
