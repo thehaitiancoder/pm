@@ -20,6 +20,7 @@ export class RapComponent implements OnInit {
       this.topRapSongs = topRapSongs
       console.log(this.topRapSongs)
     })
+    .catch(errors => console.log(errors))
 
   }
 

@@ -17,9 +17,9 @@ export class AtisService {
     .toPromise();
   }
 
-  getArtistTracks(artistSlug, artistId) {
+  getArtistTracks(artistId) {
     // make the request with a final url as /pm/api/baky-url/5a75c09b071bc8527874416f
-    return this._http.get(`${this.api}${artistSlug}/${artistId}`)
+    return this._http.get(this.api + 'tracks/' + artistId)
     .map(response => response.json())
     .toPromise();
   }

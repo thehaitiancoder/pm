@@ -25,7 +25,7 @@ export class AtisComponent implements OnInit {
         this.artistProfile = artistProfile;
         console.log(this.artistProfile)
         
-        this._atisService.getArtistTracks(artistProfile.url, artistProfile._id)
+        this._atisService.getArtistTracks(artistProfile._id)
         .then(artistTracks => {
           this.artistTracks = artistTracks;
           console.log(this.artistTracks)

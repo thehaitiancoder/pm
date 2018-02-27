@@ -19,8 +19,10 @@ module.exports = {
                         res.json(categoriesAndSongsCount);
                     }
                 })
+                .catch(console.log)
             }
         })
+        .catch(console.log)
     },
 
     topCategorySong(req, res){
