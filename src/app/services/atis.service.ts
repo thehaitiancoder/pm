@@ -24,4 +24,10 @@ export class AtisService {
     .toPromise();
   }
 
+  getArtistsInAlphabeticalOrder(letterToRequest) {
+    return this._http.get(this.api + 'atis/' + letterToRequest)
+    .map(response => response.json())
+    .toPromise();
+  }
+
 }

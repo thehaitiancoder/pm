@@ -37,5 +37,12 @@ module.exports = {
         Song.find({singer: req.params.singerId}).populate('singer').populate('album').populate('feat.singer')
         .then(artistTracks => {res.json(artistTracks)})
         .catch(console.log)
+    },
+
+    getArtistsInAlphabeticalOrder(req, res) {
+        var nameStartWithThisLetter = new RegExp("^"+ req.params.letter, 'i');
+        Singer.find({name: nameStartWithThisLetter})
+        .then(artists => {res.json(artists)})
+        .catch(console.log)
     }
 }

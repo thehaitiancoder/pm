@@ -39,6 +39,7 @@ module.exports = function(app){
     app.get(api + 'album/:singerId', searchController.getSingerAlbum);
     app.get(api + ':slug', searchController.getSingerProfile);
     app.get(api + 'tracks/:singerId', searchController.getArtistTracks);
+    app.get(api + 'atis/:letter', searchController.getArtistsInAlphabeticalOrder);
 
     app.post(api + 'lyric/comments', commentController.addComment);
     app.get( api + 'lyric/comments/:lyricId', commentController.getAllCommentsForActiveSong);

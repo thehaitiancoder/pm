@@ -1,0 +1,14 @@
+<div class="mainMenu">
+  <app-first-menu></app-first-menu>
+</div>
+
+<div class="container">
+  <ul>
+    <li *ngFor="let artist of artistsInAlphabeticalOrder">
+      <span *ngIf="artist.url != null"><a [routerLink]="['/', artist.url]">{{ artist.name }}</a></span>
+      <span *ngIf="artist.url == null || artist.url == undefined">{{ artist.name }}</span>
+    </li>
+  </ul>
+</div>
+
+<app-footer></app-footer>

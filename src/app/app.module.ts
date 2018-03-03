@@ -34,6 +34,7 @@ import { TwoubadouComponent } from './category/twoubadou/twoubadou.component';
 import { ReggeaComponent } from './category/reggea/reggea.component';
 import { MondComponent } from './category/mond/mond.component';
 import { AtisComponent } from './atis/atis.component';
+import { AlphabeticalArtistListComponent } from './alphabetical-artist-list/alphabetical-artist-list.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { AtisComponent } from './atis/atis.component';
     TwoubadouComponent,
     ReggeaComponent,
     MondComponent,
-    AtisComponent
+    AtisComponent,
+    AlphabeticalArtistListComponent
   ],
   imports: [
     BrowserModule,
