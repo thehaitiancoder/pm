@@ -15,14 +15,52 @@
         display: none;
     }
 
+    .artist-list {
+        border: 1px solid #ccc;
+        border-radius: 35px;
+        padding: 0 0 10px 20px;
+    }
+
     .alpha-artist {
-        margin-top: 0;
-        background-color: #000;
-        height: 50px;
-        padding-top: 5px;
-        color: white;
-        font-size: 2em;
-        padding-left: 20px;
+        color: darkgray;
+    }
+
+    .one {
+        display: inline-block;
+        margin-right: 4%
+    }
+
+    img {
+        width: 120px;
+        height: 120px;
+        opacity: 0.7;
+    }
+
+    img:hover {
+        opacity: 1;
+    }
+
+    .one > div > a > p {
+        text-align: center;
+        font-size: 1.2em;
+        margin-top: 5px;
+        margin-bottom: 20px;
+    }
+
+    .one > div > p {
+        text-align: center;
+        font-size: 1.2em;
+        margin-top: 5px;
+        margin-bottom: 20px;
+    }
+
+    a {
+        color: black;
+    }
+
+    a:hover {
+        color: blue;
+        text-decoration: none;
     }
 
 }

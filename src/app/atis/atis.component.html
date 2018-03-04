@@ -6,7 +6,8 @@
   <div *ngIf="artistProfile != null" class="row">
       <div class="col-sm-4 left_panel">
         <div>
-            <img class="profile_pic" src="{{artistProfile.profil_pic}}" alt="{{artistProfile.url}}">
+            <img *ngIf="artistProfile.profil_pic" class="profile_pic" src="{{artistProfile.profil_pic}}" alt="{{artistProfile.url}}">
+            <img *ngIf="!artistProfile.profil_pic || artistProfile.profil_pic == null || artistProfile.profil_pic == undefined" class="profile_pic" src="./assets/logos/avatar-placeholder.gif" alt="{{artistProfile.url}}">
         </div>
         <div class="over_profile">
             <div class="artist_name">
