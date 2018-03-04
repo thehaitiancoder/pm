@@ -3,6 +3,66 @@
     .desktop {
         display: none;
     }
+
+    .artist-list {
+        padding: 0 0 10px 20px;
+    }
+
+    .alpha-artist {
+        color: darkgray;
+    }
+
+    .one {
+        width: 30%;
+        display: inline-block;
+        margin-right: 2%
+    }
+
+    img {
+        width: 100%;
+        height: 120px;
+        opacity: 0.7;
+    }
+
+    img:hover {
+        opacity: 1;
+    }
+
+    .one > div > a > p {
+        text-align: center;
+        font-size: 1.2em;
+        margin-top: 5px;
+        margin-bottom: 20px;
+    }
+
+    .one > div > p {
+        text-align: center;
+        font-size: 1.2em;
+        margin-top: 5px;
+        margin-bottom: 20px;
+    }
+
+    a {
+        color: black;
+    }
+
+    a:hover {
+        color: blue;
+        text-decoration: none;
+    }
+
+    .ad_right_lyric {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 30px;
+        width: 300px;
+    }
+
+    .ad_right_lyric > iframe {
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
 }
 
 .mainMenu {
