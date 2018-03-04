@@ -1,5 +1,18 @@
+@media only screen and (max-width: 767px) {
+    /* For mobile phones: */
+    
+    li {
+        display: inline-block;
+    }
+
+    .navbar-default {
+        border-left: none;
+        border-right: none;
+    }
+}
+
 footer {
-    height: 250px;
+    padding-bottom: 50px;
     background-color: ghostwhite;
     margin-top: 100px;
     border-top: 1px solid #ccc;
@@ -35,3 +48,15 @@ footer {
     color: red;
 }
 
+.container-fluid {
+    background-color: ghostwhite;
+}
+
+.navbar-default {
+    border-top: none;
+}
+
+@media only screen and (min-width: 768px) {
+    /* For desktop: */
+
+}
