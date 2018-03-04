@@ -3,12 +3,25 @@
 </div>
 
 <div class="container">
-  <ul>
-    <li *ngFor="let artist of artistsInAlphabeticalOrder">
-      <span *ngIf="artist.url != null"><a [routerLink]="['/', artist.url]">{{ artist.name }}</a></span>
-      <span *ngIf="artist.url == null || artist.url == undefined">{{ artist.name }}</span>
-    </li>
-  </ul>
+  <div class="row">
+    <div class="col-md-8">
+        <p class="alpha-artist">{{ artistsInAlphabeticalOrder.length }} atis ki komanse pa {{ letterToRequest | uppercase }}:</p>
+        <ol>
+          <li *ngFor="let artist of artistsInAlphabeticalOrder">
+            <span *ngIf="artist.url != null"><a [routerLink]="['/', artist.url]">{{ artist.name }}</a></span>
+            <span *ngIf="artist.url == null || artist.url == undefined">{{ artist.name }}</span>
+          </li>
+        </ol>
+    </div>
+    <div class="col-md-4">
+        <div class="ad_right_lyric desktop" data-spy="affix" data-offset-top="205">
+          <iframe src="//cdn.bannersnack.com/banners/bxuios5po/embed/index.html?userId=16738576&t=1516214565" width="300" height="250" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true"></iframe>
+        </div>
+        <div class="ad_right_lyric mobile">
+          <iframe src="//cdn.bannersnack.com/banners/bxuios5po/embed/index.html?userId=16738576&t=1516214565" width="300" height="250" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true"></iframe>
+        </div>
+    </div>
+  </div>
 </div>
 
 <app-footer></app-footer>

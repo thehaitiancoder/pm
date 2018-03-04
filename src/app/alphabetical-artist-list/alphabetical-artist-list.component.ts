@@ -9,6 +9,7 @@ import { AtisService } from '../services/atis.service';
 })
 export class AlphabeticalArtistListComponent implements OnInit {
   artistsInAlphabeticalOrder: Array<Object> = [];
+  letterToRequest: String = '';
 
   constructor(
     private _routes: ActivatedRoute,
@@ -17,12 +18,10 @@ export class AlphabeticalArtistListComponent implements OnInit {
 
   ngOnInit() {
     this._routes.paramMap.subscribe(params => {
-      let letterToRequest = params.get('letter');
+      this.letterToRequest = params.get('letter');
 
-      this._atisService.getArtistsInAlphabeticalOrder(letterToRequest)
-      .then(artists => this.artistsInAlphabeticalOrder = artists)
-      
-      console.log(this.artistsInAlphabeticalOrder)
+      this._atisService.getArtistsInAlphabeticalOrder(this.letterToRequest)
+      .then(artists => {this.artistsInAlphabeticalOrder = artists;})
     })
   }
 
