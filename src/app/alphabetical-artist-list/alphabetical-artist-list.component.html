@@ -10,7 +10,7 @@
         <div *ngFor="let artist of artistsInAlphabeticalOrder" class="one">
           <div *ngIf="artist.url != null">
             <a [routerLink]="['/', artist.url]">
-              <img src="./assets/figures/baky-popile.jpeg" class="img-circle" alt="Photo {{ artist.name }}">
+              <img src="{{artist.profil_pic}}" class="img-circle" alt="Photo {{ artist.name }}">
               <p>{{ artist.name }}</p>
             </a>
           </div>
