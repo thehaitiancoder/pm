@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+    background-image: url(http://pawolmizik.com/lyrics/wp-content/uploads/2014/12/grimmrobes-wallpaper-1920x1080.jpg);
+    background-position: left top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}

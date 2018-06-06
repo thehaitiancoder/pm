@@ -13,13 +13,13 @@
 
 footer {
     padding-bottom: 50px;
-    background-color: ghostwhite;
+    background-color: transparent;
     margin-top: 100px;
     border-top: 1px solid #ccc;
 }
 
 .logoFooter {
-    color: #ccc;
+    /* color: #ccc; */
     font-size: 3em;
     margin: 0px auto 20px auto;
     padding: 50px 0px 0px 0px;
@@ -31,6 +31,7 @@ footer {
 
 #copy {
     font-size: initial;
+    color: grey;
 }
 
 .network { margin-right: 40px}
@@ -49,7 +50,7 @@ footer {
 }
 
 .container-fluid {
-    background-color: ghostwhite;
+    background-color: transparent;
 }
 
 .navbar-default {

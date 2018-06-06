@@ -1,6 +1,6 @@
 <main>
-  <h2>TOP 100</h2>
-  <div class="lyric" *ngFor="let result of theLyrics; let i = index">
+  <h2>&#8681; TOP 100 &#8681;</h2>
+  <!-- <div class="lyric" *ngFor="let result of theLyrics; let i = index">
     <a [routerLink]="['/lyrics/', result.url]">
     <div class="left">
       <p>{{ i+1 }}</p>
@@ -22,7 +22,41 @@
       <p><span class="glyphicon glyphicon-eye-open"></span> {{ result.views }}</p>
     </div>
   </a>
+  </div> -->
+
+  <div class="oneSong" *ngFor="let result of theLyrics; let i = index">
+    <a [routerLink]="['/lyrics/', result.url]">
+    <div class="left">
+      <p>{{ i+1 }}</p>
+    </div>
+    <div class="right">
+        <p class="songTitle">{{ result.title }}</p>
+          <p>
+              <span *ngIf="result.feat.length > 0" class="feat_artist">
+                  <span>feat. {{result.feat[0].singer.name}}</span>
+                  <span *ngIf="result.feat[1]">, {{ result.feat[1].singer.name }}</span>
+                  <span *ngIf="result.feat[2]">, {{ result.feat[2].singer.name }}</span>
+                  <span *ngIf="result.feat[3]">, {{ result.feat[3].singer.name }}</span>
+                  <span *ngIf="result.feat[4]">, {{ result.feat[4].singer.name }}</span>
+                  <span *ngIf="result.feat[5]">, {{ result.feat[5].singer.name }}</span>
+                  <span *ngIf="result.feat[6]">, {{ result.feat[6].singer.name }}</span>
+                </span>
+          </p>
+          <div class="songsExtra">
+              <div class="views">
+                <p><span class="glyphicon glyphicon-eye-open"></span> {{ result.views }}</p>
+              </div>
+              <div class="soundcloud_youtube">
+                  <img *ngIf="result.soundcloud != null" src="./assets/logos/soundcloud.png" alt="soundcloud">
+                  <img *ngIf="result.youtube != null" src="./assets/logos/youtube.png" alt="youtube">
+              </div>
+          </div>
+    </div>
+  </a>
+
+    <div class="divider"></div>
   </div>
+
   <button class="btn btn-default btn-lg btn-block moreLyrics" *ngIf="qty == 20" (click)="getMoreLyrics(qty)"><span class="glyphicon glyphicon-circle-arrow-down"></span>  Plis pawòl</button>
   <button class="btn btn-default btn-lg btn-block moreLyrics" *ngIf="qty == 30" (click)="getMoreLyrics(qty)"><span class="glyphicon glyphicon-circle-arrow-down"></span>  Plis pawòl</button>
   <button class="btn btn-default btn-lg btn-block moreLyrics" *ngIf="qty == 40" (click)="getMoreLyrics(qty)"><span class="glyphicon glyphicon-circle-arrow-down"></span>  Plis pawòl</button>
