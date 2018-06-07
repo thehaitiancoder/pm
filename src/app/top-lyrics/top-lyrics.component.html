@@ -31,7 +31,7 @@
     </div>
     <div class="right">
         <p class="songTitle">{{ result.title }}</p>
-          <p>
+          <p>{{result.singer.name}}
               <span *ngIf="result.feat.length > 0" class="feat_artist">
                   <span>feat. {{result.feat[0].singer.name}}</span>
                   <span *ngIf="result.feat[1]">, {{ result.feat[1].singer.name }}</span>
