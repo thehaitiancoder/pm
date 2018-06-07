@@ -107,6 +107,44 @@
 
 .homePanels {
     background-color: white;
+    padding-bottom: 50px;
+}
+
+.panelOne {
+    width: 30%;
+    float: left;
+    height: 1000px;
+}
+
+.adPanelOne {
+    width: 300px;
+    float: right;
+    margin-top: 40px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.panelTwo {
+    width: 40%;
+    display: inline-block;
+}
+
+.panelThree {
+    width: 30%;
+    float: right;
+    height: 1000px;
+}
+
+.adPanelThree {
+    width: 300px;
+    float: left;
+    margin-top: 40px;
+    margin-left: 40px;
+}
+
+.affix {
+    top: 50px;
+    z-index: 9999 !important;
 }
 
 @media only screen and (max-width: 768px) {

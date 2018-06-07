@@ -14,7 +14,6 @@
 footer {
     padding-bottom: 50px;
     background-color: transparent;
-    margin-top: 100px;
     border-top: 1px solid #ccc;
 }
 
@@ -22,7 +21,7 @@ footer {
     /* color: #ccc; */
     font-size: 3em;
     margin: 0px auto 20px auto;
-    padding: 50px 0px 0px 0px;
+    /* padding: 50px 0px 0px 0px; */
 }
 
 .logoFooter > p {
