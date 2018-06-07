@@ -7,9 +7,10 @@
     }
     
     h2 {
-        margin: 0px 0px 0px 0px;
+        margin: 0px;
         border-bottom: 1px solid #ccc;
         text-align: center;
+        font-size: 18px;
     }
     
     .lyric {
@@ -284,7 +285,7 @@ main {
         display: inline-block;
         vertical-align: text-bottom;
         color: white;
-        height: 121px;
+        height: 90px;
         padding-top: 35px;
         text-align: center;
         background-color: green;
@@ -298,7 +299,7 @@ main {
     }
 
     .songTitle {
-        font-size: 3em;
+        font-size: 2em;
         margin-bottom: 0px;
     }
 
@@ -309,6 +310,10 @@ main {
     a {
         color: black;
         text-decoration: none;
+    }
+
+    p {
+        margin: 0px;
     }
 
     a:hover {
