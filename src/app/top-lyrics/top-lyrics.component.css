@@ -1,71 +1,10 @@
-@media only screen and (min-width: 768px) {
-    /* For desktop: */
-    main {
-        clear: both;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    
-    h2 {
-        margin: 0px;
-        border-bottom: 1px solid #ccc;
-        text-align: center;
-        font-size: 18px;
-    }
-    
-    .lyric {
-        border-bottom: 1px solid #ccc;
-        padding: 20px 10px 10px 20px;
-    }
-    
-    .lyric:hover {
-        background-color: rgb(241, 241, 241);
-    }
-    
-    .lyric > a:hover {
-        text-decoration: none;
-    }
-    
-    .left {
-        width: 5%;
-        display: inline-block;
-        color: #000;
-    }
-    
-    .middle {
-        width: 85%;
-        display: inline-block;
-        color: #000;
-    }
-    
-    .right {
-        width: 8%;
-        display: inline-block;
-        color: #000;
-    }
-
-    main {
-        padding: 1%;
-        border: 1px solid;
-        border-top: none;
-        border-color: #ccc;
-    }
-}
-
-main {
-    background-color: white;
-}
-
-.moreLyrics {
-    border-radius: 0px;
-    border-top: none;
-    background-color: #cccccc73;
-}
-
-
-
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
     /* For mobile phones: */
+
+    main {
+        background-color: white;
+    }
+
     .container {
         padding-right: 0px;
         padding-left: 0px;
@@ -74,81 +13,12 @@ main {
     }
 
     h2 {
-        margin: 0px 0px 0px 0px;
+        margin: 0px;
         border-bottom: 1px solid #ccc;
         text-align: center;
         padding: 10px;
-    }
-    
-    .lyric {
-        border-bottom: 1px solid #ccc;
-        padding: 10px 10px 10px 20px;
-    }
-    
-    .lyric:hover {
-        background-color: rgb(241, 241, 241);
-    }
-    
-    .lyric > a:hover {
-        text-decoration: none;
-    }
-    
-    .left {
-        width: 6%;
-        display: inline-block;
-        color: grey !important;
-        vertical-align: top;
-    }
-    
-    .middle {
-        width: 75%;
-        display: inline-block;
-        color: #000;
-    }
-    
-    .right {
-        width: 15%;
-        display: inline-block;
-        color: grey !important;
-        text-align: center;
-        vertical-align: top;
-    }
-
-    main > h2 {
         padding-left: 15px;
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-@media only screen and (max-width: 767px) {
-    /* For mobile phones: */
-
-    .mainMenu {
-        margin-bottom: 50px;
-    }
-
-    .row {
-        margin-left: 0px;
-        margin-right: 0px;
-    }
-
-    .left_panel {
-        position: relative;
-        text-align: center;
-        color: white;
-        margin-left: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
+        font-size: 18px;
     }
 
     .right_panel {
@@ -156,38 +26,12 @@ main {
         padding-right: 0px;
     }
 
-    .over_profile {
-        position: absolute;
-        top: 80%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 100%;
-        background-color: black;
-        border-top: 1px solid black;
-        border-bottom: 1px solid black;
-    }
-    
-    .profile_pic {
-        width: 100%;
-    }
-
-    .artist_name {
-        font-size: 3em;
-    }
-
-    .title_right_panel {
-        margin-top: 0px;
-        text-align: center;
-        height: 50px;
-        padding-top: 5px;
-    }
-
     .left {
         width: 30px;
         display: inline-block;
         vertical-align: text-bottom;
         color: white;
-        height: 121px;
+        height: 90px;
         padding-top: 35px;
         text-align: center;
         background-color: green;
@@ -201,7 +45,7 @@ main {
     }
 
     .songTitle {
-        font-size: 3em;
+        font-size: 2em;
         margin-bottom: 0px;
     }
 
@@ -219,6 +63,10 @@ main {
         text-decoration: none;
     }
 
+    p {
+        margin: 0px;
+    }
+
     .songsExtra > .views, .songsExtra > .soundcloud_youtube {
         display: inline-block;
     }
@@ -229,55 +77,37 @@ main {
         border-top: none;
     } */
 
+    .oneSong:nth-child(even) {
+        background-color: #cccccc73;
+    }
+
+    .moreLyrics {
+        border-radius: 0px;
+        border-top: none;
+        background-color: #cccccc73;
+    }
+
 }
 
 @media only screen and (min-width: 768px) {
     /* For desktop: */
 
-    .mainMenu {
-        margin-bottom: 100px;
-    }
-
-    .row {
-        margin-left: 0px;
-        margin-right: 0px;
-    }
-
-    .left_panel {
-        position: relative;
-        text-align: center;
-        color: white;
-        margin-left: 10px;
-        width: 32.33%;
-    }
-
-    .over_profile {
-        position: absolute;
-        top: 80%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 100%;
-        background-color: navajowhite;
-        border-top: 1px solid black;
-        border-bottom: 1px solid black;
-        color: black;
+    main {
+        clear: both;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 1%;
+        border: 1px solid;
+        border-top: none;
+        border-color: #ccc;
+        background-color: white;
     }
     
-    .profile_pic {
-        width: 100%;
-    }
-
-    .artist_name {
-        font-size: 3em;
-    }
-
-    .title_right_panel {
-        margin-top: 0px;
+    h2 {
+        margin: 0px;
+        border-bottom: 1px solid #ccc;
         text-align: center;
-        background-color: black;
-        color: white;
-        height: 50px;
-        padding-top: 5px;
+        font-size: 18px;
     }
 
     .left {
@@ -331,6 +161,12 @@ main {
     } */
 
     .oneSong:nth-child(even) {
+        background-color: #cccccc73;
+    }
+
+    .moreLyrics {
+        border-radius: 0px;
+        border-top: none;
         background-color: #cccccc73;
     }
 

@@ -105,11 +105,6 @@
         color: red;
     }
 
-.homePanels {
-    background-color: white;
-    padding-bottom: 50px;
-}
-
 .panelOne {
     width: 30%;
     float: left;
@@ -129,12 +124,6 @@
     display: inline-block;
 }
 
-.panelThree {
-    width: 30%;
-    float: right;
-    height: 1000px;
-}
-
 .adPanelThree {
     width: 300px;
     float: left;
@@ -147,8 +136,28 @@
     z-index: 9999 !important;
 }
 
+@media only screen and (min-width: 768px) {
+    /* For desktop: */
+
+    .desktop {
+        display: none;
+    }
+
+    .homePanels {
+        background-color: white;
+        padding-bottom: 50px;
+    }
+
+    .panelThree {
+        width: 30%;
+        float: right;
+        height: 1000px;
+    }
+}
+
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
+    
     .container {
         padding-right: 0px;
         padding-left: 0px;
@@ -176,5 +185,21 @@
         max-height: 650px;
         padding: 1%;
         overflow: auto;
+    }
+
+    .homePanels {
+        background-color: white;
+        padding-bottom: 10px;
+    }
+
+    .panelTwo {
+        width: 100%;
+    }
+
+    .panelThree {
+        width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+        margin: 30px auto;
     }
 }
