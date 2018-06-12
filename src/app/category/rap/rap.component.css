@@ -6,6 +6,10 @@
         padding-right: 0px;
     }
 
+    .topAd {
+        border: 1px solid #cccccc73;
+    }
+
     .top_artist {
         padding: 10px 0px 50px 20px;
         border-top: 1px solid #ccc;
