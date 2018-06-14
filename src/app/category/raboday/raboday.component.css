@@ -1,66 +1,127 @@
 @media only screen and (max-width: 767px) {
     /* For mobile phones: */
-    .top_artist {
-        border: 1px solid #ccc;
-        border-radius: 35px;
-        padding: 0px 0px 10px 20px;
+
+    .container {
+        padding-right: 0px;
+        padding-left: 0px;
+        margin-right: 0px;
+        margin-left: 0px;
     }
 
+    .desktop {
+        display: none;
+    }
+
+    .topAd {
+        border: 1px solid #cccccc73;
+    }
+
+    .top_artist {
+        padding: 10px 0px 50px 20px;
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        background-color: white;
+    }
+    
     .top_artist > .one {
-        width: 125px;
+        width: 30%;
         display: inline-block;
         margin-right: 1%
     }
-
-    img {
-        width: 120px;
+    
+    div.one > a > img {
+        width: 100%;
         height: 120px;
         opacity: 0.7;
     }
-
-    img:hover {
+    
+    div.one > a > img:hover {
         opacity: 1;
     }
-
+    
     .top_artist > .one > a > p {
         text-align: center;
     }
-
+    
     .row {
         margin: 50px 0px 0px 0px;
     }
-
+    
     .row > div > h2 {
         text-align: center;
     }
-
+    
     .top_songs {
-        /* margin-top: 50px;
-        background-image: url(/assets/logos/top-ten.png);
-        background-size: 200px;
-        background-repeat: no-repeat;
-        background-position-x: right;
-        background-position-y: 20px; */
-        background-color: beige;
-        padding: 20px;
-        /* border-radius: 50px; */
+        background-color: white;
+        padding-bottom: 40px;
     }
-
+    
     .topSongsTitle {
         margin-top: 40px;
         padding-left: 20px;
     }
-
+    
     .left {
         width: 20px;
         display: inline-block;
         vertical-align: text-bottom;
         color: gray;
     }
-
+    
     .right {
         width: 93%;
         display: inline-block;
+    }
+    
+    .songTitle {
+        font-size: 2em;
+        margin-bottom: 0px;
+    }
+    
+    a {
+        color: black;
+    }
+    
+    a:hover {
+        color: blue;
+        text-decoration: none;
+    }
+
+    h2 {
+        background-color: #cccccc73;
+    }
+
+    /* New Listing Styles */
+    h2 {
+        margin: 0px;
+        border-bottom: 1px solid #ccc;
+        text-align: center;
+        padding: 10px;
+        padding-left: 15px;
+        font-size: 18px;
+    }
+
+    .right_panel {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .left {
+        width: 30px;
+        display: inline-block;
+        vertical-align: text-bottom;
+        color: white;
+        height: 90px;
+        padding-top: 35px;
+        text-align: center;
+        background-color: green;
+    }
+
+    .right {
+        width: 89%;
+        display: inline-block;
+        padding-left: 10px;
+        vertical-align: top;
     }
 
     .songTitle {
@@ -68,22 +129,62 @@
         margin-bottom: 0px;
     }
 
+    .feat_artist, .songsExtra {
+        color: grey;
+    }
+
     a {
         color: black;
+        text-decoration: none;
     }
 
     a:hover {
         color: blue;
         text-decoration: none;
     }
+
+    p {
+        margin: 0px;
+    }
+
+    .songsExtra > .views, .songsExtra > .soundcloud_youtube {
+        display: inline-block;
+    }
+
+    /* .divider {
+        margin: 5px 0px 5px 0px;
+        border: 1px solid #ccc;
+        border-top: none;
+    } */
+
+    .oneSong:nth-child(odd) {
+        background-color: #cccccc73;
+    }
+
+    .moreLyrics {
+        border-radius: 0px;
+        border-top: none;
+        background-color: #cccccc73;
+    }
 }
 
 @media only screen and (min-width: 768px) {
     /* For desktop: */
+
+    /* Hidding mobile specific elements */
+    .mobile {
+        display: none;
+    }
+
+    /* Styles for the top artist section */
     .top_artist {
         border: 1px solid #ccc;
-        border-radius: 35px;
-        padding: 0px 0px 10px 20px;
+        padding: 10px 0px 10px 20px;
+        border-top: none;
+    }
+
+    .topArtistHeading {
+        text-align: initial;
     }
 
     .top_artist > .one {
@@ -92,13 +193,13 @@
         margin-right: 1%
     }
 
-    img {
+    div.one > a > img {
         width: 120px;
         height: 120px;
         opacity: 0.7;
     }
 
-    img:hover {
+    div.one > a > img:hover {
         opacity: 1;
     }
 
@@ -116,14 +217,13 @@
 
     .top_songs {
         margin-top: 50px;
-        background-image: url(/assets/logos/top-ten.png);
-        background-size: 200px;
-        background-repeat: no-repeat;
-        background-position-x: right;
-        background-position-y: 20px;
-        background-color: beige;
-        padding: 20px;
-        border-radius: 50px;
+        width: 50%;
+        background-color: white;
+        padding: 1%;
+        border: 1px solid #ccc;
+        border-top: none;
+        display: inline-block;
+        margin-bottom: 50px;
     }
 
     .top_songs > h2 {
@@ -131,16 +231,31 @@
         margin-bottom: 0px;
     }
 
+
+    /* Styles for TOP Rap section */
+    h2 {
+        margin: 0px;
+        border-bottom: 1px solid #ccc;
+        text-align: center;
+        font-size: 18px;
+    }
+
     .left {
-        width: 20px;
+        width: 30px;
         display: inline-block;
         vertical-align: text-bottom;
-        color: gray;
+        color: white;
+        height: 90px;
+        padding-top: 35px;
+        text-align: center;
+        background-color: green;
     }
 
     .right {
-        width: 95%;
+        width: 93%;
         display: inline-block;
+        padding-left: 10px;
+        vertical-align: top;
     }
 
     .songTitle {
@@ -148,12 +263,48 @@
         margin-bottom: 0px;
     }
 
+    .feat_artist, .songsExtra {
+        color: grey;
+    }
+
     a {
         color: black;
+        text-decoration: none;
+    }
+
+    p {
+        margin: 0px;
     }
 
     a:hover {
         color: blue;
         text-decoration: none;
+    }
+
+    .songsExtra > .views, .songsExtra > .soundcloud_youtube {
+        display: inline-block;
+    }
+
+    /* .divider {
+        margin: 5px 0px 5px 0px;
+        border: 1px solid #ccc;
+    } */
+
+    .oneSong:nth-child(even) {
+        background-color: #cccccc73;
+    }
+
+    .moreLyrics {
+        border-radius: 0px;
+        border-top: none;
+        background-color: #cccccc73;
+    }
+
+    .adRightToTopSongs {
+        width: 45%;
+        display: inline-block;
+        vertical-align: top;
+        margin-top: 50px;
+        margin-left: 10px;
     }
 }

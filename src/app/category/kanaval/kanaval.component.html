@@ -1,26 +1,43 @@
-<h2 class="mobile topSongsTitle">Top mizik kanaval</h2>
+<div class="mobile topAd">
+    <iframe src="//cdn.bannersnack.com/banners/bcpl6nucg/embed/index.html?userId=16738576&t=1528783798" width="100%" height="100%" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true"></iframe>
+</div>
+
+<!-- Top Songs section -->
 <div class="top_songs">
-        <div *ngFor="let result of topRapSongs; let i = index">
-            <div class="oneTrack">
-                        <div class="left">
-                        <p>{{ i+1 }}</p>
-                        </div>
-                        <a [routerLink]="['/lyrics/', result.url]">
-                        <div class="right">
-                            <p class="songTitle">{{ result.title }}</p>
-                            <p>{{ result.singer.name }}
-                                <span *ngIf="result.feat.length > 0">
-                                    <span>feat. {{result.feat[0].singer.name}}</span>
-                                    <span *ngIf="result.feat[1]">, {{ result.feat[1].singer.name }}</span>
-                                    <span *ngIf="result.feat[2]">, {{ result.feat[2].singer.name }}</span>
-                                    <span *ngIf="result.feat[3]">, {{ result.feat[3].singer.name }}</span>
-                                    <span *ngIf="result.feat[4]">, {{ result.feat[4].singer.name }}</span>
-                                    <span *ngIf="result.feat[5]">, {{ result.feat[5].singer.name }}</span>
-                                    <span *ngIf="result.feat[6]">, {{ result.feat[6].singer.name }}</span>
-                                    </span>
-                            </p>
-                        </div>
-                        </a>
+    <h2>&#8681; TOP KANAVAL &#8681;</h2>
+    <div class="oneSong" *ngFor="let result of topRapSongs; let i = index">
+            <a [routerLink]="['/lyrics/', result.url]">
+            <div class="left">
+              <p>{{ i+1 }}</p>
             </div>
-        </div>
-    </div>
+            <div class="right">
+                <p class="songTitle">{{ result.title }}</p>
+                  <p>{{result.singer.name}}
+                      <span *ngIf="result.feat.length > 0" class="feat_artist">
+                          <span>feat. {{result.feat[0].singer.name}}</span>
+                          <span *ngIf="result.feat[1]">, {{ result.feat[1].singer.name }}</span>
+                          <span *ngIf="result.feat[2]">, {{ result.feat[2].singer.name }}</span>
+                          <span *ngIf="result.feat[3]">, {{ result.feat[3].singer.name }}</span>
+                          <span *ngIf="result.feat[4]">, {{ result.feat[4].singer.name }}</span>
+                          <span *ngIf="result.feat[5]">, {{ result.feat[5].singer.name }}</span>
+                          <span *ngIf="result.feat[6]">, {{ result.feat[6].singer.name }}</span>
+                        </span>
+                  </p>
+                  <div class="songsExtra">
+                      <div class="views">
+                        <p><span class="glyphicon glyphicon-eye-open"></span> {{ result.views }}</p>
+                      </div>
+                      <div class="soundcloud_youtube">
+                          <img *ngIf="result.soundcloud != null" src="./assets/logos/soundcloud.png" alt="soundcloud">
+                          <img *ngIf="result.youtube != null" src="./assets/logos/youtube.png" alt="youtube">
+                      </div>
+                  </div>
+            </div>
+          </a>
+        
+            <div class="divider"></div>
+    </div>    
+</div>
+<div class="adRightToTopSongs desktop">
+        <iframe src="//cdn.bannersnack.com/banners/bxuios5po/embed/index.html?userId=16738576&t=1516214565" width="300" height="250" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true"></iframe>
+</div>

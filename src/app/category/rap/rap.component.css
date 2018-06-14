@@ -2,8 +2,14 @@
     /* For mobile phones: */
 
     .container {
-        padding-left: 0px;
         padding-right: 0px;
+        padding-left: 0px;
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+
+    .desktop {
+        display: none;
     }
 
     .topAd {
@@ -82,7 +88,83 @@
     }
 
     h2 {
-        background-color: #ccc;
+        background-color: #cccccc73;
+    }
+
+    /* New Listing Styles */
+    h2 {
+        margin: 0px;
+        border-bottom: 1px solid #ccc;
+        text-align: center;
+        padding: 10px;
+        padding-left: 15px;
+        font-size: 18px;
+    }
+
+    .right_panel {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .left {
+        width: 30px;
+        display: inline-block;
+        vertical-align: text-bottom;
+        color: white;
+        height: 90px;
+        padding-top: 35px;
+        text-align: center;
+        background-color: green;
+    }
+
+    .right {
+        width: 89%;
+        display: inline-block;
+        padding-left: 10px;
+        vertical-align: top;
+    }
+
+    .songTitle {
+        font-size: 2em;
+        margin-bottom: 0px;
+    }
+
+    .feat_artist, .songsExtra {
+        color: grey;
+    }
+
+    a {
+        color: black;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: blue;
+        text-decoration: none;
+    }
+
+    p {
+        margin: 0px;
+    }
+
+    .songsExtra > .views, .songsExtra > .soundcloud_youtube {
+        display: inline-block;
+    }
+
+    /* .divider {
+        margin: 5px 0px 5px 0px;
+        border: 1px solid #ccc;
+        border-top: none;
+    } */
+
+    .oneSong:nth-child(odd) {
+        background-color: #cccccc73;
+    }
+
+    .moreLyrics {
+        border-radius: 0px;
+        border-top: none;
+        background-color: #cccccc73;
     }
 }
 
@@ -217,93 +299,12 @@
         border-top: none;
         background-color: #cccccc73;
     }
-}
 
-
-/* New listing styles */
-@media only screen and (max-width: 767px) {
-    /* For mobile phones: */
-
-    .container {
-        padding-right: 0px;
-        padding-left: 0px;
-        margin-right: 0px;
-        margin-left: 0px;
-    }
-
-    h2 {
-        margin: 0px;
-        border-bottom: 1px solid #ccc;
-        text-align: center;
-        padding: 10px;
-        padding-left: 15px;
-        font-size: 18px;
-    }
-
-    .right_panel {
-        padding-left: 0px;
-        padding-right: 0px;
-    }
-
-    .left {
-        width: 30px;
+    .adRightToTopSongs {
+        width: 45%;
         display: inline-block;
-        vertical-align: text-bottom;
-        color: white;
-        height: 90px;
-        padding-top: 35px;
-        text-align: center;
-        background-color: green;
-    }
-
-    .right {
-        width: 89%;
-        display: inline-block;
-        padding-left: 10px;
         vertical-align: top;
+        margin-top: 50px;
+        margin-left: 10px;
     }
-
-    .songTitle {
-        font-size: 2em;
-        margin-bottom: 0px;
-    }
-
-    .feat_artist, .songsExtra {
-        color: grey;
-    }
-
-    a {
-        color: black;
-        text-decoration: none;
-    }
-
-    a:hover {
-        color: blue;
-        text-decoration: none;
-    }
-
-    p {
-        margin: 0px;
-    }
-
-    .songsExtra > .views, .songsExtra > .soundcloud_youtube {
-        display: inline-block;
-    }
-
-    /* .divider {
-        margin: 5px 0px 5px 0px;
-        border: 1px solid #ccc;
-        border-top: none;
-    } */
-
-    .oneSong:nth-child(odd) {
-        background-color: #cccccc73;
-    }
-
-    .moreLyrics {
-        border-radius: 0px;
-        border-top: none;
-        background-color: #cccccc73;
-    }
-
 }
