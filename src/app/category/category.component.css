@@ -8,7 +8,9 @@
 
 }
 
-.mainMenu {
-    clear: both;
-    margin-bottom: 100px;
+@media only screen and (min-width: 768px) {
+    /* For desktop */
+    .mainMenu {
+        margin-bottom: 100px;
+    }
 }

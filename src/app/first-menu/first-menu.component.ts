@@ -7,6 +7,8 @@ import { AuthService } from '../services/auth.service';
 import { User } from '../models/user';
 import { LyricService } from '../services/lyric.service';
 
+declare var $: any;
+
 @Component({
   selector: 'app-first-menu',
   templateUrl: './first-menu.component.html',
@@ -63,6 +65,13 @@ export class FirstMenuComponent implements OnInit {
 
     // Hides the search input in the menu on the homepage
     if (this._router.url == '/'){ this.displaySearchInMenu = false}
+
+    // Closing the menu after view changes on mobile
+    $(document).on('click','.navbar-collapse.in',function(e) {
+      if( $(e.target).is('a') ) {
+          $(this).collapse('hide');
+      }
+    });
   }
 
   register(){
