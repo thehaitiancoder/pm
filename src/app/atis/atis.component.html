@@ -19,7 +19,7 @@
         </div>
       </div>
       <div *ngIf="artistTracks != null" class="col-sm-8 right_panel">
-        <h1 class="title_right_panel">Mizik &#8595;</h1>
+        <h2 class="title_right_panel">⇩ TOP MIZIK ⇩</h2>
         <div class="oneSong" *ngFor="let result of artistTracks; let i = index">
             <a [routerLink]="['/lyrics/', result.url]">
             <div class="left">

@@ -119,6 +119,13 @@
         width: 32.33%;
     }
 
+    .right_panel {
+        border: 1px solid #cccccc73;
+        border-top: none;
+        margin-bottom: 100px;
+        width: 40%;
+    }
+
     .over_profile {
         position: absolute;
         top: 80%;
@@ -142,8 +149,8 @@
     .title_right_panel {
         margin-top: 0px;
         text-align: center;
-        background-color: black;
-        color: white;
+        /* background-color: black;
+        color: white; */
         height: 50px;
         padding-top: 5px;
     }
@@ -153,21 +160,21 @@
         display: inline-block;
         vertical-align: text-bottom;
         color: white;
-        height: 121px;
+        height: 90px;
         padding-top: 35px;
         text-align: center;
         background-color: green;
     }
 
     .right {
-        width: 95%;
+        width: 92%;
         display: inline-block;
         padding-left: 10px;
         vertical-align: top;
     }
 
     .songTitle {
-        font-size: 3em;
+        font-size: 2em;
         margin-bottom: 0px;
     }
 
