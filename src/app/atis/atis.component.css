@@ -2,16 +2,23 @@
     /* For mobile phones: */
 
     .mainMenu {
-        margin-bottom: 50px;
+        margin-bottom: 25px;
     }
 
     .desktop {
         display: none;
     }
 
+    .top_responsive_ad {
+        width: 320px;
+        height: 100px;
+        margin: 0px auto 25px;
+    }
+
     .row {
         margin-left: 0px;
         margin-right: 0px;
+        padding-bottom: 50px;
     }
 
     .left_panel {
@@ -50,7 +57,7 @@
     .title_right_panel {
         margin-top: 0px;
         text-align: center;
-        height: 50px;
+        font-size: 1.5em;
         padding-top: 5px;
     }
 
@@ -59,7 +66,7 @@
         display: inline-block;
         vertical-align: text-bottom;
         color: white;
-        height: 121px;
+        height: 90px;
         padding-top: 35px;
         text-align: center;
         background-color: green;
@@ -73,7 +80,7 @@
     }
 
     .songTitle {
-        font-size: 3em;
+        font-size: 2em;
         margin-bottom: 0px;
     }
 
@@ -86,10 +93,10 @@
         text-decoration: none;
     }
 
-    a:hover {
+    /* a:hover {
         color: blue;
         text-decoration: none;
-    }
+    } */
 
     .songsExtra > .views, .songsExtra > .soundcloud_youtube {
         display: inline-block;
@@ -127,6 +134,7 @@
         margin-right: 0px;
         background-color: whitesmoke;
         padding-top: 25px;
+        padding-bottom: 100px;
     }
 
     .left_panel {
@@ -167,9 +175,7 @@
     .title_right_panel {
         margin-top: 0px;
         text-align: center;
-        /* background-color: black;
-        color: white; */
-        height: 50px;
+        font-size: 1.5em;
         padding-top: 5px;
     }
 
@@ -217,6 +223,7 @@
     .divider {
         margin: 5px 0px 5px 0px;
         border: 1px solid #ccc;
+        border-top: none;
     }
 
 }
