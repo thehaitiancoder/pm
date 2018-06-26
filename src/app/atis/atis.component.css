@@ -114,7 +114,7 @@
     /* For desktop: */
 
     .mainMenu {
-        margin-bottom: 100px;
+        margin-bottom: 90px;
     }
 
     .mobile {
@@ -148,7 +148,6 @@
     .right_panel {
         border: 1px solid #cccccc73;
         border-top: none;
-        margin-bottom: 100px;
         width: 40%;
     }
 

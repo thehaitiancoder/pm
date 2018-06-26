@@ -34,7 +34,7 @@ module.exports = {
     },
 
     getArtistTracks(req, res) {
-        Song.find({singer: req.params.singerId}).populate('singer').populate('album').populate('feat.singer')
+        Song.find({singer: req.params.singerId}).populate('singer').populate('album').populate('feat.singer').limit(5)
         .then(artistTracks => {res.json(artistTracks)})
         .catch(console.log)
     },
