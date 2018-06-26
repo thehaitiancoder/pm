@@ -13,7 +13,9 @@
     }
 
     .topAd {
-        border: 1px solid #cccccc73;
+        width: 320px;
+        height: 100px;
+        margin: 0px auto 25px;
     }
 
     .top_artist {
@@ -165,6 +167,11 @@
         border-radius: 0px;
         border-top: none;
         background-color: #cccccc73;
+    }
+
+    .adRightToTopSongs {
+        width: 300px;
+        margin: 15px auto;
     }
 }
 
