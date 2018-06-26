@@ -45,6 +45,28 @@
         padding-left: 1%;
     }
 
+    .searchResult {
+        margin: -20px auto 0px auto;
+        border-top: none;
+        padding: 1%;
+        overflow: auto;
+        background-color: white;
+        min-height: 700px;
+    }
+
+}
+
+@media only screen and (min-width: 768px) {
+    /* For Desktop */
+    
+    .searchResult {
+        margin: 50px auto 0px auto;
+        border-top: none;
+        padding: 1%;
+        overflow: auto;
+        background-color: white;
+        min-height: 700px;
+    }
 }
 
 .signupEntries {
@@ -161,18 +183,6 @@ a.dropdown-toggle:focus {
     box-shadow: none !important;
 }
 
-.searchResult {
-    margin: 0px auto 5% auto;
-    border: 1px solid #ccc;
-    border-top: none;
-    max-height: 560px;
-    padding: 1%;
-    overflow: auto;
-    background-color: whitesmoke;
-    position: fixed;
-    z-index: 1;
-}
-
 .resultSummary > p {
     padding-left: 2%;
     color: #ccc;
@@ -183,7 +193,6 @@ a.dropdown-toggle:focus {
 }
 
 .oneResult {
-    margin: 0px 0px 1% 0px;
     padding: 1% 2%;
 }
 
@@ -197,12 +206,16 @@ a.dropdown-toggle:focus {
 
 .oneResult > a:hover {
     text-decoration: none;
-    color: black;
+    color: blue;
 }
 
 .oneResultTitle > p {
     font-size: 2em;
     margin: 0px;
+}
+
+.oneResult:nth-child(odd) {
+    background-color: #cccccc73;
 }
 
 .searchInput {
