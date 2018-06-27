@@ -1,5 +1,10 @@
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
+
+    .mainMenu {
+        margin: 0px;
+    }
+
     .clipart {
         display: none;
     }
@@ -7,14 +12,22 @@
     .container {
         padding-left: 0px;
         padding-right: 0px;
+        margin-top: 20px;
+    }
+
+    .top_responsive_ad {
+        width: 320px;
+        height: 100px;
+        margin: auto;
     }
 
     .page-header {
-        background-image: url('/assets/logos/lyric_background.jpg');
+        /* background-image: url('/assets/logos/lyric_background.jpg');
         background-size: 80px;
         background-repeat: no-repeat;
         background-position-x: right;
-        background-position-y: center;
+        background-position-y: center; */
+        margin: 0px;
     }
 
     .bigTitle {
@@ -53,10 +66,8 @@
     }    
 
     .ad_right_lyric {
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 30px;
         width: 300px;
+        margin: 30px auto;
     }
 
     .ad_right_lyric > iframe {
@@ -78,10 +89,6 @@
     .col-md-8 {
         padding: 0px;
     }
-}
-
-.mainMenu {
-    margin: 0px 0px 100px 0px;
 }
 
 pre {
@@ -182,11 +189,23 @@ pre {
 
 @media only screen and (min-width: 768px) {
     /* For desktop: */
+
+    .mainMenu {
+        margin: 0px 0px 90px 0px;
+    }
+
     .container {
-        padding-left: 30px;
-        padding-right: 30px;
+        padding-left: 0px;
+        padding-right: 0px;
         padding-bottom: 30px;
         max-width: 970px;
+    }
+
+    .leaderboard_ad {
+        width: 970px;
+        height: 90px;
+        margin-left: auto;
+        margin-right: auto;
     }
     
     .page-header {
