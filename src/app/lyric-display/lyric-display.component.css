@@ -6,7 +6,13 @@
     }
 
     .clipart {
-        display: none;
+        display: inline-block;
+        width: 30%;
+        vertical-align: top;
+    }
+
+    .clipart > img {
+        width: 100%;
     }
 
     .container {
@@ -23,10 +29,18 @@
 
     .page-header {
         margin: 0px 0px 10px 0px;
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
     .bigTitle {
         margin-left: 15px;
+        display: inline-block;
+        width: 64%;
+    }
+
+    .bigTitle > h1 {
+        margin-top: 0px;
     }
 
     .bigTitle > h4 {
@@ -143,12 +157,6 @@ pre {
     border-color: green;
 }
 
-.bigTitle {
-    display: inline-block;
-    height: 110px;
-    width: 80%;
-}
-
 .form-group > .signUp > a {
     color: red;
 }
@@ -205,6 +213,12 @@ pre {
     
     .page-header {
         border-radius: 30px;
+    }
+
+    .bigTitle {
+        display: inline-block;
+        height: 110px;
+        width: 80%;
     }
 
     pre {
