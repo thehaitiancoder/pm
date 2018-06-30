@@ -7,9 +7,16 @@
         <h2>&#8681; TOP RABODAY &#8681;</h2>
         <div class="oneSong" *ngFor="let result of topRapSongs; let i = index">
             <a [routerLink]="['/lyrics/', result.url]">
-            <div class="left">
-              <p>{{ i+1 }}</p>
-            </div>
+            
+                <div class="left">
+                        <div *ngIf="result.clipart != null" class="clipart_container">
+                          <img class="clipart" src="{{result.clipart}}" alt="song clipart">
+                        </div>
+                        <div *ngIf="result.clipart == null" class="clipart_container">
+                          <img class="clipart" src="./assets/clipart/album-cover.png" alt="song clipart">
+                        </div>
+                </div>
+
             <div class="right">
                 <p class="songTitle">{{ result.title }}</p>
                   <p>{{result.singer.name}}
@@ -24,6 +31,9 @@
                         </span>
                   </p>
                   <div class="songsExtra">
+                        <div class="rank">
+                                <p># {{ i+1 }} |</p>
+                        </div>
                       <div class="views">
                         <p><span class="glyphicon glyphicon-eye-open"></span> {{ result.views }}</p>
                       </div>
