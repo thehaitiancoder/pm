@@ -22,12 +22,7 @@
     }
 
     .page-header {
-        /* background-image: url('/assets/logos/lyric_background.jpg');
-        background-size: 80px;
-        background-repeat: no-repeat;
-        background-position-x: right;
-        background-position-y: center; */
-        margin: 0px;
+        margin: 0px 0px 10px 0px;
     }
 
     .bigTitle {
