@@ -16,8 +16,11 @@
 
 <div *ngIf="theLyric != null" class="container">
   <div class="page-header">
-    <div class="clipart">
-      <img src="./assets/logos/lyric_background.jpg" alt="clipart">
+    <div *ngIf="theLyric.clipart == null" class="clipart">
+      <img src="./assets/clipart/album-cover.png" alt="clipart">
+    </div>
+    <div *ngIf="theLyric.clipart != null" class="clipart">
+      <img src="{{theLyric.clipart}}" alt="clipart">
     </div>
     <div class="bigTitle">
         <h1>{{ theLyric.title }}</h1>
