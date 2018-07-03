@@ -27,12 +27,20 @@
         </div>
       </div>
       <div *ngIf="artistTracks != null" class="col-sm-8 right_panel">
+        <div class="top_songs">
         <h2 class="title_right_panel">⇩ TOP MIZIK ⇩</h2>
         <div class="oneSong" *ngFor="let result of artistTracks; let i = index">
             <a [routerLink]="['/lyrics/', result.url]">
-            <div class="left">
-              <p>{{ i+1 }}</p>
-            </div>
+            
+                <div class="left">
+                        <div *ngIf="result.clipart != null" class="clipart_container">
+                          <img class="clipart" src="{{result.clipart}}" alt="song clipart">
+                        </div>
+                        <div *ngIf="result.clipart == null" class="clipart_container">
+                          <img class="clipart" src="./assets/clipart/album-cover.png" alt="song clipart">
+                        </div>
+                </div>
+
             <div class="right">
                 <p class="songTitle">{{ result.title }}</p>
                   <p>
@@ -47,6 +55,9 @@
                         </span>
                   </p>
                   <div class="songsExtra">
+                        <div class="rank">
+                            <p># {{ i+1 }} |</p>
+                        </div>
                       <div class="views">
                         <p><span class="glyphicon glyphicon-eye-open"></span> {{ result.views }}</p>
                       </div>
@@ -58,9 +69,13 @@
             </div>
           </a>
 
-            <div class="divider"></div>
           </div>
       </div>
+
+      <div class="adRightToTopSongs">
+            <iframe src="//cdn.bannersnack.com/banners/bxuios5po/embed/index.html?userId=16738576&t=1516214565" width="300" height="250" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true"></iframe>
+        </div>
+    </div>
   </div>
 </div>
 
