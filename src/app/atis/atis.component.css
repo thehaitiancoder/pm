@@ -63,6 +63,7 @@
         border-top: none;
         display: inline-block;
         margin-bottom: 50px;
+        width: 100%;
     }
         .top_songs > h2 {
             text-align: center;
