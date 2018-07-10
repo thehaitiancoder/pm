@@ -13,8 +13,9 @@ export class AppComponent {
   ){
     this._router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        (<any>window).ga('set', 'page', event.urlAfterRedirects);
+        (<any>window).ga('set', 'page', this._router.url);
         (<any>window).ga('send', 'pageview');
+        console.log(this._router.url);
       }
     });
   }
