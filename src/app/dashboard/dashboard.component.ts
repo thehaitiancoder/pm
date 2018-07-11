@@ -29,7 +29,7 @@ export class DashboardComponent implements OnInit {
       this._authService.getOneUser(this.loggedUserId)
       .then(loggedUserProfile => {
         this.loggedUserProfil = loggedUserProfile
-        console.log(this.loggedUserProfil)
+        // console.log(this.loggedUserProfil)
       })
     }
 

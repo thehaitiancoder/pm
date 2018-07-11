@@ -17,7 +17,7 @@ export class KanavalComponent implements OnInit {
     this._categoryService.topCategorySong('Kanaval')
     .then(topRapSongs => {
       this.topRapSongs = topRapSongs
-      console.log(this.topRapSongs)
+      // console.log(this.topRapSongs)
     })
   }
 

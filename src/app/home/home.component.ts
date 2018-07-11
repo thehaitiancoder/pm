@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
             this.noResult = true;
           }, 15000);
         }
-        console.log(lyricSearched)
+        // console.log(lyricSearched)
       })
     }
   }

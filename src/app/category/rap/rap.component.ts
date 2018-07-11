@@ -18,7 +18,7 @@ export class RapComponent implements OnInit {
     this._categoryService.topCategorySong('Rap')
     .then(topRapSongs => {
       this.topRapSongs = topRapSongs
-      console.log(this.topRapSongs)
+      // console.log(this.topRapSongs)
     })
     .catch(errors => console.log(errors))
 

@@ -92,7 +92,7 @@ export class AddLyricComponent implements OnInit {
 
   addLyric(){
     // create slug
-    // this.lyric.url = this.lyric.singerOnPage.toLowerCase().replace(/ +/g, "-") + "-" + this.lyric.title.toLowerCase().replace(/ +/g, "-");
+    this.lyric.url = this.lyric.singerOnPage.toLowerCase().replace(/ +/g, "-") + "-" + this.lyric.title.toLowerCase().replace(/ +/g, "-");
 
     this._lyricService.addNewLyric(this.lyric)
       .then(addedlyric => { 
@@ -127,7 +127,7 @@ export class AddLyricComponent implements OnInit {
       }
     }
 
-      console.log(this.existingLyricTitles)
+      // console.log(this.existingLyricTitles)
     })
   }
 

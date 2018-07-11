@@ -19,7 +19,7 @@ export class TopLyricsComponent implements OnInit {
     this._lyricService.getTop100Lyric(10)
     .then(theLyrics => {
       this.theLyrics = theLyrics
-      console.log(theLyrics)
+      // console.log(theLyrics)
     })
     .catch(console.log)
 

@@ -17,7 +17,7 @@ export class KonpaComponent implements OnInit {
     this._categoryService.topCategorySong('Konpa')
     .then(topRapSongs => {
       this.topRapSongs = topRapSongs
-      console.log(this.topRapSongs)
+      // console.log(this.topRapSongs)
     })
   }
 

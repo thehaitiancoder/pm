@@ -18,7 +18,7 @@ export class CategoryService {
   }
 
   topCategorySong(categoryName){
-    console.log(categoryName)
+    // console.log(categoryName)
     return this._http.get(this.api + 'top-category/' + categoryName)
     .map(response => response.json())
     .toPromise();
