@@ -15,7 +15,8 @@ const SingerSchema = new Schema({
         required: true
     },
     profil_pic : {
-        type: String
+        type: String,
+        default: "./assets/logos/avatar-placeholder.gif"
     },
 }, { timestamps: true})
 
