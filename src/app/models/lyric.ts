@@ -16,7 +16,7 @@ export class Lyric {
     views: Number = 0;
     verified: Boolean = false;
     verifier: String= null;
-    clipart: String = null;
+    clipart: String = "./assets/clipart/album-cover.png";
     certified: String = null;
     feat = [];
 }

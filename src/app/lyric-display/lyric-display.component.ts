@@ -36,6 +36,7 @@ export class LyricDisplayComponent implements OnInit {
   userNotLoggedInToLikeComment: Boolean = false;
   userWantToLikeComment: Boolean = false;
   commentToShowError: String;
+  defaultAlbumCover: String = "./assets/clipart/album-cover.png";
 
   constructor(
     private _route: ActivatedRoute,

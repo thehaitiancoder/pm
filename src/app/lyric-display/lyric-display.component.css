@@ -5,6 +5,10 @@
         margin: 0px;
     }
 
+    .clipart_container {
+        display: inline;
+    }
+
     .clipart {
         display: inline-block;
         width: 30%;
@@ -232,11 +236,16 @@ pre {
         border-radius: unset;
     }
 
+    .clipart_container {
+        display: inline-block;
+        vertical-align: top;
+    }
+
     .clipart {
         display: inline-block;
         height: 60px;
         vertical-align: top;
-        margin: 20px;
+        margin: 20px 20px 20px 0px;
     }
 
     .clipart > img {

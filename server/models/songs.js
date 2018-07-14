@@ -68,7 +68,8 @@ const SongSchema = new Schema({
         type: Number
     },
     clipart: {
-        type: String
+        type: String,
+        default: "./assets/clipart/album-cover.png"
     }
 }, {timestamps: true})
 

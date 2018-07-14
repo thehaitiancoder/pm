@@ -181,8 +181,13 @@ export class AddLyricComponent implements OnInit {
     this.lyric.singer = singerId;
     this.singerToAdd = null;
     // get the album of the main singer
+    console.log(singerId)
       this._lyricService.getSingAlbum(singerId)
-      .then(singerAlbumList => { this.singerAlbumList = singerAlbumList})
+      .then(singerAlbumList => { 
+        this.singerAlbumList = singerAlbumList
+        console.log(singerAlbumList)
+        
+      })
   }
 
   createNewSinger(singerName, featNo) {

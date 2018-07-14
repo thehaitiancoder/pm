@@ -23,7 +23,10 @@ module.exports = {
     // Retrieve the albums of a particular artist on the lyric creation form
     getSingerAlbum(req, res) {
         Album.find({singer: req.params.singerId})
-        .then( album => {res.json(album)})
+        .then( album => {
+            res.json(album)
+            console.log(album)
+        })
         .catch(console.log)
     },
 

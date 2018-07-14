@@ -16,7 +16,8 @@ const AlbumSchema = new Schema({
         type: Date
     },
     cover: {
-        type: String
+        type: String,
+        default: "./assets/clipart/album-cover.png"
     }
 }, { timestamps: true})
 
