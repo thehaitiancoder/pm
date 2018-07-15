@@ -1,5 +1,11 @@
+.container {
+    width: 970px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
 form {
-    width: 45%;
+    width: 46%;
     margin: 0px 6% 200px 0px;
     display: inline-block;
 }
@@ -14,6 +20,10 @@ form {
     width: 47%;
     display: inline-block;
     vertical-align: top;
+}
+
+.add_lyric_instructions_table {
+    background-color: white;
 }
 
 .red {

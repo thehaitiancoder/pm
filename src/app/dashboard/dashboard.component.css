@@ -1,3 +1,9 @@
+.container {
+    width: 970px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
 .mainMenu {
     margin: 0px 0px 100px 0px;
 }

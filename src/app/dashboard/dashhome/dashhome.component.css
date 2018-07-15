@@ -1,3 +1,9 @@
+.container {
+    width: 970px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
 .addLyricCall {
     margin: 0% 0% 5% 0%;
 }
