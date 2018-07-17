@@ -56,7 +56,7 @@ module.exports = {
 
     checkTitleExist(req, res) {
         Song.find({$text: {$search: req.body.title}}, {score: {$meta: 'textScore'}})
-        .sort({ score: { $meta: "textScore" } }).populate('singer').populate('album').populate('feat.singer')
+        .sort({ score: { $meta: "textScore" } }).populate('singer').populate('album').populate('feat.singer').limit(10)
         .then(titleExist => {res.json(titleExist)})
         .catch(console.log)
     },

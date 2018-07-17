@@ -1,32 +1,18 @@
-.container {
-    width: 970px;
-    padding-left: 0px;
-    padding-right: 0px;
-}
-
-.addLyricCall {
-    margin: 0% 0% 5% 0%;
-}
-
-.one {
-    height: 200px;
-    margin: 0% auto 50px auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    vertical-align: top;
-    background-color: ghostwhite;
-    text-align: center;
-}
-    .one > h1 {
-        font-size: 3em;
-    }
-
 @media only screen and (max-width: 768px) {
-    /* For mobile phones: */
+    /* Mobile view styles */
+    .container {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    
+    .addLyricCall {
+        margin: 0% 5% 5% 5%;
+    }
+    
     .one {
-        width: 100%;
+        width: 90%;
         height: 200px;
-        margin: 0% auto 0% auto;
+        margin: 0% auto 50px auto;
         padding: 20px;
         border: 1px solid #ccc;
         vertical-align: top;
@@ -35,5 +21,31 @@
     }
         .one > h1 {
             font-size: 2em;
+        }
+}
+
+@media only screen and (min-width: 768px) {
+    /* Desktop view styles */
+    .container {
+        width: 970px;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    
+    .addLyricCall {
+        margin: 0% 0% 5% 0%;
+    }
+    
+    .one {
+        height: 200px;
+        margin: 0% auto 50px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        vertical-align: top;
+        background-color: ghostwhite;
+        text-align: center;
+    }
+        .one > h1 {
+            font-size: 3em;
         }
 }

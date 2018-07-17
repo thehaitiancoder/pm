@@ -1,17 +1,42 @@
-.container {
-    width: 970px;
-    padding-left: 0px;
-    padding-right: 0px;
+@media only screen and (max-width: 768px) {
+    /* Mobile view styles */
+    
+    .container {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    
+    .panel {
+        margin-bottom: 40px;
+    }
+    
+    .panelLyrics > .panel-body {
+        padding: 0px;
+    }
+    
+    .lyricDetails {
+        margin-bottom: 0px;
+    }
 }
 
-.panel {
-    margin-bottom: 40px;
-}
-
-.panelLyrics > .panel-body {
-    padding: 0px;
-}
-
-.lyricDetails {
-    margin-bottom: 0px;
+@media only screen and (min-width: 768px) {
+    /* Desktop view styles */
+    
+    .container {
+        width: 970px;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    
+    .panel {
+        margin-bottom: 40px;
+    }
+    
+    .panelLyrics > .panel-body {
+        padding: 0px;
+    }
+    
+    .lyricDetails {
+        margin-bottom: 0px;
+    }
 }

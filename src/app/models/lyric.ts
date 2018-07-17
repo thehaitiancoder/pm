@@ -10,8 +10,8 @@ export class Lyric {
     carnival_year: String= '2000'; // this is to presented to the user if the category is "Kanaval"
     album: String = null;
     category: String = 'Mond';
-    soundcloud: Url = null;
-    youtube: Url = null;
+    soundcloud: String = null;
+    youtube: String = null;
     url : String = null;
     views: Number = 0;
     verified: Boolean = false;

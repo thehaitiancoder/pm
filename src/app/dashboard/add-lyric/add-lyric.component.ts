@@ -95,9 +95,21 @@ export class AddLyricComponent implements OnInit {
     // create slug
     this.lyric.url = this.lyric.singerOnPage.toLowerCase().replace(/ +/g, "-") + "-" + this.lyric.title.toLowerCase().replace(/ +/g, "-");
 
+    /* Basic cleaning of the Soundcloud and YouTube field in case the user have
+    activated the field but did not actually entered a valid url */
+    if (this.lyric.soundcloud != null || this.lyric.youtube != null) {
+      var soundcloudLinkIsGood = this.lyric.soundcloud.search('soundcloud.com');
+      var youtubeLinkIsGood = this.lyric.youtube.search('youtube.com');
+      if (soundcloudLinkIsGood < 0) {this.lyric.soundcloud = null};
+      if (youtubeLinkIsGood < 0) {this.lyric.youtube = null};
+    }
+
+    // Add the lyric
     this._lyricService.addNewLyric(this.lyric)
       .then(addedlyric => { 
+        // Show the user a thank you note
         this.lyricAddedConfirmation = true; 
+        // Send the user back to his dashboard
         setTimeout(() => {
           this._router.navigate(['dashboard', 'home']);
         }, 3000);
@@ -449,6 +461,10 @@ export class AddLyricComponent implements OnInit {
     if (feat == 7) { this.featuring.seven = featurerName; this.featurer.seven = featurerId; this.lyric.feat.push({singer: featurerId}) ; this.featurerSevenToAdd = null;}
     
     
+  }
+
+  openListOfSongs() {
+    document.getElementById('openModal').click();
   }
 
 }

@@ -2,14 +2,29 @@
   <div *ngIf="!lyricAddedConfirmation">
     <form (submit)='addLyric()' #form="ngForm" autocomplete="off">
       <p class="text-center">Itilize fomilè sa pou ajoute pawol mizik.</p>
+      <p class="text-center mobile"><a data-toggle="modal" href="#add_lyric_instructions_mobile_modal"><span class="glyphicon glyphicon-info-sign"></span> Enstriksyon</a></p>
+      <a class="desktop mobile" id="openModal" data-toggle="modal" href="#suggested_songs_mobile_modal"><span class="glyphicon glyphicon-info-sign"></span> Enstriksyon</a>
       <!-- Title -->
-      <div class="form-group">
+      <div class="form-group desktop">
         <!-- <label for="title">Tit mizik la:</label> -->
         <input type="text"
               name="title"
               id="title"
               [(ngModel)]="lyric.title"
               (change)="lyricAvailability()"
+              required
+              class="form-control input-lg"
+              [ngClass]="errorColorTitle"
+              placeholder="Kijan mizik la rele?">
+      </div>
+      <div class="form-group mobile">
+        <!-- <label for="title">Tit mizik la:</label> -->
+        <input type="text"
+              name="title"
+              id="title"
+              [(ngModel)]="lyric.title"
+              (change)="lyricAvailability()"
+              (focusout)="openListOfSongs()"
               required
               class="form-control input-lg"
               [ngClass]="errorColorTitle"
@@ -327,13 +342,13 @@
               [(ngModel)]="lyric.youtube"
               class="form-control input-lg"
               placeholder="Egzanp: https://www.youtube.com/embed/Z-KN6qsPt6M">
-        <p><strong>Nòt enpòtan: Asire ou gen lyen video youtube la gen menm fòma ak egzanp ki nan espas pou mete lyen an. Espesyalman lyen an sipoze genyen mo "embed" la ladan l.</strong></p>
+        <p><strong>Nòt enpòtan: Asire ou ke lyen video YouTube la gen menm fòma ak egzanp ki nan espas pou mete lyen an. Espesyalman lyen an sipoze genyen mo "embed" la ladan l.</strong></p>
       </div>
       <button type="submit" [disabled]="form.invalid" class="btn btn-primary btn-block signupEntries">Ajoute Pawol Mizik sa</button>
     </form>
 
-    <div *ngIf="existingLyricTitles.length > 0" class="addingLyricsValidation">
-        <h2>Mizik sou sit la ki gen non tankou sa:</h2>
+    <div *ngIf="existingLyricTitles.length > 0" class="addingLyricsValidation desktop">
+        <p class="text-center">Mizik sou sit la ki gen non tankou sa:</p>
         <ul>
           <li *ngFor="let existingLyric of existingLyricTitles">
             <span *ngIf="existingLyric.score > 0.5">
@@ -435,3 +450,122 @@
     $('[data-toggle="popover"]').popover();   
   });
 </script>
+
+<!-- Modal for instructions on mobile view-->
+<div id="add_lyric_instructions_mobile_modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Kijan pou w ajoute yon pawol?</h4>
+      </div>
+      <div class="modal-body">
+        <table class="table table-striped add_lyric_instructions_table">
+          <thead>
+            <tr>
+              <th>Sektyon</th>
+              <th class="text-center">Ensktriksyon</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><p>Tit</p></td>
+              <td><p>Asire ou ke ou ekri tit mizik la menm jan ke atis la ekri l. Verifye ke mizik la pako sou sit la avan ou mete l</p></td>
+            </tr>
+            <tr>
+              <td><p>Atis</p></td>
+              <td>
+                  <p>Komanse ekri non atis la epi sit la ap baw yon lis non pou w chwazi ladan l. Si atis la pako sou sit la, klike sou bouton ki pemet ou ajoute yon nouve atis.</p>
+                  <p><strong>N.B: Fok ou selektyone non yon atis nan lis sistèm nan baw la. Pa egzanp, si wap mete "Baky Popilè" menm siw ekri l menm jan ak sa sistèm nan baw la, li pap mache, fok ou selektyone l nan list la.</strong></p>
+              </td>
+            </tr>
+            <tr>
+              <td><p>Kolabo</p></td>
+              <td><p>Menm prensip pou atis prensipal la valid pou atis ki featuring yo</p></td>
+            </tr>
+            <tr>
+              <td><p>Lirik</p></td>
+              <td><p>Ajoute pawol mizik la. Pran san ou pou verifye pawol yo paske ou pap ka korije l apre ou finn voye l ale</p></td>
+            </tr>
+            <tr>
+              <td><p>Dat</p></td>
+              <td>
+                  <p>Ajoute dat mizik la soti a. Fòma a se Mwa/Jou/Ane</p>
+                  <p>Siw gen dout sou dat fiks la pa mete l</p>
+              </td>
+            </tr>
+            <tr>
+              <td><p>Albòm</p></td>
+              <td><p>Selektyone youn nan albòm ki nan lis la</p></td>
+            </tr>
+            <tr>
+              <td><p>Kategori</p></td>
+              <td>
+                  <p>Chwazi youn nan kategori yo pou mizik la.</p>
+                  <p>Si w gen dout sou kategori a kite li vid.</p>
+              </td>
+            </tr>
+            <tr>
+              <td><p>Soundcloud</p></td>
+              <td>
+                  <p>Mete lyen mizik la pou moun koute li sou Soundcloud</p>
+                  <p>Asire w ke lyen ou mete a li bon e ke li mache ak pawol mizik la</p>
+              </td>
+            </tr>
+            <tr>
+              <td><p>Youtube</p></td>
+              <td>
+                  <p>Mete lyen mizik la pou moun ka gade li sou Youtube</p>
+                  <p>Asire w ke lyen ou mete a li bon e ke li mache ak pawol mizik la</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Kontinye</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Modal for suggested songs on mobile view-->
+<div id="suggested_songs_mobile_modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title text-center">Mizik ki parèy sa w mete a</h4>
+      </div>
+      <div class="modal-body">
+        <p class="alert alert-warning">Verifye lis sa pou w wè si mizik sa pa sou sit la deja.</p>
+        <ul>
+          <li *ngFor="let existingLyric of existingLyricTitles">
+            <span *ngIf="existingLyric.score > 0.5">
+              <a [routerLink]="['/lyrics/', existingLyric.url]">{{existingLyric.title}} - {{existingLyric.singer.name}}
+                <span *ngIf="existingLyric.feat.length > 0">
+                  <span>feat. {{existingLyric.feat[0].singer.name}}</span>
+                  <span *ngIf="existingLyric.feat[1]">, {{ existingLyric.feat[1].singer.name }}</span>
+                  <span *ngIf="existingLyric.feat[2]">, {{ existingLyric.feat[2].singer.name }}</span>
+                  <span *ngIf="existingLyric.feat[3]">, {{ existingLyric.feat[3].singer.name }}</span>
+                  <span *ngIf="existingLyric.feat[4]">, {{ existingLyric.feat[4].singer.name }}</span>
+                  <span *ngIf="existingLyric.feat[5]">, {{ existingLyric.feat[5].singer.name }}</span>
+                  <span *ngIf="existingLyric.feat[6]">, {{ existingLyric.feat[6].singer.name }}</span>
+                </span>
+              </a>
+            </span>
+          </li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Kontinye</button>
+      </div>
+    </div>
+
+  </div>
+</div>
