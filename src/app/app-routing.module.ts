@@ -22,12 +22,17 @@ import { ReggeaComponent } from './category/reggea/reggea.component';
 import { MondComponent } from './category/mond/mond.component';
 import { AtisComponent } from './atis/atis.component';
 import { AlphabeticalArtistListComponent } from './alphabetical-artist-list/alphabetical-artist-list.component';
+import { AddLyricsLandingComponent } from './add-lyrics-landing/add-lyrics-landing.component';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
     component: HomeComponent
+  },
+  {
+    path: 'add-lyrics-get-paid',
+    component: AddLyricsLandingComponent
   },
   {
     path: 'logged',

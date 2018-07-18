@@ -35,6 +35,7 @@ import { ReggeaComponent } from './category/reggea/reggea.component';
 import { MondComponent } from './category/mond/mond.component';
 import { AtisComponent } from './atis/atis.component';
 import { AlphabeticalArtistListComponent } from './alphabetical-artist-list/alphabetical-artist-list.component';
+import { AddLyricsLandingComponent } from './add-lyrics-landing/add-lyrics-landing.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { AlphabeticalArtistListComponent } from './alphabetical-artist-list/alph
     ReggeaComponent,
     MondComponent,
     AtisComponent,
-    AlphabeticalArtistListComponent
+    AlphabeticalArtistListComponent,
+    AddLyricsLandingComponent
   ],
   imports: [
     BrowserModule,
