@@ -11,14 +11,8 @@
     }
     
     form {
-        margin: 0px 5% 200px 5%;
+        margin: 0px 5% 50px 5%;
         display: inline-block;
-    }
-    
-    .howToAddLyricVideo {
-        width: 47%;
-        display: inline-block;
-        vertical-align: top;
     }
     
     .add_lyric_instructions_table {
@@ -60,7 +54,7 @@
     
     form {
         width: 46%;
-        margin: 0px 6% 200px 0px;
+        margin: 0px 6% 50px 0px;
         display: inline-block;
     }
     

@@ -344,7 +344,7 @@
               placeholder="Egzanp: https://www.youtube.com/embed/Z-KN6qsPt6M">
         <p><strong>Nòt enpòtan: Asire ou ke lyen video YouTube la gen menm fòma ak egzanp ki nan espas pou mete lyen an. Espesyalman lyen an sipoze genyen mo "embed" la ladan l.</strong></p>
       </div>
-      <button type="submit" [disabled]="form.invalid" class="btn btn-primary btn-block signupEntries">Ajoute Pawol Mizik sa</button>
+      <button type="submit" [disabled]="form.invalid" class="btn btn-lg btn-primary btn-block signupEntries">Ajoute Pawol Mizik sa</button>
     </form>
 
     <div *ngIf="existingLyricTitles.length > 0" class="addingLyricsValidation desktop">
@@ -368,7 +368,7 @@
         </ul>
     </div>
 
-    <div *ngIf="lyric.title == null" class="howToAddLyricVideo">
+    <div *ngIf="lyric.title == null" class="howToAddLyricVideo desktop">
       <p class="text-center">Kijan pou w ajoute yon pawol?</p>
   
       <table class="table table-striped add_lyric_instructions_table">
