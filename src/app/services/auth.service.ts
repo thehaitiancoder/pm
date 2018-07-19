@@ -43,6 +43,7 @@ export class AuthService {
 
   currentUserId() {
     this.userId = this._cookieService.get('userId');
+    return this.userId;
   }
 
   isAuthed(): boolean{

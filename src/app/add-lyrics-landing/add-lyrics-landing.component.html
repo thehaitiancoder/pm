@@ -5,21 +5,43 @@
 <div class="container">
   <div class="theSteps">
     <!-- step 1 -->
-    <a data-toggle="modal" href="#SignUpModal">
+    <!-- This for un-logged user -->
+    <a *ngIf="activateLoginLink" data-toggle="modal" href="#SignUpModal">
       <div class="col-sm-4" id="step1">
         <p class="stepNumber">1</p>
         <p class="stepDetails">Kreye kont ou sou pawolmizik pou ka gen aksè ak espas ou.</p>
       </div>
     </a>
+    <!-- This for logged in user -->
+    <div *ngIf="!activateLoginLink" class="col-sm-4 lowOpacity" id="step1">
+      <p class="stepNumber">1</p>
+      <p class="stepDetails">Kreye kont ou sou pawolmizik pou ka gen aksè ak espas ou.</p>
+    </div>
     
     <!-- step 2 -->
-    <div class="col-sm-4" id="step2">
+    <!-- This for logged in user -->
+    <a *ngIf="activateLoggedInUserLinks" [routerLink]="['/dashboard', 'lyric']">
+      <div class="col-sm-4" id="step2">
+        <p class="stepNumber">2</p>
+        <p class="stepDetails">Pibliye lirik mizik atis ayisyen yo epi nap peyew* pou chak lirik ke ou mete.</p>
+      </div>
+    </a>
+    <!-- This for un-logged user -->
+    <div *ngIf="!activateLoggedInUserLinks" class="col-sm-4 lowOpacity" id="step2">
       <p class="stepNumber">2</p>
       <p class="stepDetails">Pibliye lirik mizik atis ayisyen yo epi nap peyew* pou chak lirik ke ou mete.</p>
     </div>
     
     <!-- step 3 -->
-    <div class="col-sm-4" id="step3">
+    <!-- This for logged in user -->
+    <a *ngIf="activateLoggedInUserLinks" [routerLink]="['/dashboard']">
+      <div class="col-sm-4" id="step3">
+        <p class="stepNumber">3</p>
+        <p class="stepDetails">Reklame** lajan ke ou genyen an sou fòm minit pou telefon ou osison kach***.</p>
+      </div>
+    </a>
+    <!-- This for un-logged user -->
+    <div *ngIf="!activateLoggedInUserLinks" class="col-sm-4 lowOpacity" id="step3">
       <p class="stepNumber">3</p>
       <p class="stepDetails">Reklame** lajan ke ou genyen an sou fòm minit pou telefon ou osison kach***.</p>
     </div>
