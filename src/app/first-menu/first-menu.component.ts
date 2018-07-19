@@ -75,25 +75,27 @@ export class FirstMenuComponent implements OnInit {
   }
 
   register(){
-    this._authService.register(this.user)
-    .then(() => {
-      location.href = '/dashboard';
-    })
-    .catch(errors => {
-      this.signUpError = errors._body;
-      var emailError    = "Email sa anrejistre sou sit la deja!",
-          usernameError = "Non itilizatè sa anrejistre deja",
-          pwdError      = "Mokle ou a pa respekte fòm ke sit la mande w la."
+    if (this.pwdConfMet == true) {
+      this._authService.register(this.user)
+      .then(() => {
+        location.href = '/dashboard';
+      })
+      .catch(errors => {
+        this.signUpError = errors._body;
+        var emailError    = "Email sa anrejistre sou sit la deja!",
+            usernameError = "Non itilizatè sa anrejistre deja",
+            pwdError      = "Mokle ou a pa respekte fòm ke sit la mande w la."
 
-      if (this.signUpError.includes("email")) { this.signUpErrors.push(emailError)}
-      else if (!this.signUpError.includes("email")) { this.removeError(emailError)}
+        if (this.signUpError.includes("email")) { this.signUpErrors.push(emailError)}
+        else if (!this.signUpError.includes("email")) { this.removeError(emailError)}
 
-      if (this.signUpError.includes("username")) { this.signUpErrors.push(usernameError) }
-      else if (!this.signUpError.includes("username")) { this.removeError(usernameError)}
+        if (this.signUpError.includes("username")) { this.signUpErrors.push(usernameError) }
+        else if (!this.signUpError.includes("username")) { this.removeError(usernameError)}
 
-      if (this.signUpError.includes("password")) { this.signUpErrors.push(pwdError) }
-      else if (!this.signUpError.includes("password")) { this.removeError(pwdError)}
-    })
+        if (this.signUpError.includes("password")) { this.signUpErrors.push(pwdError) }
+        else if (!this.signUpError.includes("password")) { this.removeError(pwdError)}
+      })
+    }
   }
 
   removeError(errorToRemove){
