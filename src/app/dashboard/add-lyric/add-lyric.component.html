@@ -250,7 +250,7 @@
                 </div>
       </div>
       <!-- Lyrics -->
-      <div *ngIf="loggedUserId != managerIdDev || managerIdPro" class="form-group">
+      <div *ngIf="loggedUserId != managerIdDev" class="form-group">
           <!-- <label for="lyrics">Pawol mizik la:</label> -->
           <textarea name="lyrics"
                 id="lyrics"
@@ -262,7 +262,19 @@
                 class="form-control"
                 placeholder="Mete pawol mizik yo la"></textarea>
       </div>
-      <div *ngIf="loggedUserId == managerIdDev || managerIdPro" class="form-group">
+      <div *ngIf="loggedUserId != managerIdDev" class="form-group">
+          <!-- <label for="lyrics">Pawol mizik la:</label> -->
+          <textarea name="lyrics"
+                id="lyrics"
+                rows="20"
+                required
+                [(ngModel)]="lyric.lyrics"
+                (change)="lyricAvailability()"
+                [ngClass]="errorColorLyric"
+                class="form-control"
+                placeholder="Mete pawol mizik yo la"></textarea>
+      </div>
+      <div *ngIf="loggedUserId == managerIdDev" class="form-group">
             <!-- <label for="lyrics">Pawol mizik la:</label> -->
             <textarea name="lyrics"
                   id="lyrics"
@@ -272,7 +284,18 @@
                   [ngClass]="errorColorLyric"
                   class="form-control"
                   placeholder="Mete pawol mizik yo la"></textarea>
-        </div>
+      </div>
+      <div *ngIf="loggedUserId == managerIdDev" class="form-group">
+          <!-- <label for="lyrics">Pawol mizik la:</label> -->
+          <textarea name="lyrics"
+                id="lyrics"
+                rows="20"
+                [(ngModel)]="lyric.lyrics"
+                (change)="lyricAvailability()"
+                [ngClass]="errorColorLyric"
+                class="form-control"
+                placeholder="Mete pawol mizik yo la"></textarea>
+      </div>
         <!-- Add views -->
         <!-- <div class="form-group">
           <label for="views">Old Views:</label>
