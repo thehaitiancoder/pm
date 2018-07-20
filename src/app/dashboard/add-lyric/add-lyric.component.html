@@ -262,7 +262,7 @@
                 class="form-control"
                 placeholder="Mete pawol mizik yo la"></textarea>
       </div>
-      <div *ngIf="loggedUserId != managerIdDev" class="form-group">
+      <div *ngIf="loggedUserId != managerIdProd" class="form-group">
           <!-- <label for="lyrics">Pawol mizik la:</label> -->
           <textarea name="lyrics"
                 id="lyrics"
@@ -285,7 +285,7 @@
                   class="form-control"
                   placeholder="Mete pawol mizik yo la"></textarea>
       </div>
-      <div *ngIf="loggedUserId == managerIdDev" class="form-group">
+      <div *ngIf="loggedUserId == managerIdProd" class="form-group">
           <!-- <label for="lyrics">Pawol mizik la:</label> -->
           <textarea name="lyrics"
                 id="lyrics"

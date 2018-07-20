@@ -26,7 +26,7 @@ export class AddLyricComponent implements OnInit {
   featurer = new Featurer;
   featuring = new Featuring;
   managerIdDev: String = "5b516af16fa2b824410494b7";
-  managerIdPro: String = "5a75ec9faf18ab20d16d2ad1";
+  managerIdProd: String = "5a75ec9faf18ab20d16d2ad1";
   loggedUserId = null;
   lyricAddedConfirmation: Boolean = false;
   existingLyricTitles: Array<Object> = [];

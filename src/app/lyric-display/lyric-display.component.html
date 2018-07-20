@@ -43,7 +43,8 @@
     <!-- Testing modify button -->
     {{loggedInUser}}
     {{managerIdDev}}
-    <div *ngIf="loggedInUser == managerId || managerIdPro">
+    {{managerIdProd}}
+    <div *ngIf="loggedInUser == managerIdDev || managerIdProd">
       <p>Ralph is logged in</p>
     </div>
   </div>
